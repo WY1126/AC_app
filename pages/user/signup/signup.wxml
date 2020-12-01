@@ -1,0 +1,6 @@
+<!--pages/user/signup/signup.wxml-->
+<view class="page-oauth">
+    <button class="btn-oauth" type="primary" loading="{{loading}}" open-type="getUserInfo" bindgetuserinfo="handleGetUserInfo">
+        授权登录
+    </button>
+</view>

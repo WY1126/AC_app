@@ -1,0 +1,11 @@
+<!--index.wxml-->
+<view class="head">这是头部</view>>
+<!-- 要吸顶布局 -->
+<view>这是tab标签
+  <view>课余小驿</view>
+  <view>江中强档</view>
+  <view>知识主打</view>
+</view>
+<view>社团资讯</view>
+<van-button plain type="primary">朴素按钮</van-button>
+<van-button plain type="info">朴素按钮</van-button>
