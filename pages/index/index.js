@@ -4,7 +4,8 @@ const app = getApp()
 Page({
   data: {
     TabCur: 0,
-    scrollLeft:0
+    scrollLeft:0,
+    active: 0,
   },
   onLoad: function () {
     //如果缓存中没有openID
@@ -21,5 +22,9 @@ Page({
       TabCur: e.currentTarget.dataset.id,
       scrollLeft: (e.currentTarget.dataset.id-1)*60
     })
+  },
+  onChange(event) {
+    // event.detail 的值为当前选中项的索引
+    this.setData({ active: event.detail });
   },
 })

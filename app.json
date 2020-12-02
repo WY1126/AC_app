@@ -1,16 +1,42 @@
 {
   "pages":[
     "pages/index/index",
-    "pages/logs/logs",
+    "pages/find/find",
     "pages/user/user",
     "pages/user/signup/signup"
   ],
   "window":{
     "backgroundTextStyle":"light",
     "navigationBarBackgroundColor": "#fff",
-    "navigationBarTitleText": "Weixin",
+    "navigationBarTitleText": "江中课余",
     "navigationBarTextStyle":"black"
   },
-  "style": "v2",
+  "tabBar": {
+    "position": "bottom",
+    "color": "#7A7E83",
+    "selectedColor": "#0F87E3",
+    "borderStyle": "black",
+    "backgroundColor": "#ffffff",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "text":"主页",
+        "iconPath": "images/icon/home.png",
+        "selectedIconPath": "images/icon/home-select.png"
+      },
+      {
+        "pagePath": "pages/find/find",
+        "text":"发现",
+        "iconPath": "images/icon/find.png",
+        "selectedIconPath": "images/icon/find-select.png"
+      },
+      {
+        "pagePath": "pages/user/user",
+        "text":"我的",
+        "iconPath": "images/icon/my.png",
+        "selectedIconPath": "images/icon/my-select.png"
+      }
+    ]
+  },
   "sitemapLocation": "sitemap.json"
 }
