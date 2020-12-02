@@ -5,7 +5,7 @@ Page({
   data: {
     TabCur: 0,
     scrollLeft:0,
-    active: 0,
+    active: 1,
   },
   onLoad: function () {
     //如果缓存中没有openID
@@ -24,7 +24,9 @@ Page({
     })
   },
   onChange(event) {
-    // event.detail 的值为当前选中项的索引
-    this.setData({ active: event.detail });
+    wx.showToast({
+      title: `切换到标签 ${event.detail.name}`,
+      icon: 'none',
+    });
   },
 })

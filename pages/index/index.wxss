@@ -1,21 +1,15 @@
-/**index.wxss**/
-.userinfo {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+.container_a{
+  width: 100%;
+  height: 1000rpx;
+  background-color: #f0f0f0;
 }
-
-.userinfo-avatar {
-  width: 128rpx;
-  height: 128rpx;
-  margin: 20rpx;
-  border-radius: 50%;
+.head{
+  width: 100%;
+  height: 100rpx;
+  background-color: #0F87E3;
 }
-
-.userinfo-nickname {
-  color: #aaa;
-}
-
-.usermotto {
-  margin-top: 200px;
+.liukong{
+  width: 100%;
+  height: 12rpx;
+  background-color: #f0f0f0;
 }
