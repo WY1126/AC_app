@@ -6,19 +6,27 @@
       课余小驿
     </van-tab>
     <van-tab title="江中强档">
+    <view class="container_a">
       <!-- 顶部按钮格子 -->
       <view class="grid_a">
         <view class="grid_a_item">
-          <text>ziyi</text>
+           <image mode="aspectFit" src="/images/icon/tips.png"></image>
+           <text>校园贴士</text>
         </view>
         <view class="grid_a_item">
-          <text>zier</text>
+          <image mode="aspectFit" src="/images/icon/association.png"></image>
+          <text>社团协会</text>
         </view>
         <view class="grid_a_item">
-          <text>zisan</text>
+          <image mode="aspectFit" src="/images/icon/news.png"></image>
+          <text>校区新闻</text>
+        </view>
+        <view class="grid_a_item">
+          <image mode="aspectFit" src="/images/icon/address_list.png"></image>
+          <text>校园通讯录</text>
         </view>
       </view>
-      <view class="container_a">
+      
         <text>文字</text>
       </view>
     </van-tab>
