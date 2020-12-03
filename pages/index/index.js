@@ -33,7 +33,7 @@ Page({
       }
     },
     function(res){
-      wx.showToast({ title: '请求失败', icon: 'none' });
+      wx.showToast({ title: '请求失败!', icon: 'none' });
     })
   },
   onLoad: function () {

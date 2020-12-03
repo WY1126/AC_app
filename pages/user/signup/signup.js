@@ -25,7 +25,7 @@ Page({
               avatar:userInfo.avatarUrl,
               gender:userInfo.gender,
             };
-            comm.requestAjax('home/user/signup',dataList,'正在加载',function(res){
+            comm.requestAjax('home/user/signup',dataList,'正在加载','post',function(res){
               console.log(res)//请求成功回调
               wx.setStorageSync('openid', res.openid);
               app.globalData.user = res;
