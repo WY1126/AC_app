@@ -5,7 +5,7 @@
     <van-tab title="课余小驿">
       课余小驿
     </van-tab>
-    <van-tab title="江中强档">
+    <van-tab title="江中强档" >
     <view class="container_a">
       <!-- 顶部按钮格子 -->
       <view class="grid_a">
@@ -28,6 +28,12 @@
       </view>
       
         <text>文字</text>
+        <block>
+          <view wx:for="{{list}}" wx:for-item="item" wx:key="id">
+            <text>{{item.id}}</text>
+            <text>{{item.content}}</text>
+          </view>
+        </block>
       </view>
     </van-tab>
     <van-tab title="知识主打">

@@ -1,2 +1,9 @@
 <!--pages/find/find.wxml-->
 <text>pages/find/find.wxml</text>
+<button bindtap="ok">dsa</button>
+<block>
+  <view wx:for="{{list}}" wx:for-item="item" wx:key="id">
+    <text>{{item.id}}</text>
+    <text>{{item.content}}</text>
+  </view>
+</block>

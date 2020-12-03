@@ -6,7 +6,7 @@
 // success:成功的回调函数
 // fail：失败的回调
 //其他参数可以自定义传入
-function requestAjax(url, data, message, success, fail) {
+function requestAjax(url, data, message, method="post",success, fail) {
   // console.log(data)
   wx.showNavigationBarLoading()
   if (message != "") {
@@ -25,7 +25,7 @@ function requestAjax(url, data, message, success, fail) {
       //'Token':token,根据自己的接口写header的传参
       //'Logintime': logintime
     },
-    method: 'post',//方法也可以改成变量 传入
+    method: method,//方法也可以改成变量 传入
     success: function (res) {
       //console.log(res.data)
       wx.hideNavigationBarLoading()
