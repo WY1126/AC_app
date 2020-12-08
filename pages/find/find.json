@@ -1,3 +1,11 @@
 {
-  "usingComponents": {}
+  "usingComponents": {
+    "van-tab": "@vant/weapp/tab/index",
+    "van-tabs": "@vant/weapp/tabs/index",
+    "van-nav-bar":"@vant/weapp/nav-bar/index",
+    "van-search": "@vant/weapp/search/index"
+  },
+  "navigationBarBackgroundColor": "#0F87E3",
+  "navigationBarTextStyle":"white",
+  "navigationBarTitleText":"发现"
 }

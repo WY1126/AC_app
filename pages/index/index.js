@@ -33,18 +33,18 @@ Page({
       }
     },
     function(res){
-      wx.showToast({ title: '请求失败!', icon: 'none' });
+      wx.showToast({ title: '请求失败', icon: 'none' });
     })
   },
   onLoad: function () {
     //如果缓存中没有openID
-    var openID = wx.getStorageSync('openid')
-    // console.log(openID)
-    if(openID==="") {
-      wx.redirectTo({
-        url: '/pages/user/signup/signup',
-      })
-    }
+    // var openID = wx.getStorageSync('openid')
+    // // console.log(openID)
+    // if(openID==="") {
+    //   wx.redirectTo({
+    //     url: '/pages/user/signup/signup',
+    //   })
+    // }
     this.getinfor()
     
   },
@@ -66,5 +66,8 @@ Page({
       title: `切换到标签 ${event.detail.name}`,
       icon: 'none',
     });
+  },
+  test(e){
+    console.log('s')
   },
 })

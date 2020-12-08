@@ -1,10 +1,10 @@
 <!--index.wxml-->    
 <view class="head"></view>
 <view class="liukong"></view>
-<van-tabs active="{{ active }}" bind:change="onChange" color="#3998DF" sticky animated>
-    <van-tab title="课余小驿">
+<van-tabs active="{{ active }}"  bind:change="onChange" color="#3998DF" sticky animated swipeable>
+    <!-- <van-tab title="课余小驿">
       课余小驿
-    </van-tab>
+    </van-tab> -->
     <van-tab title="江中强档" >
     <view class="container_a">
       <!-- 顶部按钮格子 -->
@@ -26,17 +26,35 @@
           <text>校园通讯录</text>
         </view>
       </view>
-      
-        <text>文字</text>
-        <block>
-          <view wx:for="{{list}}" wx:for-item="item" wx:key="id">
-            <text>{{item.id}}</text>
-            <text>{{item.content}}</text>
-          </view>
-        </block>
+      <view class="infor_con">
+            <view class="infor_top">
+              <view class="tip"></view>
+              <text>社团资讯</text>
+            </view>
+            <view class="infor_item">
+              <block>
+                <view wx:for="{{list}}" wx:for-item="item" wx:key="id">
+                  <view class="infor_item_top">
+                    <image class="infor_item_avatar" src="{{item.avatarurl}}"></image> 
+                    <text class="infor_item_name">{{item.shortname}}</text>
+                    <text class="infor_item_time">{{item.create_time}}</text>
+                  </view>
+                  <view class="infor_item_detail">
+                    <rich-text>{{item.content}}</rich-text>
+                      <image class="infor_item_images" src="http://127.0.0.1/AC_tp/uploads/{{item.image[0]}}"></image>
+                  </view>
+                  
+                </view>
+              </block>
+            </view>
+
+        </view>
       </view>
+
     </van-tab>
     <van-tab title="知识主打">
+    <text>sadas</text>
     知识主打
+    <image src="http://127.0.0.1/AC_tp/uploads/20201205/060d5e55d023b0bf7a5c950c85548446.png"></image>
     </van-tab>
   </van-tabs>
