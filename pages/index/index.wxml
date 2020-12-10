@@ -41,13 +41,15 @@
                   </view>
                   <view class="infor_item_detail">
                     <rich-text>{{item.content}}</rich-text>
-                      <image class="infor_item_images" src="http://127.0.0.1/AC_tp/uploads/{{item.image[0]}}"></image>
+                      <view wx:for="{{item.image}}" wx:for-item="image_item" wx:key="id">
+                        <image class="list_image" src="http://127.0.0.1/AC_tp/uploads/{{image_item}}"></image>
+                      </view>
+                    
                   </view>
                   
                 </view>
               </block>
             </view>
-
         </view>
       </view>
 
@@ -58,3 +60,4 @@
     <image src="http://127.0.0.1/AC_tp/uploads/20201205/060d5e55d023b0bf7a5c950c85548446.png"></image>
     </van-tab>
   </van-tabs>
+

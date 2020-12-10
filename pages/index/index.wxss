@@ -74,3 +74,8 @@ page{
   color: #666666;
   font-size: 26rpx;
 }
+.list_image{
+  width: 120rpx;
+  height: 120rpx;
+  
+}
