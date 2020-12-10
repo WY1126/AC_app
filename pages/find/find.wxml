@@ -1,11 +1,8 @@
 <!--pages/find/find.wxml-->
-<van-search
-  value="{{ value }}"
-  placeholder="请输入搜索关键词"
-  show-action
-  bind:search="onSearch"
-  bind:cancel="onCancel"
-/>
+<navigation-bar default-data="{{defaultData}}"></navigation-bar>
+<van-sticky offset-top="{{statusBarHeight}}">
+
+
 <van-tabs color="#3998DF" sticky>
   <van-tab title="标签 1">
     <text>
@@ -31,3 +28,4 @@
   <van-tab title="标签 3">内容 3</van-tab>
   <van-tab title="标签 4">内容 4</van-tab>
 </van-tabs>
+</van-sticky>

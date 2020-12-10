@@ -1,13 +1,15 @@
 // pages/find/find.js
 // 引入request封装
 const comm = require("../../utils/request.js")
+const app = getApp()
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    value:''
+    value:'',
+    statusBarHeight:app.globalData.statusBarHeight
   },
   //测试请求分页数据-thinkPHP后台，社团协会资讯数据
  
