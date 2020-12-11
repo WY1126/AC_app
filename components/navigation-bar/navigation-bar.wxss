@@ -1,2 +1,2 @@
-.nav-bar{ z-index: 18; position: fixed; width: 100%; top: 0; color: #fff; background: #0F87E3;}
+.nav-bar{ z-index: 18; position: fixed; width: 100%; top: 0; color: #fff; background: #fff;}
 .nav-bar .search{ width: 60%; color: #333; font-size: 14px; background: #fff; position: absolute; border-radius: 50px; background: #f0f0f0; padding-left: 14px;}

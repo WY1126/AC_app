@@ -6,6 +6,7 @@
     "van-tab": "@vant/weapp/tab/index",
     "van-tabs": "@vant/weapp/tabs/index"
   },
-  "navigationBarBackgroundColor": "#0F87E3",
-  "navigationBarTextStyle":"white"
+  "navigationBarBackgroundColor": "#fff",
+  "navigationBarTextStyle":"black",
+  "navigationBarTitleText":"江中课余"
 }

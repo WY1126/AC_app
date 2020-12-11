@@ -1,7 +1,5 @@
 <!--index.wxml-->    
-<view class="head"></view>
-<view class="liukong"></view>
-<van-tabs active="{{ active }}"  bind:change="onChange" color="#3998DF" sticky animated swipeable>
+<van-tabs active="{{ active }}"  bind:change="onChange" line-height="2px" color="#48A8F1" title-active-color="#48A8F1" sticky animated swipeable>
     <!-- <van-tab title="课余小驿">
       课余小驿
     </van-tab> -->

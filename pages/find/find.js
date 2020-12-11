@@ -9,7 +9,14 @@ Page({
    */
   data: {
     value:'',
-    statusBarHeight:app.globalData.statusBarHeight
+    statusBarHeight:app.globalData.statusBarHeight,
+    circle:[
+      "dsada",
+      "sdsadasd",
+      "dsadsad",
+      "dsad",
+      "dsadsa"
+    ]
   },
   //测试请求分页数据-thinkPHP后台，社团协会资讯数据
  
