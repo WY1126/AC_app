@@ -51,7 +51,7 @@ page{
   height: auto;
   background-color: #FFFFFF;
   margin: 0 auto;
-  margin-top: 30rpx;
+  margin-top: 35rpx;
   border-radius: 12rpx 12rpx 0 0;
 }
 .infor_top{

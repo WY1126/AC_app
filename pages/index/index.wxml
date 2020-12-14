@@ -10,7 +10,7 @@
       <view class="grid_a">
         <view class="grid_a_item">
            <image mode="aspectFit" src="/images/icon/tips.png"></image>
-           <text>校园sa贴士</text>
+           <text>校园贴士</text>
         </view>
         <view class="grid_a_item">
           <image mode="aspectFit" src="/images/icon/association.png"></image>
@@ -32,8 +32,9 @@
             </view>
             <view class="infor_item">
               <block>
-                <view wx:for="{{list}}" wx:for-item="item" wx:key="id">
-                  <template is="information-tem" data="{{...item}}"></template>
+                <view wx:for-items="{{list}}" wx:for-item="item" wx:key="uid" wx:for-index="index">
+                  <!-- template 不能直接获取下标值，传入index:index -->
+                  <template is="information-tem" data="{{...item,index:index}}"></template>
                   <!-- <view class="infor_item_top">
                     <image class="infor_item_avatar" src="{{item.avatarurl}}"></image> 
                     <text class="infor_item_name">{{item.shortname}}</text>

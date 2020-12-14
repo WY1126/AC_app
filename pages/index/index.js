@@ -7,7 +7,7 @@ Page({
   data: {
     TabCur: 0,
     scrollLeft:0,
-    active: 1,
+    active: 0,
     page:1,
     list:[],
   },
@@ -24,12 +24,12 @@ Page({
         wx.showToast({ title: '没有更多', icon: 'none' });
       }else{
         var len=res.data.length,comment;
-        console.log("len="+len)
+        // console.log("len="+len)
         for(var i=0;i<len;i++)
         {
           comment=res.data[i]
           comment.create_time=util.getDiffTime(comment.create_time,true);
-          console.log("yime= "+comment.create_time)
+          // console.log("time= "+comment.create_time)
         }
         var a=that.data.list;
         var temp=a.concat(res.data)
@@ -43,6 +43,21 @@ Page({
     },
     function(res){
       wx.showToast({ title: '请求失败', icon: 'none' });
+    })
+  },
+  /**2020-12-14
+   * 实现图片预览
+   */
+  previewImg:function(event){
+    //获取文章评论序号
+    var informationId=event.currentTarget.dataset.informationId,//data-comment-idx  自定义属性，有多个单词时自动转化为驼峰命名法。
+    imgId=event.currentTarget.dataset.imgId,//获取图片序号
+    imgs=this.data.list[informationId].image;  //获取评论所有图片
+    console.log("sa"+imgs)
+    console.log("a=  "+informationId+ "    b=  "+imgId)
+    wx.previewImage({
+      current:imgs[imgId],
+      urls:imgs
     })
   },
   onLoad: function () {

@@ -2,3 +2,7 @@
   width: 30rpx;
   height: 30rpx;
 }
+.infor_item_like{
+  width: 100%;
+  border-bottom:solid 15rpx #f0f0f0;
+}
