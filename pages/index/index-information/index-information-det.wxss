@@ -1,0 +1,4 @@
+.infor_item_icon{
+  width: 30rpx;
+  height: 30rpx;
+}

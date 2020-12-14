@@ -2,6 +2,7 @@
 //获取应用实例
 const app = getApp()
 const comm=require("../../utils/request")
+const util=require("../../utils/util")
 Page({
   data: {
     TabCur: 0,
@@ -22,14 +23,22 @@ Page({
       {
         wx.showToast({ title: '没有更多', icon: 'none' });
       }else{
-              var a=that.data.list;
-      var temp=a.concat(res.data)
-      that.setData({
-        page:Number(res.current_page)+1,
-        list:temp
-      })
-      console.log(res)
-      console.log(that.data.page)
+        var len=res.data.length,comment;
+        console.log("len="+len)
+        for(var i=0;i<len;i++)
+        {
+          comment=res.data[i]
+          comment.create_time=util.getDiffTime(comment.create_time,true);
+          console.log("yime= "+comment.create_time)
+        }
+        var a=that.data.list;
+        var temp=a.concat(res.data)
+        that.setData({
+          page:Number(res.current_page)+1,
+          list:temp
+        })
+        console.log(res)
+        console.log(that.data.page)
       }
     },
     function(res){

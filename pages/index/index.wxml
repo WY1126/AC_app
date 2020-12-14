@@ -1,4 +1,5 @@
 <!--index.wxml-->    
+<import src="index-information/index-informatiion-det.wxml"></import>
 <van-tabs active="{{ active }}"  bind:change="onChange" line-height="2px" color="#48A8F1" title-active-color="#48A8F1" sticky animated swipeable>
     <!-- <van-tab title="课余小驿">
       课余小驿
@@ -32,7 +33,8 @@
             <view class="infor_item">
               <block>
                 <view wx:for="{{list}}" wx:for-item="item" wx:key="id">
-                  <view class="infor_item_top">
+                  <template is="information-tem" data="{{...item}}"></template>
+                  <!-- <view class="infor_item_top">
                     <image class="infor_item_avatar" src="{{item.avatarurl}}"></image> 
                     <text class="infor_item_name">{{item.shortname}}</text>
                     <text class="infor_item_time">{{item.create_time}}</text>
@@ -43,7 +45,7 @@
                         <image class="list_image" src="http://127.0.0.1/AC_tp/uploads/{{image_item}}"></image>
                       </view>
                     
-                  </view>
+                  </view> -->
                   
                 </view>
               </block>

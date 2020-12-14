@@ -1,0 +1,18 @@
+<template name="information-tem">
+  <view class="infor_item_top">
+    <image class="infor_item_avatar" src="{{avatarurl}}"></image> 
+    <text class="infor_item_name">{{shortname}}</text>
+    <text class="infor_item_time">{{create_time}}</text>
+  </view>
+  <view class="infor_item_detail">
+    <rich-text>{{content}}</rich-text>
+      <view wx:for="{{image}}" wx:for-item="image_item" wx:key="id">
+        <image class="list_image" src="http://127.0.0.1/AC_tp/uploads/{{image_item}}"></image>
+      </view>
+  </view>
+  <view class="infor_item_like">
+    <image class="infor_item_icon" mode="aspectFit" src="/images/icon/share.png"></image>
+    <image class="infor_item_icon" mode="aspectFit" src="/images/icon/comment.png"></image>
+    <image class="infor_item_icon" mode="aspectFit" src="/images/icon/like.png"></image>
+  </view>
+</template>
