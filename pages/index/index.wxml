@@ -9,7 +9,7 @@
       <view class="grid_a">
         <view class="grid_a_item">
            <image mode="aspectFit" src="/images/icon/tips.png"></image>
-           <text>校园贴士</text>
+           <text>校园sa贴士</text>
         </view>
         <view class="grid_a_item">
           <image mode="aspectFit" src="/images/icon/association.png"></image>
