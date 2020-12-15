@@ -1,18 +1,33 @@
 <template name="information-tem">
   <view class="infor_item_top">
-    <image class="infor_item_avatar" src="{{avatarurl}}"></image> 
-    <text class="infor_item_name">{{shortname}}</text>
-    <text class="infor_item_time">{{create_time}}</text>
+    <image mode="aspectFit" class="infor_item_avatar" src="{{avatarurl}}"></image>
+    <view class="infor_item_top_text">
+      <text class="infor_item_name">{{shortname}}</text>
+      <text class="infor_item_time">{{create_time}}</text>
+    </view>
+
+    <image mode="aspectFit" class="infor_item_top_icon" src="/images/icon/more.png"></image>
   </view>
   <view class="infor_item_detail">
-    <rich-text>{{content}}</rich-text>
+    <text>{{content}}</text>
+    <view class="image_box">
       <view wx:for="{{image}}" wx:for-item="image_item" wx:for-index="imgId" wx:key="uid">
-        <image class="list_image" catchtap="previewImg" data-information-id="{{index}}" data-img-id="{{imgId}}" src="http://127.0.0.1/AC_tp/uploads/{{image_item}}"></image>
+          <image mode="scaleToFill" class="list_image" catchtap="previewImg" data-information-id="{{index}}" data-img-id="{{imgId}}" src="{{avatarurlhead}}{{image_item}}"></image>
       </view>
+    </view>
   </view>
   <view class="infor_item_like">
-    <image class="infor_item_icon" mode="aspectFit" src="/images/icon/share.png"></image>
-    <image class="infor_item_icon" mode="aspectFit" src="/images/icon/comment.png"></image>
-    <image class="infor_item_icon" mode="aspectFit" src="/images/icon/like.png"></image>
+    <view  class="infor_item_like_box">
+      <view style="width:88%">
+        <image  bindtap="docomment" class="infor_item_icon" mode="aspectFit" src="/images/icon/share.png"></image>
+      </view>
+      <image class="infor_item_icon" mode="aspectFit" src="/images/icon/comment.png"></image>
+      <text wx:if="{{commentnum}}">{{commentnum}}</text>
+
+      <image bindtap="dolike" class="infor_item_icon" mode="aspectFit" src="/images/icon/like.png"></image>
+      <text wx:if="{{likenum}}">{{likenum}}</text>
+
+      
+    </view>
   </view>
 </template>

@@ -10,6 +10,7 @@ Page({
     active: 0,
     page:1,
     list:[],
+    avatarurlhead:app.globalData.avatarurlhead
   },
   //获取5条社团资讯数据
   getinfor:function(){
@@ -17,11 +18,15 @@ Page({
       page:this.data.page
     },that = this;
     console.log("进来的page"+temppage.page)
+    if(this.data.page>=0){
     comm.requestAjax("association/Information/getnewinfor",temppage,"请求更多…","get",
     function(res){
       if(res.error_code===0)
       {
         wx.showToast({ title: '没有更多', icon: 'none' });
+        that.setData({
+          page:-1
+        })
       }else{
         var len=res.data.length,comment;
         // console.log("len="+len)
@@ -44,8 +49,10 @@ Page({
     function(res){
       wx.showToast({ title: '请求失败', icon: 'none' });
     })
+  }
   },
-  /**2020-12-14
+  /**
+   * 2020-12-14
    * 实现图片预览
    */
   previewImg:function(event){
@@ -60,6 +67,16 @@ Page({
       urls:imgs
     })
   },
+  /**2020-12-15 20：38
+   * 社团资讯点赞按钮
+   * 开发中
+   */
+  dolike:function(){
+    wx.showToast({
+      title: '点赞成功',
+      icon:"success"
+    })
+  },
   onLoad: function () {
     //如果缓存中没有openID
     // var openID = wx.getStorageSync('openid')
@@ -70,6 +87,7 @@ Page({
     //   })
     // }
     this.getinfor()
+    console.log(this.data.avatarurlhead)
     
   },
     /**

@@ -13,6 +13,10 @@ Page({
     circle:[
       "dsada",
       "sdsadasd",
+      "dsada",
+      "sdsadasd",
+      "dsada",
+      "sdsadasd",
       "dsadsad",
       "dsad",
       "dsadsa"

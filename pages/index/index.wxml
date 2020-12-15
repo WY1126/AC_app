@@ -4,7 +4,7 @@
     <!-- <van-tab title="课余小驿">
       课余小驿
     </van-tab> -->
-    <van-tab title="江中强档" >
+    <van-tab title="江中强档"  >
     <view class="container_a">
       <!-- 顶部按钮格子 -->
       <view class="grid_a">
@@ -25,6 +25,7 @@
           <text>校园通讯录</text>
         </view>
       </view>
+      
       <view class="infor_con">
             <view class="infor_top">
               <view class="tip"></view>
@@ -34,7 +35,8 @@
               <block>
                 <view wx:for-items="{{list}}" wx:for-item="item" wx:key="uid" wx:for-index="index">
                   <!-- template 不能直接获取下标值，传入index:index -->
-                  <template is="information-tem" data="{{...item,index:index}}"></template>
+                  <template is="information-tem" data="{{...item,index:index,avatarurlhead:avatarurlhead}}"></template>
+                  <!-- <text>{{avatarurlhead}}</text> -->
                   <!-- <view class="infor_item_top">
                     <image class="infor_item_avatar" src="{{item.avatarurl}}"></image> 
                     <text class="infor_item_name">{{item.shortname}}</text>
