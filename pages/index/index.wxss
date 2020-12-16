@@ -47,7 +47,7 @@ page{
   height: 50rpx;
 }
 .infor_con{
-  width: 706rpx;
+  width: 100%;
   height: auto;
   background-color: #FFFFFF;
   margin: 0 auto;
@@ -61,7 +61,7 @@ page{
   display: flex;
   flex-direction:row;
   align-items: center;
-  border-radius: 12rpx 12rpx 0 0;
+  border-radius: 24rpx 24rpx 0 0;
 }
 .tip{
   width: 6rpx;

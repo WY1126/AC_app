@@ -1,6 +1,6 @@
 .infor_item_top{
   /* background-color: aqua; */
-  width: 670rpx;
+  width: 100%;
   margin: 0 auto;
   display: flex;
   flex-direction: row;
@@ -10,14 +10,16 @@
 .infor_item_avatar{
   width: 70rpx;
   height: 70rpx;
-  border-radius: 18%;
+  border-radius: 10%;
   overflow:hidden;
+  margin-left: 25rpx;
 }
 .infor_item_top_text{
   margin-left: 10rpx;
-  width: 550rpx;
+  width: 78%;
   display: flex;
   flex-direction: column;
+  /* line-height: 18px; */
 }
 .infor_item_name{
   font-size: 13px;
@@ -26,19 +28,21 @@
 .infor_item_time{
   font-size: 10px;
   color: #888888;
+  margin-top: 6rpx;
 }
 .infor_item_top_icon{
   width: 40rpx;
   height: 40rpx;
 }
 .infor_item_detail{
-  width: 591rpx;
+  width: 85%;
   height: auto;
-  margin-top: 5px;
+  margin-top: 10rpx;
   /* position: relative;
   left: 89rpx; */
-  margin-left: 89rpx;
+  margin-left: 13%;
   word-break:break-all; /*数字字母换行*/
+  /* background-color: aquamarine; */
 }
 .infor_item_detail > text{
   font-size: 13px;
