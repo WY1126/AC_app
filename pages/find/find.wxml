@@ -35,6 +35,6 @@
 
   <van-tab title="好物分享">毫无分享</van-tab>
   <van-tab title="回家平台">回家平台</van-tab>
-  <van-tab title="广告">广告</van-tab>
+  <van-tab title="广告">维权</van-tab>
 </van-tabs>
 </van-sticky>
