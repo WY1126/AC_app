@@ -60,8 +60,16 @@ Page({
     var informationId=event.currentTarget.dataset.informationId,//data-comment-idx  自定义属性，有多个单词时自动转化为驼峰命名法。
     imgId=event.currentTarget.dataset.imgId,//获取图片序号
     imgs=this.data.list[informationId].image;  //获取评论所有图片
-    console.log("sa"+imgs)
-    console.log("a=  "+informationId+ "    b=  "+imgId)
+    var len = imgs.length;
+    for(var i=0;i<len;i++)
+    {
+      imgs[i]=(this.data.avatarurlhead+imgs[i])
+    }
+    console.log(imgs)
+
+    // console.log("sa"+imgs)
+    // console.log("a=  "+informationId+ "    b=  "+imgId)
+    // console.log(this.data.avatarurlhead+imgs[imgId])
     wx.previewImage({
       current:imgs[imgId],
       urls:imgs

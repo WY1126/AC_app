@@ -38,6 +38,7 @@
   /* position: relative;
   left: 89rpx; */
   margin-left: 89rpx;
+  word-break:break-all; /*数字字母换行*/
 }
 .infor_item_detail > text{
   font-size: 13px;
@@ -80,18 +81,31 @@
   
   /* justify-content: center; */
 }
+.like_icon_box1{
+  margin-right: 30rpx;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+.like_icon_box2{
+  margin-right: 0rpx;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
 .infor_item_like_box text{
   color: #8a8a88;
   font-size: 12px;
   display: inline-block;
-  line-height: 35rpx; 
-  margin-right: 20rpx;
+  line-height: 35rpx;
+  margin-left: 3px; 
+  /* margin-right: 20rpx;  */
   /* margin: auto auto; */
   /* margin-bottom: 10rpx; */
 }
 .infor_item_icon{
-  width: 35rpx;
-  height: 35rpx;
-  margin-right: 10rpx;
+  width: 40rpx;
+  height: 40rpx;
+  /* margin-right: 10rpx; */
   /* vertical-align: middle; */
 }
