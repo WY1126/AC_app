@@ -57,7 +57,7 @@ Page({
    */
   previewImg:function(event){
     //获取文章评论序号
-    var informationId=event.currentTarget.dataset.informationId,//data-comment-idx  自定义属性，有多个单词时自动转化为驼峰命名法。
+    var informationId=event.currentTarget.dataset.informationIdx,//data-comment-idx  自定义属性，有多个单词时自动转化为驼峰命名法。
     imgId=event.currentTarget.dataset.imgId,//获取图片序号
     imgs=this.data.list[informationId].image;  //获取评论所有图片
     var len = imgs.length;
@@ -79,21 +79,47 @@ Page({
    * 社团资讯点赞按钮
    * 开发中
    */
-  dolike:function(){
-    wx.showToast({
-      title: '点赞成功',
-      icon:"success"
+  dolike:function(e){
+    var informationId = e.currentTarget.dataset.informationId,
+    userId = app.globalData.userId,
+    that = this,
+    idx = e.currentTarget.dataset.informationIdx,
+    datalist = {
+      iid:informationId,
+      uid:userId
+    };
+    // console.log(e.currentTarget.dataset.informationIdx)
+    comm.requestAjax('association/Information/likeinformation',datalist,'','post',function(e){
+      console.log(e.likenum)
+      console.log(that.data.list)
+      
+      var templist = that.data.list,msg=e.error_msg;
+      templist[idx].likenum = e.likenum
+      that.setData({
+        list:templist
+      })
+      wx.showToast({
+        title: msg,
+      })
+    }
+    ,function(e){
+      console.log('请求错误！')
     })
+    // console.log(userId)
+    // wx.showToast({
+    //   title: e.currentTarget.dataset.informationId,
+    //   icon:"success"
+    // })
   },
   onLoad: function () {
-    //如果缓存中没有openID
-    // var openID = wx.getStorageSync('openid')
-    // // console.log(openID)
-    // if(openID==="") {
-    //   wx.redirectTo({
-    //     url: '/pages/user/signup/signup',
-    //   })
-    // }
+    // 如果缓存中没有openID
+    var openID = wx.getStorageSync('openid')
+    // console.log(openID)
+    if(openID==""||openID==null) {
+      wx.redirectTo({
+        url: '/pages/user/signup/signup',
+      })
+    }
     this.getinfor()
     console.log(this.data.avatarurlhead)
     

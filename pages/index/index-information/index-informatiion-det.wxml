@@ -12,7 +12,7 @@
     <text space="ensp" decode="{{true}}">{{content}}</text>
     <view class="image_box">
       <view wx:for="{{image}}" wx:for-item="image_item" wx:for-index="imgId" wx:key="uid">
-          <image mode="scaleToFill" class="list_image" catchtap="previewImg" data-information-id="{{index}}" data-img-id="{{imgId}}" src="{{avatarurlhead}}{{image_item}}"></image>
+          <image mode="scaleToFill" class="list_image" catchtap="previewImg" data-information-idx="{{index}}" data-img-id="{{imgId}}" src="{{avatarurlhead}}{{image_item}}"></image>
       </view>
     </view>
   </view>
@@ -26,7 +26,7 @@
         <text >{{commentnum}}</text>
       </view>
       <view class="like_icon_box2">
-        <image bindtap="dolike" class="infor_item_icon" mode="aspectFit" src="/images/icon/like.png"></image>
+        <image data-information-idx="{{index}}" data-information-id="{{id}}" bindtap="dolike" class="infor_item_icon" mode="aspectFit" src="/images/icon/like.png"></image>
         <text >{{likenum}}</text>
       </view>
     </view>
