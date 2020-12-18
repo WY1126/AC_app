@@ -31,6 +31,7 @@ Page({
               console.log(res)//请求成功回调
               wx.setStorageSync('openid', res.openid);
               app.globalData.userId = res.id;
+              wx.setStorageSync('userId', res.id)
               wx.switchTab({ url: '/pages/index/index' });
             },function(res){
               // wx.showToast({ title: '授权失败lo', icon: 'none' });

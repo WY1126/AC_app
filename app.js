@@ -66,4 +66,6 @@ App({
     // avatarurlhead:"http://127.0.0.1/AC_tp/uploads/",   //图片根地址头
     // requestUrl:"http://127.0.0.1/AC_tp/public/"        //请求根地址
   }
+
+  
 })

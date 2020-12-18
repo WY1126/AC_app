@@ -14,12 +14,17 @@ Page({
   },
   //获取5条社团资讯数据
   getinfor:function(){
+    var uid = wx.getStorageSync('userId')
+    console.log('ghj  '+uid)
     var temppage = {
-      page:this.data.page
-    },that = this;
+      page:this.data.page,
+      uid:uid
+    },
+    that = this
+    ;
     console.log("进来的page"+temppage.page)
     if(this.data.page>=0){
-    comm.requestAjax("association/Information/getnewinfor",temppage,"请求更多…","get",
+    comm.requestAjax("association/Information/getnewinfor",temppage,"请求更多…","post",
     function(res){
       if(res.error_code===0)
       {
@@ -81,7 +86,7 @@ Page({
    */
   dolike:function(e){
     var informationId = e.currentTarget.dataset.informationId,
-    userId = app.globalData.userId,
+    userId = wx.getStorageSync('userId'),
     that = this,
     idx = e.currentTarget.dataset.informationIdx,
     datalist = {
@@ -94,7 +99,8 @@ Page({
       console.log(that.data.list)
       
       var templist = that.data.list,msg=e.error_msg;
-      templist[idx].likenum = e.likenum
+      templist[idx].likenum = e.likenum;
+      templist[idx].status=e.status;
       that.setData({
         list:templist
       })
