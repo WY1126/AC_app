@@ -27,15 +27,15 @@ Page({
               avatar:userInfo.avatarUrl,
               gender:userInfo.gender,
             };
-            comm.requestAjax('home/user/signup',dataList,'45545','post',function(res){
+            comm.requestAjax('home/user/signup',dataList,'正在请求','post',function(res){
               console.log(res)//请求成功回调
               wx.setStorageSync('openid', res.openid);
               app.globalData.userId = res.id;
               wx.setStorageSync('userId', res.id)
+              wx.setStorageSync('userinfo', res)
               wx.switchTab({ url: '/pages/index/index' });
             },function(res){
-              // wx.showToast({ title: '授权失败lo', icon: 'none' });
-              console.log("shibai")
+              wx.showToast({ title: '授权等待…', icon: 'none' });
             });
         }
     })

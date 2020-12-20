@@ -15,7 +15,7 @@
 }
 .infor_item_top_text{
   margin-left: 10rpx;
-  width: 78%;
+  width: 75%;
   display: flex;
   flex-direction: column;
 }
@@ -60,9 +60,10 @@
 .infor_item_like{
   width: 100%;
   border-bottom:solid 15rpx #f0f0f0;
+  margin-top: 5px;
 }
 .infor_item_like_box{
-  width: 591rpx;
+  width: 620rpx;
   height: auto;
   margin-top: 5px;
   margin-left: 89rpx;
@@ -71,7 +72,7 @@
   align-items: center;
 }
 .like_icon_box1{
-  margin-right: 30rpx;
+  margin-right: 40rpx;
   display: flex;
   flex-direction: row;
   align-items: center;

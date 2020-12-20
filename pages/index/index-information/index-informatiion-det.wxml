@@ -21,7 +21,7 @@
         <image  bindtap="docomment" class="infor_item_icon" mode="aspectFit" src="/images/icon/share.png"></image>
       </view>
       <view class="like_icon_box1">
-        <image class="infor_item_icon" mode="aspectFit" src="/images/icon/comment.png"></image>
+        <image bindtap="showPopup" class="infor_item_icon" mode="aspectFit" src="/images/icon/comment.png"></image>
         <text >{{commentnum}}</text>
       </view>
       <view class="like_icon_box2">

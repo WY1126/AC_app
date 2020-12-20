@@ -10,8 +10,18 @@ Page({
     active: 0,
     page:1,
     list:[],
-    avatarurlhead:app.globalData.avatarurlhead
+    avatarurlhead:app.globalData.avatarurlhead,
+    show:false
   },
+
+  showPopup() {
+    this.setData({ show: true });
+  },
+
+  onClose() {
+    this.setData({ show: false });
+  },
+
   //获取5条社团资讯数据
   getinfor:function(){
     var uid = wx.getStorageSync('userId')

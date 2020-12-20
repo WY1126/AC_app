@@ -33,6 +33,19 @@
                 <view wx:for-items="{{list}}" wx:for-item="item" wx:key="uid" wx:for-index="index">
                   <!-- template 不能直接获取下标值，传入index:index -->
                   <template is="information-tem" data="{{...item,index:index,avatarurlhead:avatarurlhead}}"></template>
+                  <van-popup
+                    show="{{ show }}"
+                    round
+                    position="bottom"
+                    custom-style="height: 64%"
+                    bind:close="onClose"
+                  >
+      <input class='talk-input' type='text' placeholder='有爱评论，说点儿好听的~'></input>
+
+                
+                
+                
+                </van-popup>                
                 </view>
               </block>
             </view>
