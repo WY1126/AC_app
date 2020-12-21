@@ -11,11 +11,43 @@ Page({
     page:1,
     list:[],
     avatarurlhead:app.globalData.avatarurlhead,
-    show:false
+    show:false,
+    information_Id:0,
+    comments:[],
+    commentnum:null,
   },
+/**
+ * 2020-12-21 王瑶 
+ * 显示评论弹出层
+ * @param {*} e 
+ */
+  showPopup(e) {
+    var information_id = e.currentTarget.dataset.informationId,
+    information_idx = e.currentTarget.dataset.informationIdx,
+    that = this,
+    userId = wx.getStorageSync('userId')
+    ;
+    var num = this.data.list[information_idx].commentnum
+    ,
+    datalist={
+      'iid':information_id,
+      'uid':userId
+    };
+    this.setData({
+       show: true,
+       information_Id:information_id,
+       commentnum:num
+    });
 
-  showPopup() {
-    this.setData({ show: true });
+    comm.requestAjax('association/Comment/getcomment',datalist,'','post',function(res){
+      console.log(res)
+      that.setData({
+        comments:res
+      })
+    },
+    function(res){
+      wx.showToast({ title: '请求失败', icon: 'none' });
+    })
   },
 
   onClose() {

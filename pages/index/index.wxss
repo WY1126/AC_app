@@ -1,4 +1,5 @@
 @import "index-information/index-information-det.wxss";
+@import "index-comment/index-comment-det.wxss";
 page{
   width: 100%;
   height: 100%;
@@ -75,112 +76,44 @@ page{
   color: #666666;
   font-size: 26rpx;
 }
-
-
-
-/* 框架  */
-.talks-layer {  
-  position: absolute;  
-  bottom: -100%;  
-  height: 0;  
-  width: 100%;  
-  overflow: hidden;  
-/* background-color: blue; */
+/* 评论弹出层样式表 */
+.popup-bottom{
+  height: 90rpx;
+  width: 100%;
+  border-top:1px solid #f0f0f0;
+  border-bottom: 1px solid #f0f0f0;
+  position: fixed;
+  bottom: 0px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
 }
-.layer-white-space {  
-  height: 100%;  
-  width: 100%;  
-  background-color: #ccc;  
-  opacity: .5;  
-/* background-color: green; */
-}
-.talks {  
-  position: absolute;  
-  height: 900rpx;  
-  width: 100%;  
-  bottom: 0rpx;  
-  background-color: #2f2d2e; 
-  border-top-left-radius: 5%;  
-  border-top-right-radius: 5%;  
-  /* background-color: red; */
-}
-.talk-header {  
-  width: 100%;  
-  height: 70rpx;  
-  padding-top: 
-  30rpx;  
+.popup-top{
+  width: 100%;
+  height: 100rpx;
+  /* background-color: antiquewhite; */
+  display: flex;
+  flex-direction: row;
+  align-items: center;
   text-align: center;
+  border-bottom: 1px solid #f0f0f0;
+  /* border-buttom:1px solid #f0f0f0; */
+  /* position: relative;
+  top: 0px; */
+ }
+.popup-top image{
+  width: 32rpx;
+  height: 32rpx;
+  position: relative;
+  left: 48rpx;
 }
-.talk-body {  
-  height: 700rpx;
+.popup-top text{
+  color: #333333;
+  font-size: 14px;
+  display: inline-block;
+  margin: 0 auto;
 }
-.talk-footer {  
-  position: absolute;  
-  bottom: 0rpx;  
-  width: 100%;  
-  height: 100rpx;  
-  background-color: #151515;
-}
-/* 顶部元素  */
-.talk-count {  
-  font-size: 0.8rem;  
-  height: 40rpx;  
-  color: #6b696a;
-}
-.talk-close {  
-  position: absolute;  
-  top: 40rpx;  
-  right: 40rpx;  
-  width: 40rpx;  
-  height: 40rpx;
-}
-/* 中部元素  */
-.talk-item {  
-  display: flex;  
-  flex-direction: row;  
-  align-items: flex-start;  
-  width: 100%;  
-  color: white;
-}
-.talk-item-left {  
-  display: flex;  
-  flex-direction: row;  
-  margin: 20rpx 30rpx;
-}
-.talk-item-face {  
-  width: 80rpx;  
-  height: 80rpx;  
-  border-radius: 50%;
-}
-.talk-item-right {  
-  width: 100%;  
-  border-bottom: solid 1rpx #6a6869;  
-  margin-right: 30rpx;  
-  margin-bottom: 30rpx;
-}
-.talk-item-nickname {  
-  font-size: 0.7rem;  
-  color: #aaa8a9;  
-  margin-top: 20rpx;  
-  margin-bottom: 10rpx;
-}
-.talk-item-content {  
-  display: block;  
-  margin-right: 30rpx;  
-  width: 100%;  
-  white-space: pre-line;
-}
-.talk-item-time {  
-  font-size: 0.7rem;  
-  color: #6a6869;  
-  margin-bottom: 20rpx;
-}
-/* 底部元素  */
-
-.talk-input {  
-  width: 100%;  
-  padding: 20rpx 40rpx;  
-  color: white;  
-  border-top-left-radius: 5%;  
-  border-top-right-radius: 5%;
+.zanwupinglun{
+  color: #666666;
+  
 }

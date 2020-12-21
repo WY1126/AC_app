@@ -1,5 +1,6 @@
 <!--index.wxml-->    
 <import src="index-information/index-informatiion-det.wxml"></import>
+<import src="index-comment/index-comment-det.wxml"></import>
 <van-tabs active="{{ active }}"  bind:change="onChange" line-height="2px" color="#48A8F1" title-active-color="#48A8F1" sticky animated swipeable>
     <van-tab title="江中强档"  >
     <view class="container_a">
@@ -33,21 +34,42 @@
                 <view wx:for-items="{{list}}" wx:for-item="item" wx:key="uid" wx:for-index="index">
                   <!-- template 不能直接获取下标值，传入index:index -->
                   <template is="information-tem" data="{{...item,index:index,avatarurlhead:avatarurlhead}}"></template>
-                  <van-popup
-                    show="{{ show }}"
-                    round
-                    position="bottom"
-                    custom-style="height: 64%"
-                    bind:close="onClose"
-                  >
-      <input class='talk-input' type='text' placeholder='有爱评论，说点儿好听的~'></input>
-
-                
-                
-                
-                </van-popup>                
+                  
+             
                 </view>
               </block>
+              <!-- 评论弹出框 -->
+              <van-popup
+                  show="{{ show }}"
+                  close-icon-position="top-left"
+                  position="bottom"
+                  custom-style="height: 840rpx"
+                  bind:close="onClose"
+                  overlay
+                  round
+                  >
+                <view class="popup-box" style="position:relative">
+                  <view class="popup-top">
+                    <image mode="scaleToFill" src="/images/icon/out.png"></image>
+                    <text wx:if="{{commentnum}}">{{commentnum}}条评论</text>
+                    <text wx:else>评论</text>
+                  </view>
+                  <text class="zanwupinglun" wx:if="{{!commentnum}}">暂无评论</text>
+                  <scroll-view wx:if="{{commentnum}}" scroll-y="true" style="height:628rpx;width:100%;margin-top:22rpx;">
+                    <block>
+                      <view  wx:for="{{comments}}" wx:for-item="item" wx:key="comment_key">
+                        <template is="comment" data="{{...item}}"></template>
+                        <view style="width:100%;height:1px;background-color:#f0f0f0; margin-bottom:22rpx; margin-top:22rpx;"></view>
+                      </view>
+                    </block>
+                    <view style="height:1000rpx;"></view>
+                  </scroll-view>
+                  
+                    <view class="popup-bottom">
+                         <input type="text" placeholder="说点什么吧" confirm-type="send" />   
+                    </view>
+                </view>
+                </van-popup>
             </view>
         </view>
       </view>

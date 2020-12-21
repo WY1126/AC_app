@@ -1,0 +1,39 @@
+<template name="comment">
+  <view class="comment-box">
+    <image mode="scaleToFill" class="comment-avatar" src="{{avatarurl}}" style="width:70rpx; height:70rpx"></image>
+    <view class="comment-infor">
+      <view class="comment-infor-top">
+        <text class="nn">{{nickname}}</text>
+        <text class="ct">{{create_time}}</text>
+        <text class="ln">{{likenum}}</text>
+        <image class="good-icon" mode="scaleToFill" src="/images/icon/good.png" ></image>
+      </view>
+      <view class="comment-infor-bottom">
+        <text>{{content}}</text>
+      </view>
+    </view>
+  </view>
+  
+    
+    <block>
+      <view wx:for="{{reply}}" wx:for-item="reply" wx:key="reply_key">
+        <view class="reply-box">
+          <image class="comment-avatar" mode="scaleToFill" src="{{reply.avatarurl}}"></image>
+          <view class="reply-infor">
+            <view class="reply-infor-top">
+              <text class="nn">{{reply.nickname}}</text>
+              <text class="ct">{{reply.create_time}}</text>
+              <text class="ln">{{likenum}}</text>
+              <image class="good-icon" mode="scaleToFill" src="/images/icon/good.png" ></image>
+            </view>
+            <view class="reply-info-bottom">
+              <view wx:if="{{reply.to_reply_id}}"  style="display:inline-block;">回复 <text  style="color:#043E6A;">{{reply.to_nickname}}：</text></view>
+              <text>{{reply.comment}}</text>
+            </view>
+          </view>
+        </view>
+      </view>
+    </block>
+  
+
+</template>

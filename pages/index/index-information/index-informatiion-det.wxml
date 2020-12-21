@@ -17,13 +17,16 @@
   </view>
   <view class="infor_item_like">
     <view  class="infor_item_like_box">
+      <!-- 分享按钮 -->
       <view style="width:88%">
         <image  bindtap="docomment" class="infor_item_icon" mode="aspectFit" src="/images/icon/share.png"></image>
       </view>
+      <!-- 评论按钮 -->
       <view class="like_icon_box1">
-        <image bindtap="showPopup" class="infor_item_icon" mode="aspectFit" src="/images/icon/comment.png"></image>
+        <image data-information-idx="{{index}}" data-information-id="{{id}}" bindtap="showPopup" class="infor_item_icon" mode="aspectFit" src="/images/icon/comment.png"></image>
         <text >{{commentnum}}</text>
       </view>
+      <!-- 点赞按钮 -->
       <view class="like_icon_box2">
         <image wx:if="{{status}}" data-information-idx="{{index}}" data-information-id="{{id}}" bindtap="dolike" class="infor_item_icon" mode="aspectFit" src="/images/icon/like-select.png"></image>
         <image wx:else data-information-idx="{{index}}" data-information-id="{{id}}" bindtap="dolike" class="infor_item_icon" mode="aspectFit" src="/images/icon/like.png"></image>
