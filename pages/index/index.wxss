@@ -97,9 +97,6 @@ page{
   align-items: center;
   text-align: center;
   border-bottom: 1px solid #f0f0f0;
-  /* border-buttom:1px solid #f0f0f0; */
-  /* position: relative;
-  top: 0px; */
  }
 .popup-top image{
   width: 32rpx;
@@ -113,7 +110,8 @@ page{
   display: inline-block;
   margin: 0 auto;
 }
-.zanwupinglun{
-  color: #666666;
-  
+.zwpl{
+  width: 100%;
+  text-align: center;
+  color: #333333;
 }

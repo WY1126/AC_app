@@ -5,7 +5,7 @@
       <view class="comment-infor-top">
         <text class="nn">{{nickname}}</text>
         <text class="ct">{{create_time}}</text>
-        <text class="ln">{{likenum}}</text>
+        <text class="ln" wx:if="{{likenum}}">{{likenum}}</text>
         <image class="good-icon" mode="scaleToFill" src="/images/icon/good.png" ></image>
       </view>
       <view class="comment-infor-bottom">
@@ -13,7 +13,6 @@
       </view>
     </view>
   </view>
-  
     
     <block>
       <view wx:for="{{reply}}" wx:for-item="reply" wx:key="reply_key">
@@ -23,7 +22,7 @@
             <view class="reply-infor-top">
               <text class="nn">{{reply.nickname}}</text>
               <text class="ct">{{reply.create_time}}</text>
-              <text class="ln">{{likenum}}</text>
+              <text class="ln" wx:if="{{reply.likenum}}">{{reply.likenum}}</text>
               <image class="good-icon" mode="scaleToFill" src="/images/icon/good.png" ></image>
             </view>
             <view class="reply-info-bottom">
@@ -34,6 +33,4 @@
         </view>
       </view>
     </block>
-  
-
 </template>

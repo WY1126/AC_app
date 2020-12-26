@@ -101,16 +101,23 @@ Page({
   /**
    * 2020-12-14
    * 实现图片预览
+   * ----------就应该直接返回图片的绝对路径
    */
   previewImg:function(event){
     //获取文章评论序号
     var informationId=event.currentTarget.dataset.informationIdx,//data-comment-idx  自定义属性，有多个单词时自动转化为驼峰命名法。
-    imgId=event.currentTarget.dataset.imgId,//获取图片序号
-    imgs=this.data.list[informationId].image;  //获取评论所有图片
-    var len = imgs.length;
+    temp,imgId=event.currentTarget.dataset.imgId,//获取图片序号
+    img=this.data.list[informationId].image,//获取评论所有图片
+    imgs=[]; //解决图片预览bug 2020-12-26 23:33
+    var len = img.length;
     for(var i=0;i<len;i++)
     {
-      imgs[i]=(this.data.avatarurlhead+imgs[i])
+      //将缩略图转换为真图
+      temp = img[i].split('@');
+      if(temp.length==2){
+        img[i]=temp[0]+temp[1];
+      }
+      imgs[i]=(this.data.avatarurlhead+img[i])
     }
     console.log(imgs)
 

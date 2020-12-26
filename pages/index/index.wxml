@@ -54,7 +54,7 @@
                     <text wx:if="{{commentnum}}">{{commentnum}}条评论</text>
                     <text wx:else>评论</text>
                   </view>
-                  <text class="zanwupinglun" wx:if="{{!commentnum}}">暂无评论</text>
+                  <view wx:if="{{!commentnum}}" class="zwpl">暂无评论</view>
                   <scroll-view wx:if="{{commentnum}}" scroll-y="true" style="height:628rpx;width:100%;margin-top:22rpx;">
                     <block>
                       <view  wx:for="{{comments}}" wx:for-item="item" wx:key="comment_key">
@@ -62,7 +62,7 @@
                         <view style="width:100%;height:1px;background-color:#f0f0f0; margin-bottom:22rpx; margin-top:22rpx;"></view>
                       </view>
                     </block>
-                    <view style="height:1000rpx;"></view>
+                    <!-- <view style="height:1000rpx;"></view> -->
                   </scroll-view>
                   
                     <view class="popup-bottom">
