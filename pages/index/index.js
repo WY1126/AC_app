@@ -41,6 +41,26 @@ Page({
 
     comm.requestAjax('association/Comment/getcomment',datalist,'','post',function(res){
       console.log(res)
+      var len=res.length,comment,replycomment,reply,replylen;
+      // console.log("len="+len)
+      //修改时间格式
+      for(var i=0;i<len;i++)
+      {
+        comment=res[i]
+        comment.create_time=util.getDiffTime(comment.create_time,true);
+        if(res[i].reply.length!=0)
+        {
+          reply = res[i].reply;
+          replylen = res[i].reply.length;
+          for(var j=0;j<replylen;j++)
+          {
+            // console.log('sa'+j)
+            replycomment = reply[j];
+            replycomment.create_time = util.getDiffTime(replycomment.create_time,true);
+          }
+        }
+        // console.log("time= "+comment.create_time)
+      }
       that.setData({
         comments:res
       })
@@ -49,9 +69,57 @@ Page({
       wx.showToast({ title: '请求失败', icon: 'none' });
     })
   },
-
+  /**
+   * 关闭弹出层
+   */
   onClose() {
     this.setData({ show: false });
+  },
+
+  /**对评论回复的点赞功能
+   * 2020-12-30 20:20 王瑶
+   */
+  dogood:function dg(params) {
+    var type = params.currentTarget.dataset.goodType,
+    id = params.currentTarget.dataset.requestId,
+    uid = wx.getStorageSync('userId'),
+    url = "association/Comment/good",
+    commentidx = params.currentTarget.dataset.commentIdx,replyidx = params.currentTarget.dataset.replyIdx,
+    data={
+      type:type,
+      id:id,
+      uid:uid
+    },
+    message='',method='post',that=this;
+    console.log('cidx  '+commentidx+"   ridx   "+replyidx)
+    comm.requestAjax(url,data,message,method,function(e){
+      console.log(e)
+      var tempcomments = that.data.comments
+      if(type==1){
+        if(e.status==0) {
+          tempcomments[commentidx]['reply'][replyidx]['likenum']-=1;
+        } else {
+          tempcomments[commentidx]['reply'][replyidx]['likenum']+=1;
+        }
+        tempcomments[commentidx]['reply'][replyidx]['status']=e.status;
+      } else {
+        if(e.status==0) {
+          tempcomments[commentidx]['likenum']-=1;
+        } else {
+          tempcomments[commentidx]['likenum']+=1;
+        }
+        tempcomments[commentidx]['status']=e.status;
+      }
+      that.setData({
+        comments:tempcomments
+      })
+      wx.showToast({
+        title:e.error_msg,
+      })
+    },
+    function(res){
+      wx.showToast({ title: '请求失败', icon: 'none' });
+    })
   },
 
   //获取5条社团资讯数据
@@ -131,7 +199,7 @@ Page({
   },
   /**2020-12-15 20：38
    * 社团资讯点赞按钮
-   * 开发中
+   * 
    */
   dolike:function(e){
     var informationId = e.currentTarget.dataset.informationId,

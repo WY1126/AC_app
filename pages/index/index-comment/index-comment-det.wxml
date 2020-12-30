@@ -5,25 +5,25 @@
       <view class="comment-infor-top">
         <text class="nn">{{nickname}}</text>
         <text class="ct">{{create_time}}</text>
-        <text class="ln" wx:if="{{likenum}}">{{likenum}}</text>
-        <image class="good-icon" mode="scaleToFill" src="/images/icon/good.png" ></image>
+        <text class="{{status?'ln-select':'ln'}}" wx:if="{{likenum}}">{{likenum}}</text>
+        <image data-comment-idx="{{index}}" data-request-id="{{id}}" data-good-type="0" bindtap="dogood" class="good-icon" mode="scaleToFill" src="/images/icon/{{status?'good-select.png':'good.png'}}" ></image>
       </view>
       <view class="comment-infor-bottom">
         <text>{{content}}</text>
       </view>
     </view>
   </view>
-    
+  <!-- 回复列表循环 -->
     <block>
-      <view wx:for="{{reply}}" wx:for-item="reply" wx:key="reply_key">
+      <view wx:for="{{reply}}" wx:for-item="reply" wx:key="reply_key" wx:for-index="replyIdx">
         <view class="reply-box">
           <image class="comment-avatar" mode="scaleToFill" src="{{reply.avatarurl}}"></image>
           <view class="reply-infor">
             <view class="reply-infor-top">
               <text class="nn">{{reply.nickname}}</text>
               <text class="ct">{{reply.create_time}}</text>
-              <text class="ln" wx:if="{{reply.likenum}}">{{reply.likenum}}</text>
-              <image class="good-icon" mode="scaleToFill" src="/images/icon/good.png" ></image>
+              <text class="{{reply.status?'ln-select':'ln'}}" wx:if="{{reply.likenum}}">{{reply.likenum}}</text>
+              <image data-comment-idx="{{index}}" data-reply-idx="{{replyIdx}}" data-request-id="{{reply.id}}" data-good-type="1" bindtap="dogood" class="good-icon" mode="scaleToFill" src="/images/icon/{{reply.status?'good-select.png':'good.png'}}" ></image>
             </view>
             <view class="reply-info-bottom">
               <view wx:if="{{reply.to_reply_id}}"  style="display:inline-block;">回复 <text  style="color:#043E6A;">{{reply.to_nickname}}：</text></view>

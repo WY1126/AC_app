@@ -31,18 +31,25 @@
   height: 30rpx;
 }
 .nn{
-  font-size: 28rpx;
+  /* font-size: 28rpx; */
   color: #043E6A;
   display: inline-block;
   margin-right: 10rpx;
 }
 .ct,.ln{
-  font-size: 28rpx;
+  font-size: 24rpx;
   color: #888888;
 }
 .ln{
   position:absolute;
   right: 80rpx;
+  font-size: 24rpx;
+}
+.ln-select{
+  position:absolute;
+  right: 80rpx;
+  color: #48A8F1;
+  font-size: 24rpx;
 }
 .good-icon{
   position: absolute;
@@ -64,6 +71,7 @@
   display: flex;
   flex-direction: row;
   margin-top: 22rpx;
+  /* border-bottom: solid 1px #f0f0f0; */
 }
 .reply-infor{
   display:flex;
