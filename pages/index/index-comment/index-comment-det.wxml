@@ -8,14 +8,14 @@
         <text class="{{status?'ln-select':'ln'}}" wx:if="{{likenum}}">{{likenum}}</text>
         <image data-comment-idx="{{index}}" data-request-id="{{id}}" data-good-type="0" bindtap="dogood" class="good-icon" mode="scaleToFill" src="/images/icon/{{status?'good-select.png':'good.png'}}" ></image>
       </view>
-      <view class="comment-infor-bottom">
-        <text>{{content}}</text>
+      <view data-comment-idx="{{index}}" bindtap="touch_comment" class="comment-infor-bottom">
+        <text space="ensp" decode="{{true}}">{{content}}</text>
       </view>
     </view>
   </view>
   <!-- 回复列表循环 -->
     <block>
-      <view wx:for="{{reply}}" wx:for-item="reply" wx:key="reply_key" wx:for-index="replyIdx">
+      <view wx:for="{{reply}}" wx:for-item="reply"  wx:for-index="replyIdx">
         <view class="reply-box">
           <image class="comment-avatar" mode="scaleToFill" src="{{reply.avatarurl}}"></image>
           <view class="reply-infor">
@@ -25,9 +25,12 @@
               <text class="{{reply.status?'ln-select':'ln'}}" wx:if="{{reply.likenum}}">{{reply.likenum}}</text>
               <image data-comment-idx="{{index}}" data-reply-idx="{{replyIdx}}" data-request-id="{{reply.id}}" data-good-type="1" bindtap="dogood" class="good-icon" mode="scaleToFill" src="/images/icon/{{reply.status?'good-select.png':'good.png'}}" ></image>
             </view>
-            <view class="reply-info-bottom">
-              <view wx:if="{{reply.to_reply_id}}"  style="display:inline-block;">回复 <text  style="color:#043E6A;">{{reply.to_nickname}}：</text></view>
-              <text>{{reply.comment}}</text>
+            <view bindtap="touch_reply" class="reply-info-bottom">
+              <view wx:if="{{reply.to_reply_id}}"  style="display:inline-block;">
+                回复 
+                <text space="ensp" decode="{{true}}" style="color:#043E6A;">{{reply.to_nickname}}：</text>
+              </view>
+              <text space="ensp" decode="{{true}}">{{reply.comment}}</text>
             </view>
           </view>
         </view>

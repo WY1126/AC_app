@@ -31,7 +31,7 @@
             </view>
             <view class="infor_item">
               <block>
-                <view wx:for-items="{{list}}" wx:for-item="item" wx:key="uid" wx:for-index="index">
+                <view wx:for-items="{{list}}" wx:for-item="item" wx:for-index="index">
                   <!-- template 不能直接获取下标值，传入index:index -->
                   <template is="information-tem" data="{{...item,index:index,avatarurlhead:avatarurlhead}}"></template>
                   
@@ -57,7 +57,8 @@
                   <view wx:if="{{!commentnum}}" class="zwpl">暂无评论</view>
                   <scroll-view wx:if="{{commentnum}}" scroll-y="true" style="height:628rpx;width:100%;margin-top:22rpx;">
                     <block>
-                      <view  wx:for="{{comments}}" wx:for-item="item" wx:key="comment_key" wx:for-index="index">
+                      <view  wx:for="{{comments}}" wx:for-item="item" wx:for-index="index">
+                        <!-- 评论模块 -->
                         <template is="comment" data="{{...item,index:index}}"></template>
                         <view style="width:100%;height:1px;background-color:#f0f0f0; margin-bottom:22rpx; margin-top:22rpx;width:83%;float:right;"></view>
                       </view>
@@ -65,9 +66,11 @@
                     <!-- <view style="height:1000rpx;"></view> -->
                   </scroll-view>
                   
-                    <view class="popup-bottom">
-                         <input type="text" placeholder="说点什么吧" confirm-type="send" />   
-                    </view>
+                  <view class="popup-bottom">
+                    <input focus="{{input_focus}}" value="{{input_content}}" bindinput="ipbindinput" class="popup-bottom-input" type="text" placeholder="{{placeholder}}" confirm-type="send" />
+                    <image mode="scaleToFill" src="/images/icon/smile.png"></image>
+                    <view bindtap="{{button_key?'send':'nosend'}}" class="{{button_key==1?'popup-bottom-seng':'popup-bottom-nosend'}}"> <text>发送</text> </view>
+                  </view>
                 </view>
                 </van-popup>
             </view>

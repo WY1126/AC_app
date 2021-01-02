@@ -9,12 +9,91 @@ Page({
     scrollLeft:0,
     active: 0,
     page:1,
-    list:[],
-    avatarurlhead:app.globalData.avatarurlhead,
-    show:false,
-    information_Id:0,
-    comments:[],
-    commentnum:null,
+    list:[],    //社团资讯内容分
+    avatarurlhead:app.globalData.avatarurlhead,   //根地址
+    show:false,   //popup弹出层标识
+    information_Id:0,   //资讯id
+    user_Id:0,    //用户Id
+    avatarurl:'',   //用户头像地址
+    nickname:'',    //用户昵称
+    content:'',   //评论内容
+    create_time:0,    //时间戳
+    comment_Id:0,   //评论Id
+    comments:[],    //评论列表
+    commentnum:null,    //评论数
+    input_content:'',   //评论回复内容
+    placeholder:'说点什么吧',   //文本框占位符
+    button_key:0,   //判断发送按钮的状态
+    send_type:0,   //判断发送类型（评论/回复）
+    input_focus:false,    //文本框焦点
+  },
+  //文本框binginput输入事件
+  ipbindinput:function(event){
+    console.log(event.detail.value)
+    var key=0;
+    this.setData({
+      input_content:event.detail.value
+    })
+    if(event.detail.value.length>0)
+      key=1;
+    else key=0;
+    this.setData({
+      button_key:key
+    })
+  },
+  //send发送按钮事件
+  send:function (e){
+    console.log('send')
+    if(this.data.send_type==0){
+      //执行发送评论接口     comm.requestAjax(url,data,message,method,
+      var requesturl = 'association/Comment/sendcomment',that = this,
+      data = {
+        iid : this.data.information_Id,
+        uid : this.data.user_Id,
+        content : this.data.input_content,
+        avatarurl : this.data.avatarurl,
+        create_time : Date.parse(new Date())/1000,
+        nickname : this.data.nickname
+      },
+      message = '', method='post';
+      comm.requestAjax(requesturl,data,message,method,function(e){
+        console.log(e)
+        e['create_time'] = util.getDiffTime(e['create_time'],true)//修改时间格式
+        var temp = that.data.comments;  temp.unshift(e);
+        that.setData({
+          comments:temp,
+          input_content:'',
+          input_focus:false,
+          button_key:0,
+        })
+        // console.log('sdsa   '+that.data.comments)
+      },
+      //请求失败
+      function(e){
+        wx.showToast({ title: '请求失败', icon: 'none' });
+      })
+    }
+  },
+  //输入框为空时，非法发送
+  nosend:function(e){
+    console.log('nosend')
+    console.log(Date.parse(new Date()))
+  },
+  //发送评论
+  sendcomment:function(e){
+    connsole.log('发送评论')
+  },
+  //发送回复
+  sendreply:function(e){
+    console.log('发送回复')
+  },
+  //触摸评论内容事件
+  touch_comment:function (event){
+    console.log(event.currentTarget.dataset.commentIdx)
+    var commentidx = event.currentTarget.dataset.commentIdx,that=this;
+    this.setData({
+      placeholder:'回复'+that.data.comments[commentidx]['nickname']
+    })
   },
 /**
  * 2020-12-21 王瑶 
@@ -25,8 +104,7 @@ Page({
     var information_id = e.currentTarget.dataset.informationId,
     information_idx = e.currentTarget.dataset.informationIdx,
     that = this,
-    userId = wx.getStorageSync('userId')
-    ;
+    userId = wx.getStorageSync('userId');
     var num = this.data.list[information_idx].commentnum
     ,
     datalist={
@@ -38,7 +116,14 @@ Page({
        information_Id:information_id,
        commentnum:num
     });
-
+    console.log(this.data.information_Id)
+    console.log(wx.getStorageSync('userinfo'))
+    var userinfo = wx.getStorageSync('userinfo');
+    this.setData({
+      user_Id:userinfo['id'],
+      avatarurl:userinfo['avatar'],
+      nickname:userinfo['nickname']
+    })
     comm.requestAjax('association/Comment/getcomment',datalist,'','post',function(res){
       console.log(res)
       var len=res.length,comment,replycomment,reply,replylen;
@@ -252,13 +337,6 @@ Page({
    */
   onReachBottom: function () {
     this.getinfor()
-  },
-
-  tabSelect(e) {
-    this.setData({
-      TabCur: e.currentTarget.dataset.id,
-      scrollLeft: (e.currentTarget.dataset.id-1)*60
-    })
   },
   onChange(event) {
     wx.showToast({
