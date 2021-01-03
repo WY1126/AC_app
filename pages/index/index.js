@@ -13,12 +13,19 @@ Page({
     avatarurlhead:app.globalData.avatarurlhead,   //根地址
     show:false,   //popup弹出层标识
     information_Id:0,   //资讯id
+    information_Idx:0,  //评论序号
     user_Id:0,    //用户Id
     avatarurl:'',   //用户头像地址
     nickname:'',    //用户昵称
     content:'',   //评论内容
     create_time:0,    //时间戳
     comment_Id:0,   //评论Id
+    comment_Idx:0,  //评论序号
+    reply_idx:0,    //回复id
+    reply_idx:0,    //回复序号
+    to_reply_id:0,  //判断是对评论的回复还是对回复的回复
+    to_uid:0,       //被回复对象id
+    to_nickname:'', //被回复对象昵称
     comments:[],    //评论列表
     commentnum:null,    //评论数
     input_content:'',   //评论回复内容
@@ -26,6 +33,12 @@ Page({
     button_key:0,   //判断发送按钮的状态
     send_type:0,   //判断发送类型（评论/回复）
     input_focus:false,    //文本框焦点
+  },
+  //失去焦点时触发
+  onbindblur:function(e){
+    this.setData({
+      placeholder:'说点什么吧',
+    })
   },
   //文本框binginput输入事件
   ipbindinput:function(event){
@@ -58,20 +71,28 @@ Page({
       message = '', method='post';
       comm.requestAjax(requesturl,data,message,method,function(e){
         console.log(e)
+        e['reply'] = [];
         e['create_time'] = util.getDiffTime(e['create_time'],true)//修改时间格式
-        var temp = that.data.comments;  temp.unshift(e);
+        var temp = that.data.comments,tempcommentnum=that.data.commentnum+1,templist=that.data.list;   templist[that.data.information_Idx]['commentnum'] = tempcommentnum;
+        console.log(templist)
+        temp.unshift(e);
         that.setData({
           comments:temp,
           input_content:'',
           input_focus:false,
           button_key:0,
+          commentnum:tempcommentnum,
+          list:templist,
         })
-        // console.log('sdsa   '+that.data.comments)
+        console.log(that.data.comments)
       },
       //请求失败
       function(e){
         wx.showToast({ title: '请求失败', icon: 'none' });
       })
+    } 
+    if (this.data.send_type==1){
+      this.sendreply()
     }
   },
   //输入框为空时，非法发送
@@ -79,20 +100,77 @@ Page({
     console.log('nosend')
     console.log(Date.parse(new Date()))
   },
-  //发送评论
-  sendcomment:function(e){
-    connsole.log('发送评论')
-  },
   //发送回复
   sendreply:function(e){
     console.log('发送回复')
+    var requesturl = 'association/Comment/sendreply', that = this,
+    data = {
+    iid:this.data.information_Id,
+    comment_id:this.data.comment_Id,
+    uid:this.data.user_Id,
+    nickname:this.data.nickname,
+    avatarurl:this.data.avatarurl,
+    to_reply_id:this.data.to_reply_id,
+    comment:this.data.input_content,
+    to_uid:this.data.to_uid,
+    to_nickname:this.data.to_nickname,
+    create_time : Date.parse(new Date())/1000,
+    },
+    message = '',method='post';
+    console.log('sdas   '+JSON.stringify(data))
+    comm.requestAjax('association/Comment/sendreply',data,message,method,function(e){
+      console.log(e)
+      e['create_time'] = util.getDiffTime(e['create_time'],true)//修改时间格式
+      var tempcomments = that.data.comments,tempcommentnum=that.data.commentnum+1,templist=that.data.list;   
+      templist[that.data.information_Idx]['commentnum'] = tempcommentnum;
+      tempcomments[that.data.comment_Idx]['reply'].unshift(e);
+      that.setData({
+        comments:tempcomments,
+        commentnum:tempcommentnum,
+        list:templist,
+      })      
+    },
+    function(e){
+      wx.showToast({ title: '请求失败', icon: 'none' });
+    });
   },
   //触摸评论内容事件
   touch_comment:function (event){
-    console.log(event.currentTarget.dataset.commentIdx)
-    var commentidx = event.currentTarget.dataset.commentIdx,that=this;
+    var commentidx = event.currentTarget.dataset.commentIdx,that=this,
+    commentid = event.currentTarget.dataset.commentId,
+    to_uid = this.data.comments[commentidx]['uid'],
+    to_nickname = this.data.comments[commentidx]['nickname'];
+    console.log('uid  '+to_uid)
     this.setData({
-      placeholder:'回复'+that.data.comments[commentidx]['nickname']
+      placeholder:'回复'+to_nickname,
+      input_focus:true,
+      send_type:1,
+      comment_Id:commentid,
+      to_reply_id:0,
+      comment_Idx:commentidx,
+      to_uid:to_uid,
+      to_nickname:to_nickname
+    })
+  },
+  //触发回复内容
+  touch_reply:function (event){
+    var replyid = event.currentTarget.dataset.replyId,
+    replyIdx = event.currentTarget.dataset.replyIdx;
+    var commentidx = event.currentTarget.dataset.commentIdx,that=this,
+    commentid = event.currentTarget.dataset.commentId,
+    to_uid = this.data.comments[commentidx]['uid'],
+    to_nickname = this.data.comments[commentidx]['reply'][replyIdx]['nickname'];
+    console.log(to_nickname)
+    console.log('uid  '+to_uid)
+    this.setData({
+      placeholder:'回复'+to_nickname,
+      input_focus:true,
+      send_type:1,
+      comment_Id:commentid,
+      to_reply_id:replyid,
+      comment_Idx:commentidx,
+      to_uid:to_uid,
+      to_nickname:to_nickname
     })
   },
 /**
@@ -109,12 +187,13 @@ Page({
     ,
     datalist={
       'iid':information_id,
-      'uid':userId
+      'uid':userId,
     };
     this.setData({
        show: true,
        information_Id:information_id,
-       commentnum:num
+       commentnum:num,
+       information_Idx:information_idx
     });
     console.log(this.data.information_Id)
     console.log(wx.getStorageSync('userinfo'))
@@ -159,6 +238,26 @@ Page({
    */
   onClose() {
     this.setData({ show: false });
+    this.setData({
+      information_Id:0,   //资讯id
+      user_Id:0,    //用户Id
+      avatarurl:'',   //用户头像地址
+      nickname:'',    //用户昵称
+      content:'',   //评论内容
+      create_time:0,    //时间戳
+      comment_Id:0,   //评论Id
+      comment_Idx:0,  //评论序号
+      reply_idx:0,    //回复id
+      reply_idx:0,    //回复序号
+      to_reply_id:0,  //判断是对评论的回复还是对回复的回复
+      to_uid:0,       //被回复对象id
+      to_nickname:'', //被回复对象昵称
+      input_content:'',
+      placeholder:'说点什么吧',   //文本框占位符
+      button_key:0,   //判断发送按钮的状态
+      send_type:0,   //判断发送类型（评论/回复）
+      input_focus:false,    //文本框焦点
+    })
   },
 
   /**对评论回复的点赞功能

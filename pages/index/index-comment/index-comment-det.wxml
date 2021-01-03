@@ -8,7 +8,7 @@
         <text class="{{status?'ln-select':'ln'}}" wx:if="{{likenum}}">{{likenum}}</text>
         <image data-comment-idx="{{index}}" data-request-id="{{id}}" data-good-type="0" bindtap="dogood" class="good-icon" mode="scaleToFill" src="/images/icon/{{status?'good-select.png':'good.png'}}" ></image>
       </view>
-      <view data-comment-idx="{{index}}" bindtap="touch_comment" class="comment-infor-bottom">
+      <view data-comment-id="{{id}}" data-comment-idx="{{index}}" bindtap="touch_comment" class="comment-infor-bottom">
         <text space="ensp" decode="{{true}}">{{content}}</text>
       </view>
     </view>
@@ -25,7 +25,7 @@
               <text class="{{reply.status?'ln-select':'ln'}}" wx:if="{{reply.likenum}}">{{reply.likenum}}</text>
               <image data-comment-idx="{{index}}" data-reply-idx="{{replyIdx}}" data-request-id="{{reply.id}}" data-good-type="1" bindtap="dogood" class="good-icon" mode="scaleToFill" src="/images/icon/{{reply.status?'good-select.png':'good.png'}}" ></image>
             </view>
-            <view bindtap="touch_reply" class="reply-info-bottom">
+            <view data-comment-id="{{id}}" data-comment-idx="{{index}}" data-reply-id="{{reply.id}}" data-reply-idx="{{replyIdx}}" bindtap="touch_reply" class="reply-info-bottom">
               <view wx:if="{{reply.to_reply_id}}"  style="display:inline-block;">
                 回复 
                 <text space="ensp" decode="{{true}}" style="color:#043E6A;">{{reply.to_nickname}}：</text>

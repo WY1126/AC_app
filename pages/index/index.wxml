@@ -67,7 +67,7 @@
                   </scroll-view>
                   
                   <view class="popup-bottom">
-                    <input focus="{{input_focus}}" value="{{input_content}}" bindinput="ipbindinput" class="popup-bottom-input" type="text" placeholder="{{placeholder}}" confirm-type="send" />
+                    <input bindblur='onbindblur' focus="{{input_focus}}" value="{{input_content}}" bindinput="ipbindinput" class="popup-bottom-input" type="text" placeholder="{{placeholder}}" confirm-type="send" />
                     <image mode="scaleToFill" src="/images/icon/smile.png"></image>
                     <view bindtap="{{button_key?'send':'nosend'}}" class="{{button_key==1?'popup-bottom-seng':'popup-bottom-nosend'}}"> <text>发送</text> </view>
                   </view>

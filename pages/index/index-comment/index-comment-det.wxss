@@ -78,6 +78,6 @@
   align-items: center;
   margin-bottom: 12rpx;
 }
-.reply-infor-bottom,.comment-infor-bottom{
+.reply-info-bottom,.comment-infor-bottom{
   word-break:break-all; /*数字字母换行*/
 }
