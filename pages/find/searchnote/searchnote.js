@@ -2,14 +2,15 @@
 //index.js
 //获取应用实例
 const app = getApp()
-const comm=require("../../utils/request")
-const util=require("../../utils/util")
+const comm=require("../../../utils/request")
+const util=require("../../../utils/util")
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
+    searchvalue:'',
     tabcur:0,             //当前tab标签索引值
     value:'',
     active:0,             //默认显示的tab标签页
@@ -39,33 +40,23 @@ Page({
     send_type:0,   //判断发送类型（评论/回复）
     input_focus:false,    //文本框焦点
     statusBarHeight:app.globalData.statusBarHeight,
-    circle:[
-      "dsada",
-      "sdsadasd",
-      "dsada",
-      "sdsadasd",
-      "dsada",
-      "sdsadasd",
-      "dsadsad",
-      "dsad",
-      "dsadsa"
-    ],
-    tabbarwords:['二手货','失物','组队','圈子','好物分享','回家平台','公告','其他','广告'],
   },
   
   //上拉获取5条数据
   getinfor:function(e){
-    var uid = wx.getStorageSync('userId')
+    var uid = wx.getStorageSync('userId'),
+    url = 'forum/Note/searchnote';
     console.log('ghj  '+uid)
     var temppage = {
       page:this.data.page,
       uid:uid,
-      tab:this.data.tabcur
+      tab:this.data.tabcur,
+      value:this.data.searchvalue
     },
     that = this;
     console.log("进来的page"+temppage.page)
     if(this.data.page>=0){
-    comm.requestAjax("forum/Note/getnote",temppage,"请求更多…","post",
+    comm.requestAjax(url,temppage,"请求更多…","get",
     function(res){
       console.log(res);
       if(res.error_code===0)
@@ -90,7 +81,7 @@ Page({
           list:temp
         })
         // console.log(res)
-        // console.log(that.data.list)
+        console.log(that.data.list)
       }
     },
     function(res){
@@ -98,34 +89,14 @@ Page({
     })
   }
   },
-  //搜索帖子
-  searchnote:function (e){
-    console.log(e.detail.value)
-  },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    this.getinfor()
-  },
-
-  onChange(event) {
-    wx.showToast({
-      title: `切换到 ${event.detail.title}`,
-      icon: 'none',
-    });
     this.setData({
-      tabcur:event.detail.name,
-      page:1,
-      list:[],    //社团资讯内容分
+      searchvalue:options.value
     })
-    this.getinfor();
-  },
-  onSearch() {
-    Toast('搜索' + this.data.value);
-  },
-  onClick() {
-    Toast('搜索' + this.data.value);
+    this.getinfor()
   },
   /**
    * 生命周期函数--监听页面初次渲染完成

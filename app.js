@@ -64,6 +64,7 @@ App({
     // requestUrl:"http://58.87.125.171/AC_tp/public/"                     //请求根地址
     // URL:"58.87.125.171"   //公网地址
     avatarurlhead:"http://127.0.0.1/AC_tp/uploads/",   //图片根地址头
-    requestUrl:"http://127.0.0.1/AC_tp/public/"        //请求根地址
+    requestUrl:"http://127.0.0.1/AC_tp/public/",        //请求根地址
+    tabbarwords:['二手货','失物','组队','圈子','好物分享','回家平台','公告','其他','广告'],
   }  
 })

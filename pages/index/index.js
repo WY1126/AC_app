@@ -73,7 +73,7 @@ Page({
         console.log(e)
         e['reply'] = [];
         e['create_time'] = util.getDiffTime(e['create_time'],true)//修改时间格式
-        var temp = that.data.comments,tempcommentnum=that.data.commentnum+1,templist=that.data.list;   templist[that.data.information_Idx]['commentnum'] = tempcommentnum;
+        var temp = that.data.comments,tempcommentnum=that.data.commentnum+1,templist=that.data.list; templist[that.data.information_Idx]['commentnum'] = tempcommentnum;
         console.log(templist)
         temp.unshift(e);
         that.setData({
@@ -442,6 +442,7 @@ Page({
       title: `切换到标签 ${event.detail.name}`,
       icon: 'none',
     });
+    console.log(event.detail.name)
   },
   test(e){
     console.log('s')

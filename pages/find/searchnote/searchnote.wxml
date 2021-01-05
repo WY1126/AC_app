@@ -1,0 +1,11 @@
+<!--pages/find/searchnote/searchnote.wxml-->
+<import src="../find-information/find-informatin-det.wxml"></import>
+<view class="liubai"></view>
+<view class="infor_item">
+  <block>
+    <view wx:for-items="{{list}}" wx:for-item="item" wx:for-index="index">
+      <!-- template 不能直接获取下标值，传入index:index -->
+      <template is="note-tem" data="{{...item,index:index,avatarurlhead:avatarurlhead}}"></template>
+    </view>
+  </block>
+</view>

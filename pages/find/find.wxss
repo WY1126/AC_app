@@ -1,4 +1,6 @@
 /* pages/find/find.wxss */
+@import '../index/index-information//index-information-det.wxss' ;  /*引入资讯模块*/
+@import '../find/find-information/find-information-del.wxss';
 .tabs{
   background-color: #f0f0f0;
 }
@@ -39,4 +41,16 @@
   width: 120rpx;
   height: 60rpx;
   background-color:#f4516c;
+}
+.liubai{
+  width:100%;height:24rpx;background-color:#f0f0f0;
+}
+.send-note-icon{
+  width: 60rpx;
+  height: 60rpx;
+  position: fixed;
+  top: 1300rpx;
+  right: 100rpx;
+  z-index: 1000;
+  /* box-shadow: 10px 10px 10px rgba(0,0,0,.5); */
 }

@@ -1,29 +1,60 @@
 <!--pages/find/find.wxml-->
+<import src="../index/index-information/index-informatiion-det.wxml"></import>
+<import src="../find/find-information/find-informatin-det.wxml"></import>
 <navigation-bar default-data="{{defaultData}}"></navigation-bar>
-<van-sticky offset-top="{{statusBarHeight}}">
-
-
-<van-tabs color="#3998DF" sticky>
+<image bindtap="send-note" class="send-note-icon"  src="/images/icon/send-note.png"></image>
+<van-tabs active="{{ active }}" color="#3998DF" title-active-color='#0F87E3' bind:change="onChange" sticky>
   <van-tab title="首页">
-    <text>
-      我家的后面有一个很大的园，相传叫作百草园。现在是早已并屋子一起卖给朱文公的子孙了，连那最末次的相见也已经隔了七八年，其中似乎确凿只有一些野草；但那时却是我的乐园。
-不必说碧绿的菜畦，光滑的石井栏，高大的皂荚树，紫红的桑葚；也不必说鸣蝉在树叶里长吟，肥胖的黄蜂伏在菜花上，轻捷的叫天子(云雀)忽然从草间直窜向云霄里去了。单是周围的短短的泥墙根一带，就有无限趣味。油蛉在这里低唱，蟋蟀们在这里弹琴。翻开断砖来，有时会遇见蜈蚣；还有斑蝥，倘若用手指按住它的脊梁，便会啪的一声，从后窍喷出一阵烟雾。何首乌藤和木莲藤缠络着，木莲有莲房一般的果实，何首乌有臃肿的根。有人说，何首乌根是有像人形的，吃了便可以成仙，我于是常常拔它起来，牵连不断地拔起来，也曾因此弄坏了泥墙，却从来没有见过有一块根像人样。如果不怕刺，还可以摘到覆盆子，像小珊瑚珠攒成的小球，又酸又甜，色味都比桑葚要好得远。
 
-长的草里是不去的，因为相传这园里有一条很大的赤练蛇。
 
-长妈妈曾经讲给我一个故事听：先前，有一个读书人住在古庙里用功，晚间，在院子里纳凉的时候，突然听到有人在叫他。答应着，四面看时，却见一个美女的脸露在墙头上，向他一笑，隐去了。他很高兴；但竟给那走来夜谈的老和尚识破了机关。说他脸上有些妖气，一定遇见“美女蛇”了；这是人首蛇身的怪物，能唤人名，倘一答应，夜间便要来吃这人的肉的。他自然吓得要死，而那老和尚却道无妨，给他一个小盒子，说只要放在枕边，便可高枕而卧。他虽然照样办，却总是睡不着，当然睡不着的。到半夜，果然来了，沙沙沙!门外像是风雨声，他正抖作一团时，却听得豁的一声，一道金光从枕边飞出，外面便什么声音也没有了，那金光也就飞回来，敛在盒子里。后来呢?后来，老和尚说，这是飞蜈蚣，它能吸蛇的脑髓，美女蛇就被它治死了。
-
-结末的教训是：所以倘有陌生的声音叫你的名字，你万不可答应他。
-
-这故事很使我觉得做人之险，夏夜乘凉，往往有些担心，不敢去看墙上，而且极想得到一盒老和尚那样的飞蜈蚣。走到百草园的草丛旁边时，也常常这样想。但直到现在，总还没有得到，但也没有遇见过赤练蛇和美女蛇。叫我名字的陌生声音自然是常有的，然而都不是美女蛇。
-
-冬天的百草园比较的无味；雪一下，可就两样了。拍雪人(
-    </text>
+    <view class="liubai"></view>
+    <view class="infor_item">
+      <block>
+        <view wx:for-items="{{list}}" wx:for-item="item" wx:for-index="index">
+          <!-- template 不能直接获取下标值，传入index:index -->
+          <template is="note-tem" data="{{...item,index:index,avatarurlhead:avatarurlhead}}"></template>
+        </view>
+      </block>
+    </view>
   </van-tab>
-  <van-tab title="二手货">二手货</van-tab>
-  <van-tab title="失物">失物</van-tab>
-  <van-tab title="组队">组队</van-tab>
+  <van-tab title="二手货" dot="true">
+    <view class="liubai"></view>
+    <view class="infor_item">
+      <block>
+        <view wx:for-items="{{list}}" wx:for-item="item" wx:for-index="index">
+          <!-- template 不能直接获取下标值，传入index:index -->
+          <template is="note-tem" data="{{...item,index:index,avatarurlhead:avatarurlhead}}"></template>
+        </view>
+      </block>
+    </view>
+  </van-tab>
+  <van-tab title="失物">
+    <view class="liubai"></view>
+
+    <view class="infor_item">
+      <block>
+        <view wx:for-items="{{list}}" wx:for-item="item" wx:for-index="index">
+          <!-- template 不能直接获取下标值，传入index:index -->
+          <template is="note-tem" data="{{...item,index:index,avatarurlhead:avatarurlhead}}"></template>
+        </view>
+      </block>
+    </view>
+  </van-tab>
+  <van-tab title="组队">
+    <view class="liubai"></view>
+
+    <view class="infor_item">
+      <block>
+        <view wx:for-items="{{list}}" wx:for-item="item" wx:for-index="index">
+          <!-- template 不能直接获取下标值，传入index:index -->
+          <template is="note-tem" data="{{...item,index:index,avatarurlhead:avatarurlhead}}"></template>
+        </view>
+      </block>
+    </view>
+  </van-tab>
   <van-tab title="圈子">
+    <view class="liubai"></view>
+
     <block> 
       <view class="circle" >
       <view wx:for="{{circle}}" wx:for-item="circle_name">
@@ -33,8 +64,66 @@
     </block>
   </van-tab>
 
-  <van-tab title="好物分享">毫无分享</van-tab>
-  <van-tab title="回家平台">回家平台</van-tab>
-  <van-tab title="广告">维权</van-tab>
+  <van-tab title="好物分享">
+    <view class="liubai"></view>
+
+    <view class="infor_item">
+      <block>
+        <view wx:for-items="{{list}}" wx:for-item="item" wx:for-index="index">
+          <!-- template 不能直接获取下标值，传入index:index -->
+          <template is="note-tem" data="{{...item,index:index,avatarurlhead:avatarurlhead}}"></template>
+        </view>
+      </block>
+    </view>
+  </van-tab>
+  <van-tab title="回家平台">
+    <view class="liubai"></view>
+
+    <view class="infor_item">
+      <block>
+        <view wx:for-items="{{list}}" wx:for-item="item" wx:for-index="index">
+          <!-- template 不能直接获取下标值，传入index:index -->
+          <template is="note-tem" data="{{...item,index:index,avatarurlhead:avatarurlhead}}"></template>
+        </view>
+      </block>
+    </view>
+  </van-tab>
+  <van-tab title="维权">
+    <view class="liubai"></view>
+
+    <view class="infor_item">
+      <block>
+        <view wx:for-items="{{list}}" wx:for-item="item" wx:for-index="index">
+          <!-- template 不能直接获取下标值，传入index:index -->
+          <template is="note-tem" data="{{...item,index:index,avatarurlhead:avatarurlhead}}"></template>
+        </view>
+      </block>
+    </view>
+  </van-tab>
+  <van-tab title="公告">
+    <view class="liubai"></view>
+
+    <view class="infor_item">
+      <block>
+        <view wx:for-items="{{list}}" wx:for-item="item" wx:for-index="index">
+          <!-- template 不能直接获取下标值，传入index:index -->
+          <template is="note-tem" data="{{...item,index:index,avatarurlhead:avatarurlhead}}"></template>
+        </view>
+      </block>
+    </view>
+  </van-tab>
+  <van-tab title="其他">
+    <view class="liubai"></view>
+
+    <view class="infor_item">
+      <block>
+        <view wx:for-items="{{list}}" wx:for-item="item" wx:for-index="index">
+          <!-- template 不能直接获取下标值，传入index:index -->
+          <template is="note-tem" data="{{...item,index:index,avatarurlhead:avatarurlhead}}"></template>
+        </view>
+      </block>
+    </view>
+  </van-tab>
 </van-tabs>
-</van-sticky>
+
+<!-- </van-sticky> -->

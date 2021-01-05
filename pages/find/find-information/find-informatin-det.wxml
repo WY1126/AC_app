@@ -1,11 +1,12 @@
-<template name="information-tem">
+<template name="note-tem">
   <view class="infor_item_top">
     <image mode="aspectFit" class="infor_item_avatar" src="{{avatar}}"></image>
     <view class="infor_item_top_text">
       <text class="infor_item_name">{{nickname}}</text>
       <text class="infor_item_time">{{create_time}}</text>
     </view>
-    <image mode="aspectFit" class="infor_item_top_icon" src="/images/icon/more.png"></image>
+    <!-- <image mode="aspectFit" class="infor_item_top_icon" src="/images/icon/more.png"></image> -->
+    <text class="infor_item_top_type" >#{{type}}</text>
   </view>
   <view class="infor_item_detail">
     <text space="ensp" decode="{{true}}">{{content}}</text>

@@ -2,7 +2,7 @@
 <import src="index-information/index-informatiion-det.wxml"></import>
 <import src="index-comment/index-comment-det.wxml"></import>
 <van-tabs active="{{ active }}"  bind:change="onChange" line-height="2px" color="#48A8F1" title-active-color="#48A8F1" sticky animated swipeable>
-    <van-tab title="江中强档"  >
+    <van-tab title="江中强档" >
     <view class="container_a">
       <!-- 顶部按钮格子 -->
       <view class="grid_a">

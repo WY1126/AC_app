@@ -1,0 +1,9 @@
+@import '../../index/index-information/index-information-det.wxss';
+
+
+.infor_item_top_text{
+  margin-left: 10rpx;
+  width: 70%;
+  display: flex;
+  flex-direction: column;
+}
