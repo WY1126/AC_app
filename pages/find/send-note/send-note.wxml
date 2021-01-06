@@ -1,0 +1,41 @@
+<!--pages/find/send-note/send-note.wxml-->
+<view class="container">
+  <view class="item-text">
+    <!-- 上标题 -->
+    <view class="item-apply">
+      <text class="apply-warming">输入内容</text>
+      <view class="btn-apply" bindtap="sendnote">发布</view>
+    </view>
+    <!-- 输入框 -->
+    <view>
+    <textarea maxlength="250" bindinput="gettextvalue" class="inputArea" value="{{content}}" placeholder="这一刻的想法" auto-focus placeholder-class="pla_cla"></textarea>
+  </view>
+  </view>
+  <!-- 图片选择 -->
+  <view class="imgs-more" hidden="{{chooseFiles.length==0}}">
+    <block wx:for="{{chooseFile}}" wx:for-index="idx">
+      <view class="file-box {{deleteIndex==idx?'deleting':''}}">
+        <view class="img-box">
+          <image data-img-idx="{{index}}" bindtap="previewImg" src="{{item}}" mode="aspectFill"></image>
+          <icon class="remove-icon" type="cancel" sixe="46" color="#b2b2b2" catchtap="deleteImage" data-idx="{{idx}}"></icon>
+        </view>
+      </view>
+    </block>
+    <view wx:if="{{isfill}}" class="item-addimg" wx:for-index="index" catchtap="addimg">
+      <image class="addimg" src="/images/icon/wx_app_addimg.png"></image> 
+    </view>
+  </view>
+</view>
+<view style="width:100%;height:20rpx;"></view>
+<text class="szbk" >所在版块</text>
+<block>
+  <view class="note_type_box">
+    <view wx:for="{{note_name}}" wx:for-item="item" wx:for-index="index">
+      <view data-idx="{{index}}" class="{{note_type==index?'select_note_type_bottom':'note_type_bottom'}}" bindtap="select_note_type">{{item}}</view>
+    </view>
+  </view>
+</block>
+<button type="binary" bindtap="upLoad">上传图片</button>
+<button type="binary" bindtap="image">显示image</button>
+
+

@@ -127,6 +127,12 @@ Page({
   onClick() {
     Toast('搜索' + this.data.value);
   },
+  //发送帖子
+  sendnote:function (){
+    wx.navigateTo({
+      url:'/pages/find/send-note/send-note'
+    })
+  },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */

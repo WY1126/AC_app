@@ -4,7 +4,8 @@
     "pages/find/find",
     "pages/user/user",
     "pages/user/signup/signup",
-    "pages/find/searchnote/searchnote"
+    "pages/find/searchnote/searchnote",
+    "pages/find/send-note/send-note"
   ],
   "window":{
     "backgroundTextStyle":"light",

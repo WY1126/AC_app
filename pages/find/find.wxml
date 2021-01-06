@@ -2,7 +2,7 @@
 <import src="../index/index-information/index-informatiion-det.wxml"></import>
 <import src="../find/find-information/find-informatin-det.wxml"></import>
 <navigation-bar default-data="{{defaultData}}"></navigation-bar>
-<image bindtap="send-note" class="send-note-icon"  src="/images/icon/send-note.png"></image>
+<image catchtap="sendnote" class="send-note-icon"  src="/images/icon/send-note.png"></image>
 <van-tabs active="{{ active }}" color="#3998DF" title-active-color='#0F87E3' bind:change="onChange" sticky>
   <van-tab title="首页">
 

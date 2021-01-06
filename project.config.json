@@ -77,6 +77,12 @@
         {
           "name": "pages/find/find",
           "pathName": "pages/find/find",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/find/send-note/send-note",
+          "pathName": "pages/find/send-note/send-note",
           "scene": null
         }
       ]
