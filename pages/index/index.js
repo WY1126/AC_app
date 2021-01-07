@@ -203,7 +203,7 @@ Page({
       avatarurl:userinfo['avatar'],
       nickname:userinfo['nickname']
     })
-    comm.requestAjax('association/Comment/getcomment',datalist,'','post',function(res){
+    comm.requestAjax('association/Comment/getcomment',datalist,'请求中…','post',function(res){
       console.log(res)
       var len=res.length,comment,replycomment,reply,replylen;
       // console.log("len="+len)

@@ -24,6 +24,9 @@
     <view wx:if="{{isfill}}" class="item-addimg" wx:for-index="index" catchtap="addimg">
       <image class="addimg" src="/images/icon/wx_app_addimg.png"></image> 
     </view>
+    <!-- 压缩照片canvas -->
+    <canvas canvas-id='attendCanvasId' class='myCanvas' style="width:{{canv.width}}px; height:{{canv.height}}px;"></canvas>
+<!-- 压缩照片canvas结束 -->
   </view>
 </view>
 <view style="width:100%;height:20rpx;"></view>
@@ -35,7 +38,7 @@
     </view>
   </view>
 </block>
-<button type="binary" bindtap="upLoad">上传图片</button>
-<button type="binary" bindtap="image">显示image</button>
+<!-- <button type="binary" bindtap="upLoad">上传图片</button>
+<button type="binary" bindtap="image">显示image</button> -->
 
 
