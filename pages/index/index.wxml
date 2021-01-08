@@ -18,7 +18,7 @@
           <image mode="aspectFit" src="/images/icon/news.png"></image>
           <text>校区新闻</text>
         </view>
-        <view class="grid_a_item">
+        <view bindtap="telphone" class="grid_a_item">
           <image mode="aspectFit" src="/images/icon/address_list.png"></image>
           <text>校园通讯录</text>
         </view>

@@ -83,6 +83,12 @@
         {
           "name": "pages/find/send-note/send-note",
           "pathName": "pages/find/send-note/send-note",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/index/telphone/telphone",
+          "pathName": "pages/index/telphone/telphone",
           "scene": null
         }
       ]

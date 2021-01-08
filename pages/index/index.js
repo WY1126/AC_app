@@ -447,4 +447,10 @@ Page({
   test(e){
     console.log('s')
   },
+  //跳转至校园通讯录页
+  telphone:function(){
+    wx.navigateTo({
+      url: '../index/telphone/telphone',
+    })
+  },
 })

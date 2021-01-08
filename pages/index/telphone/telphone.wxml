@@ -1,0 +1,37 @@
+<!--pages/index/telphone/telphone.wxml-->
+<van-search value="{{ value }}" bind:search="onSearch" placeholder="请输入搜索关键词" />
+<view class="content">
+<scroll-view scroll-y="true" enhanced="true" showScrollbar="false" style="height: {{window_heigt*2-80}}rpx;width:250rpx;background-color:#f0f0f0;" > 
+  <van-sidebar active-key="{{ activeKey }}" bind:change="onChange">
+    <van-sidebar-item title="全部" />
+    <van-sidebar-item title="中医学院" />
+    <van-sidebar-item title="针推学院" />
+    <van-sidebar-item title="护理学院" />
+    <van-sidebar-item title="药学院" />
+    <van-sidebar-item title="经管学院" />
+    <van-sidebar-item title="计算机学院" />
+    <van-sidebar-item title="人文学院" />
+    <van-sidebar-item title="体育教学部" />
+    <van-sidebar-item title="招就处" />
+    <van-sidebar-item title="经资办" />
+    <van-sidebar-item title="学工处" />
+  </van-sidebar>
+</scroll-view>
+<scroll-view bindscrolltolower="getmoretel" scroll-y="true" enhanced="true" show-scrollbar="false" style="height: {{window_heigt*2-80}}rpx;width:auto;">
+  <!-- <text wx:if="{{successkey}}" style=" color: #666666;font-size: 26rpx;">搜索结果</text> -->
+  <text wx:if="{{failkey}}" style=" color: #666666;font-size: 26rpx;">搜索为空</text>
+  <van-collapse wx:if="{{!failkey}}" wx:for="{{list}}" wx:for-index="index" wx:for-item="item" accordion value="{{ activeName }}" bind:change="onChanges">
+    <van-collapse-item title="{{item.name}}" name="{{index}}">
+
+      <view class="test" style=" display: flex;flex-direction: row;align-items: center;justify-content: space-between; width: {{window_width*2*71/100}}rpx;">
+
+        <view style="width:200rpx;">{{item.tel_num}}</view>
+        <view style="height:1rpx;width:150rpx;"></view>
+        <image data-text="{{item.tel_num}}" bindtap="callPhone" class="test_dial" mode="aspectFit"  src="/images/icon/dial.png"></image>
+        <image data-text="{{item.tel_num}}" bindtap="copyText" class="test_copy" mode="aspectFit"  src="/images/icon/copy.png"></image>
+      </view>
+
+    </van-collapse-item>
+  </van-collapse>
+</scroll-view>
+</view>
