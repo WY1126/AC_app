@@ -1,6 +1,7 @@
 /* pages/find/find.wxss */
 @import '../index/index-information//index-information-det.wxss' ;  /*引入资讯模块*/
 @import '../find/find-information/find-information-del.wxss';
+@import '../index/index-comment/index-comment-det.wxss'; /*引入评论*/
 .tabs{
   background-color: #f0f0f0;
 }
@@ -45,6 +46,7 @@
 .liubai{
   width:100%;height:24rpx;background-color:#f0f0f0;
 }
+
 .send-note-icon{
   width: 60rpx;
   height: 60rpx;
@@ -54,3 +56,92 @@
   z-index: 1000;
   /* box-shadow: 10px 10px 10px rgba(0,0,0,.5); */
 }
+
+
+
+
+
+/* 评论弹出层样式表 */
+.popup-bottom{
+  height: 90rpx;
+  width: 100%;
+  border-top:1px solid #f0f0f0;
+  border-bottom: 1px solid #f0f0f0;
+  background-color: #f0f0f0;
+  position: fixed;
+  bottom: 0px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+.popup-top{
+  width: 100%;
+  height: 100rpx;
+  /* background-color: antiquewhite; */
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  text-align: center;
+  border-bottom: 1px solid #f0f0f0;
+ }
+.popup-top image{
+  width: 32rpx;
+  height: 32rpx;
+  position: relative;
+  left: 48rpx;
+}
+.popup-top text{
+  color: #333333;
+  font-size: 14px;
+  display: inline-block;
+  margin: 0 auto;
+}
+.zwpl{
+  width: 100%;
+  text-align: center;
+  color: #333333;
+}
+.popup-bottom{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  width: 100%;
+  height: 80rpx;
+}
+.popup-bottom-input{
+  /* background-color: blanchedalmond; */
+  width: 65%;
+}
+.popup-bottom-seng{
+  /* display: inline-block; */
+  width: 100rpx;
+  height: 60rpx;
+  background-color: #3AB54A;
+  border-radius: 6%;
+  color: #FFFFFF;
+  /* text-align: center; */
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+.popup-bottom-nosend{
+    /* display: inline-block; */
+    width: 100rpx;
+    height: 60rpx;
+    background-color: #8799A3;
+    border-radius: 6%;
+    color: #FFFFFF;
+    /* text-align: center; */
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+.popup-bottom > image {
+  width: 45rpx;
+  height: 45rpx;
+  margin-left: 30rpx;
+  margin-right: 15rpx;
+}
+/* 评论弹出层样式结束 */

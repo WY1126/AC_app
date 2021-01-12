@@ -4,8 +4,7 @@
     "van-tabbar": "@vant/weapp/tabbar/index",
     "van-tabbar-item": "@vant/weapp/tabbar-item/index",
     "van-tab": "@vant/weapp/tab/index",
-    "van-tabs": "@vant/weapp/tabs/index",
-    "van-popup": "@vant/weapp/popup/index"
+    "van-tabs": "@vant/weapp/tabs/index"
   },
   "navigationBarBackgroundColor": "#fff",
   "navigationBarTextStyle":"black",

@@ -89,6 +89,12 @@
         {
           "name": "pages/index/telphone/telphone",
           "pathName": "pages/index/telphone/telphone",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/index/index-news/index-news",
+          "pathName": "pages/index/index-news/index-news",
           "scene": null
         }
       ]

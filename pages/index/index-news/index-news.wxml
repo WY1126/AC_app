@@ -1,0 +1,36 @@
+<!--pages/index/index-news/index-news.wxml-->
+<import src="../index-news-title/index-news-title.wxml"></import>
+<van-tabs active="{{ active }}"  bind:change="onChange" line-height="2px" color="#48A8F1" title-active-color="#48A8F1" sticky animated swipeable>
+  <van-tab title="江中新闻">
+    <view style="width:100%;height:15px;"></view>
+    <block>
+      <view wx:for="{{list}}" wx:for-item="item" wx:for-index="index">
+        <template is="newstitle" data="{{...item,index:index}}"></template>
+      </view>
+    </block>
+  </van-tab>
+  <van-tab title="校园公告">
+    <view style="width:100%;height:15px;"></view>
+    <block>
+      <view wx:for="{{list}}" wx:for-item="item" wx:for-index="index">
+        <template is="newstitle" data="{{...item,index:index}}"></template>
+      </view>
+    </block>
+  </van-tab>
+  <van-tab title="媒体江中">
+    <view style="width:100%;height:15px;"></view>
+    <block>
+      <view wx:for="{{list}}" wx:for-item="item" wx:for-index="index">
+        <template is="newstitle" data="{{...item,index:index}}"></template>
+      </view>
+    </block>
+  </van-tab>
+  <van-tab title="同心抗疫">
+    <view style="width:100%;height:15px;"></view>
+    <block>
+      <view wx:for="{{list}}" wx:for-item="item" wx:for-index="index">
+        <template is="newstitle" data="{{...item,index:index}}"></template>
+      </view>
+    </block>
+  </van-tab>
+</van-tabs>

@@ -33,6 +33,7 @@ Page({
     button_key:0,   //判断发送按钮的状态
     send_type:0,   //判断发送类型（评论/回复）
     input_focus:false,    //文本框焦点
+    texts:null,
   },
   //失去焦点时触发
   onbindblur:function(e){
@@ -412,11 +413,6 @@ Page({
     ,function(e){
       console.log('请求错误！')
     })
-    // console.log(userId)
-    // wx.showToast({
-    //   title: e.currentTarget.dataset.informationId,
-    //   icon:"success"
-    // })
   },
   onLoad: function () {
     // 如果缓存中没有openID
@@ -429,7 +425,6 @@ Page({
     }
     this.getinfor()
     console.log(this.data.avatarurlhead)
-    
   },
     /**
    * 页面上拉触底事件的处理函数
@@ -453,4 +448,23 @@ Page({
       url: '../index/telphone/telphone',
     })
   },
+  //跳转至校区新闻
+  tonews:function (){
+    wx.navigateTo({
+      url: '../index/index-news/index-news',
+    })
+  },
+  da:function(){
+    var that = this;
+    wx.request({
+      url: 'http://127.0.0.1/AC_tp/public/news/News/getnewscontent?rurl=https://www.jxutcm.edu.cn/info/1010/29183.htm',
+      success (res) {
+        console.log(res.data);
+        that.setData({
+          texts:res.data['content']
+        })
+      }
+    },
+ )
+  }
 })

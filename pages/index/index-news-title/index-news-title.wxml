@@ -1,0 +1,8 @@
+<template name="newstitle">
+  <view data-newsurl="{{src}}" class="news_content" bindtap="tonewsdel">
+    <view class="title">
+      <text class="newstext">{{title}}</text>
+    </view>
+      <text class="create_time_text">{{create_time}}</text>
+  </view>
+</template>

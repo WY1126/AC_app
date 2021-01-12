@@ -14,7 +14,7 @@
           <image mode="aspectFit" src="/images/icon/association.png"></image>
           <text>社团协会</text>
         </view>
-        <view class="grid_a_item">
+        <view bindtap="tonews" class="grid_a_item">
           <image mode="aspectFit" src="/images/icon/news.png"></image>
           <text>校区新闻</text>
         </view>
@@ -33,9 +33,8 @@
               <block>
                 <view wx:for-items="{{list}}" wx:for-item="item" wx:for-index="index">
                   <!-- template 不能直接获取下标值，传入index:index -->
-                  <template is="information-tem" data="{{...item,index:index,avatarurlhead:avatarurlhead}}"></template>
-                  
-             
+                  <template is="information-tem" data="{{...item,index:index,avatarurlhead:avatarurlhead}}">
+                  </template>
                 </view>
               </block>
               <!-- 评论弹出框 -->
@@ -65,7 +64,6 @@
                     </block>
                     <!-- <view style="height:1000rpx;"></view> -->
                   </scroll-view>
-                  
                   <view class="popup-bottom">
                     <input bindblur='onbindblur' focus="{{input_focus}}" value="{{input_content}}" bindinput="ipbindinput" class="popup-bottom-input" type="text" placeholder="{{placeholder}}" confirm-type="send" />
                     <image mode="scaleToFill" src="/images/icon/smile.png"></image>
@@ -79,9 +77,8 @@
 
     </van-tab>
     <van-tab title="知识主打">
-    <text>sadas</text>
-    知识主打
-    <image src="http://127.0.0.1/AC_tp/uploads/20201205/060d5e55d023b0bf7a5c950c85548446.png"></image>
+      <button bindtap="da">das</button>
+      <rich-text nodes="{{texts}}"></rich-text>
     </van-tab>
   </van-tabs>
 

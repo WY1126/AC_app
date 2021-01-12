@@ -1,0 +1,11 @@
+<view class="news_content">
+  <view class="title">
+    <text>{{newsinfo.title}}</text>
+  </view>
+  <view class="create_time">
+    <text>{{newsinfo.create_time}}</text>
+  </view>
+  <view class="content">
+    <rich-text nodes="{{newsinfo.content}}"></rich-text>
+  </view>
+</view>
