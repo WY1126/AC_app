@@ -92,7 +92,7 @@ Page({
         wx.showToast({ title: '请求失败', icon: 'none' });
       })
     } 
-    if (this.data.send_type==1){
+    if (this.data.send_type==1) {
       this.sendreply()
     }
   },
@@ -261,7 +261,8 @@ Page({
     })
   },
 
-  /**对评论回复的点赞功能
+  /**
+   * 对评论回复的点赞功能
    * 2020-12-30 20:20 王瑶
    */
   dogood:function dg(params) {

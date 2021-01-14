@@ -1,14 +1,14 @@
-<template name="comment">
+<template name="note_comment">
   <view class="comment-box">
-    <image mode="scaleToFill" class="comment-avatar" src="{{avatarurl}}" style="width:70rpx; height:70rpx"></image>
+    <image mode="scaleToFill" class="comment-avatar" src="{{avatar}}" style="width:70rpx; height:70rpx"></image>
     <view class="comment-infor">
       <view class="comment-infor-top">
         <text class="nn">{{nickname}}</text>
         <text class="ct">{{create_time}}</text>
         <text class="{{status?'ln-select':'ln'}}" wx:if="{{likenum}}">{{likenum}}</text>
-        <image data-comment-idx="{{index}}" data-request-id="{{id}}" data-good-type="0" bindtap="dogood" class="good-icon" mode="scaleToFill" src="/images/icon/{{status?'good-select.png':'good.png'}}" ></image>
+        <image data-comment-idx="{{index}}" data-request-id="{{id}}" data-good-type="1" bindtap="dogood" class="good-icon" mode="scaleToFill" src="/images/icon/{{status?'good-select.png':'good.png'}}" ></image>
       </view>
-      <view data-comment-id="{{id}}" data-comment-idx="{{index}}" bindtap="touch_comment" class="comment-infor-bottom">
+      <view data-comment-id="{{id}}" data-comment-idx="{{index}}" bindtap="touch_comment" class="comment-infor-bottom"> 
         <text space="ensp" decode="{{true}}">{{content}}</text>
       </view>
     </view>
@@ -17,20 +17,20 @@
     <block>
       <view wx:for="{{reply}}" wx:for-item="reply"  wx:for-index="replyIdx">
         <view class="reply-box">
-          <image class="reply_avatar" mode="scaleToFill" src="{{reply.avatarurl}}"></image>
+          <image class="reply_avatar" mode="scaleToFill" src="{{reply.avatar}}"></image>
           <view class="reply-infor">
             <view class="reply-infor-top">
               <text class="nn">{{reply.nickname}}</text>
               <text class="ct">{{reply.create_time}}</text>
               <text class="{{reply.status?'ln-select':'ln'}}" wx:if="{{reply.likenum}}">{{reply.likenum}}</text>
-              <image data-comment-idx="{{index}}" data-reply-idx="{{replyIdx}}" data-request-id="{{reply.id}}" data-good-type="1" bindtap="dogood" class="good-icon" mode="scaleToFill" src="/images/icon/{{reply.status?'good-select.png':'good.png'}}" ></image>
+              <image data-comment-idx="{{index}}" data-reply-idx="{{replyIdx}}" data-request-id="{{reply.id}}" data-good-type="0" bindtap="dogood" class="good-icon" mode="scaleToFill" src="/images/icon/{{reply.status?'good-select.png':'good.png'}}" ></image>
             </view>
             <view data-comment-id="{{id}}" data-comment-idx="{{index}}" data-reply-id="{{reply.id}}" data-reply-idx="{{replyIdx}}" bindtap="touch_reply" class="reply-info-bottom">
               <view wx:if="{{reply.to_reply_id}}"  style="display:inline-block;">
                 回复 
                 <text space="ensp" decode="{{true}}" style="color:#043E6A;">{{reply.to_nickname}}：</text>
               </view>
-              <text space="ensp" decode="{{true}}">{{reply.comment}}</text>
+              <text space="ensp" decode="{{true}}">{{reply.content}}</text>
             </view>
           </view>
         </view>

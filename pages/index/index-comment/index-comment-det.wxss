@@ -81,3 +81,10 @@
 .reply-info-bottom,.comment-infor-bottom{
   word-break:break-all; /*数字字母换行*/
 }
+
+.reply_avatar{
+  width: 55rpx;
+  height: 55rpx;
+  border-radius: 16%;
+  margin-right: 18rpx;
+}

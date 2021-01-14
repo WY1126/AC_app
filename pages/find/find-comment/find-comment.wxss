@@ -1,0 +1,7 @@
+@import '../../index/index-comment/index-comment-det.wxss';
+/* .reply_avatar{
+  width: 35rpx;
+  height: 35rpx;
+  border-radius: 16%;
+  margin-right: 18rpx;
+} */

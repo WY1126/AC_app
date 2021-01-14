@@ -2,9 +2,10 @@
 <import src="../index/index-information/index-informatiion-det.wxml"></import>
 <import src="../find/find-information/find-informatin-det.wxml"></import>
 <import src="../index/index-comment/index-comment-det.wxml"></import><!--引入评论弹出框-->
+<import src="../find/find-comment/find-comment.wxml"></import><!--引入评论弹出框-->
 <navigation-bar default-data="{{defaultData}}"></navigation-bar>
 <image catchtap="sendnote" class="send-note-icon"  src="/images/icon/send-note.png"></image>
-<van-tabs active="{{ active }}" color="#3998DF" title-active-color='#0F87E3' bind:change="onChange" sticky>
+<van-tabs active="{{ active }}"  bind:change="onChange" line-height="10px" color="#48A8F1" title-active-color="#48A8F1" >
   <van-tab title="首页">
 
 
@@ -25,35 +26,35 @@
         bind:close="onClose"
         overlay
         round
-        >
-      <view class="popup-box" style="position:relative">
-        <view class="popup-top">
-          <image bindtap="onClose" mode="scaleToFill" src="/images/icon/out.png"></image>
-          <text wx:if="{{commentnum}}">{{commentnum}}条评论</text>
-          <text wx:else>评论</text>
-        </view>
-        <view wx:if="{{!commentnum}}" class="zwpl">暂无评论</view>
-        <scroll-view wx:if="{{commentnum}}" scroll-y="true" style="height:628rpx;width:100%;margin-top:22rpx;">
-          <block>
-            <view  wx:for="{{comments}}" wx:for-item="item" wx:for-index="index">
-              <!-- 评论模块 -->
-              <template is="comment" data="{{...item,index:index}}"></template>
-              <view style="width:100%;height:1px;background-color:#f0f0f0; margin-bottom:22rpx; margin-top:22rpx;width:83%;float:right;"></view>
-            </view>
-          </block>
-          <!-- <view style="height:1000rpx;"></view> -->
-        </scroll-view>
+      >
+        <view class="popup-box" style="position:relative">
+          <view class="popup-top">
+            <image bindtap="onClose" mode="scaleToFill" src="/images/icon/out.png"></image>
+            <text wx:if="{{commentnum}}">{{commentnum}}条评论</text>
+            <text wx:else>评论</text>
+          </view>
+          <view wx:if="{{!commentnum}}" class="zwpl">暂无评论</view>
+          <scroll-view wx:if="{{commentnum}}" scroll-y="true" style="height:628rpx;width:100%;margin-top:22rpx;">
+            <block>
+              <view  wx:for="{{comments}}" wx:for-item="item" wx:for-index="index">
+                <!-- 评论模块 -->
+                <template is="note_comment" data="{{...item,index:index}}"></template>
+                <view style="width:100%;height:1px;background-color:#f0f0f0; margin-bottom:22rpx; margin-top:22rpx;width:83%;float:right;"></view>
+              </view>
+            </block>
+            <!-- <view style="height:1000rpx;"></view> -->
+          </scroll-view>
         
           <view class="popup-bottom">
-                    <input bindblur='onbindblur' focus="{{input_focus}}" value="{{input_content}}" bindinput="ipbindinput" class="popup-bottom-input" type="text" placeholder="{{placeholder}}" confirm-type="send" />
+             <input bindblur='onbindblur' focus="{{input_focus}}" value="{{input_content}}" bindinput="ipbindinput" class="popup-bottom-input" type="text" placeholder="{{placeholder}}" confirm-type="send" />
             <image mode="scaleToFill" src="/images/icon/smile.png"></image>
             <view bindtap="{{button_key?'send':'nosend'}}" class="{{button_key==1?'popup-bottom-seng':'popup-bottom-nosend'}}"> <text>发送</text> </view>
           </view>
         </view>
       </van-popup>
     </view>
-  </van-tab>
-  <van-tab title="二手货" dot="true">
+    </van-tab>
+    <van-tab title="二手货" dot="true">
     <view class="liubai"></view>
     <view class="infor_item">
       <block>
@@ -63,20 +64,8 @@
         </view>
       </block>
     </view>
-  </van-tab>
-  <van-tab title="失物">
-    <view class="liubai"></view>
-
-    <view class="infor_item">
-      <block>
-        <view wx:for-items="{{list}}" wx:for-item="item" wx:for-index="index">
-          <!-- template 不能直接获取下标值，传入index:index -->
-          <template is="note-tem" data="{{...item,index:index,avatarurlhead:avatarurlhead}}"></template>
-        </view>
-      </block>
-    </view>
-  </van-tab>
-  <van-tab title="组队">
+    </van-tab>
+    <van-tab title="失物">
     <view class="liubai"></view>
 
     <view class="infor_item">
@@ -87,8 +76,20 @@
         </view>
       </block>
     </view>
-  </van-tab>
-  <van-tab title="圈子">
+    </van-tab>
+    <van-tab title="组队">
+    <view class="liubai"></view>
+
+    <view class="infor_item">
+      <block>
+        <view wx:for-items="{{list}}" wx:for-item="item" wx:for-index="index">
+          <!-- template 不能直接获取下标值，传入index:index -->
+          <template is="note-tem" data="{{...item,index:index,avatarurlhead:avatarurlhead}}"></template>
+        </view>
+      </block>
+    </view>
+    </van-tab>
+    <van-tab title="圈子">
     <view class="liubai"></view>
 
     <block> 
@@ -98,9 +99,9 @@
       </view>
     </view>
     </block>
-  </van-tab>
+    </van-tab>
 
-  <van-tab title="好物分享">
+    <van-tab title="好物分享">
     <view class="liubai"></view>
 
     <view class="infor_item">
@@ -111,8 +112,8 @@
         </view>
       </block>
     </view>
-  </van-tab>
-  <van-tab title="回家平台">
+    </van-tab>
+    <van-tab title="回家平台">
     <view class="liubai"></view>
 
     <view class="infor_item">
@@ -123,8 +124,8 @@
         </view>
       </block>
     </view>
-  </van-tab>
-  <van-tab title="吐槽">
+    </van-tab>
+    <van-tab title="吐槽">
     <view class="liubai"></view>
 
     <view class="infor_item">
@@ -135,8 +136,8 @@
         </view>
       </block>
     </view>
-  </van-tab>
-  <van-tab title="公告">
+    </van-tab>
+    <van-tab title="公告">
     <view class="liubai"></view>
 
     <view class="infor_item">
@@ -147,8 +148,8 @@
         </view>
       </block>
     </view>
-  </van-tab>
-  <van-tab title="其他">
+    </van-tab>
+    <van-tab title="其他">
     <view class="liubai"></view>
 
     <view class="infor_item">
@@ -159,7 +160,8 @@
         </view>
       </block>
     </view>
-  </van-tab>
+    </van-tab>
+
 </van-tabs>
 
 <!-- </van-sticky> -->

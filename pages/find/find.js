@@ -40,6 +40,116 @@ Page({
     input_focus:false,    //文本框焦点
     statusBarHeight:app.globalData.statusBarHeight,
   },
+  //评论回复的点赞
+  dogood:function (params) {
+    console.log('dogood')
+    var type = params.currentTarget.dataset.goodType,
+    id = params.currentTarget.dataset.requestId,
+    uid = wx.getStorageSync('userId'),
+    url = "forum/Comment/dolike",
+    commentidx = params.currentTarget.dataset.commentIdx,
+    replyidx = params.currentTarget.dataset.replyIdx,
+    data={
+      type:type,
+      id:id,
+      uid:uid,
+      create_time:Date.parse(new Date())/1000
+    },
+    message='',method='get',that=this;
+    console.log(type)
+    console.log('cidx  '+commentidx+"   ridx   "+replyidx)
+    comm.requestAjax(url,data,message,method,function(e){
+      console.log(e)
+      var tempcomments = that.data.comments
+      if(type==0){
+        if(e.status==0) {
+          tempcomments[commentidx]['reply'][replyidx]['likenum']-=1;
+        } else {
+          tempcomments[commentidx]['reply'][replyidx]['likenum']+=1;
+        }
+        tempcomments[commentidx]['reply'][replyidx]['status']=e.status;
+      } else {
+        if(e.status==0) {
+          tempcomments[commentidx]['likenum']-=1;
+        } else {
+          tempcomments[commentidx]['likenum']+=1;
+        }
+        tempcomments[commentidx]['status']=e.status;
+      }
+      that.setData({
+        comments:tempcomments
+      })
+      wx.showToast({
+        title:e.error_msg,
+      })
+    },
+    function(res){
+      wx.showToast({ title: '请求失败', icon: 'none' });
+    })
+  },
+  /**
+   * 显示评论框，获取评论和回复
+   * 王瑶 2021-01-14 20:03
+   * @param {*} e 
+   */
+  showPopup(e) {
+    var information_id = e.currentTarget.dataset.informationId,
+    information_idx = e.currentTarget.dataset.informationIdx,
+    that = this,
+    userId = wx.getStorageSync('userId');
+    var num = this.data.list[information_idx].commentnum,
+    datalist={
+      'nid':information_id,
+      'uid':userId,
+      'page':1
+    };
+    this.setData({    //为什么要setData？？？？？？
+       show: true,
+       information_Id:information_id,
+       commentnum:num,
+       information_Idx:information_idx
+    });
+    // console.log(this.data.information_Id)
+    // console.log(wx.getStorageSync('userinfo'))
+    var userinfo = wx.getStorageSync('userinfo');
+    this.setData({
+      user_Id:userinfo['id'],
+      avatarurl:userinfo['avatar'],
+      nickname:userinfo['nickname']
+    })
+    comm.requestAjax('forum/Comment/getcomment',datalist,'请求中…','get',function(res){
+      console.log(res.data)
+      var res =res.data;
+      console.log(res)
+      var len=res.length,comment,replycomment,reply,replylen;
+      // console.log("len="+len)
+      //修改时间格式
+      for(var i=0;i<len;i++)
+      {
+        comment=res[i]
+        comment.create_time=util.getDiffTime(comment.create_time,true);
+        if(res[i].reply.length!=0)
+        {
+          reply = res[i].reply;
+          replylen = res[i].reply.length;
+          for(var j=0;j<replylen;j++)
+          {
+            // console.log('sa'+j)
+            replycomment = reply[j];
+            replycomment.create_time = util.getDiffTime(replycomment.create_time,true);
+          }
+        }
+        // console.log("time= "+comment.create_time)
+      }
+      that.setData({
+        comments:res
+      })
+      console.log(that.data.comments)
+    },
+    function(res){
+      wx.showToast({ title: '请求失败', icon: 'none' });
+    })
+  },
   /**
    * 关闭弹出层
    */
@@ -66,66 +176,8 @@ Page({
       input_focus:false,    //文本框焦点
     })
   },
-  /**王瑶 2021-01-12 20:47
-   * 显示弹出层
-   * @param {*} e 
-   */
-  showPopup(e) {
-    var information_id = e.currentTarget.dataset.informationId,
-    information_idx = e.currentTarget.dataset.informationIdx,
-    that = this,
-    userId = wx.getStorageSync('userId');
-    var num = this.data.list[information_idx].commentnum
-    ,
-    datalist={
-      'nid':information_id,
-      'uid':userId,
-    };
-    this.setData({
-       show: true,
-       information_Id:information_id,
-       commentnum:num,
-       information_Idx:information_idx
-    });
-    console.log(this.data.information_Id)
-    console.log(wx.getStorageSync('userinfo'))
-    var userinfo = wx.getStorageSync('userinfo');
-    this.setData({
-      user_Id:userinfo['id'],
-      avatarurl:userinfo['avatar'],
-      nickname:userinfo['nickname']
-    })
-    comm.requestAjax('association/Comment/getcomment',datalist,'请求中…','post',function(res){
-      console.log(res)
-      var len=res.length,comment,replycomment,reply,replylen;
-      // console.log("len="+len)
-      //修改时间格式
-      for(var i=0;i<len;i++)
-      {
-        comment=res[i]
-        comment.create_time=util.getDiffTime(comment.create_time,true);
-        if(res[i].reply.length!=0)
-        {
-          reply = res[i].reply;
-          replylen = res[i].reply.length;
-          for(var j=0;j<replylen;j++)
-          {
-            // console.log('sa'+j)
-            replycomment = reply[j];
-            replycomment.create_time = util.getDiffTime(replycomment.create_time,true);
-          }
-        }
-        // console.log("time= "+comment.create_time)
-      }
-      that.setData({
-        comments:res
-      })
-    },
-    function(res){
-      wx.showToast({ title: '请求失败', icon: 'none' });
-    })
-  },
-  /**王瑶 2021-01-12 20:12
+  /**
+   * 王瑶 2021-01-12 20:12
    * 帖子点赞
    * @param {*} e 
    */
@@ -142,7 +194,6 @@ Page({
     comm.requestAjax('forum/Note/likenote',datalist,'','post',function(e){
       console.log(e.likenum)
       console.log(that.data.list)
-      
       var templist = that.data.list,msg=e.error_msg;
       templist[idx].likenum = e.likenum;
       templist[idx].status=e.status;
@@ -168,13 +219,7 @@ Page({
     img=this.data.list[informationId].image,//获取评论所有图片
     imgs=[]; //解决图片预览bug 2020-12-26 23:33
     var len = img.length;
-    for(var i=0;i<len;i++)
-    {
-      //将缩略图转换为真图
-      // temp = img[i].split('@');
-      // if(temp.length==2){
-      //   img[i]=temp[0]+temp[1];
-      // }
+    for(var i=0;i<len;i++){
       imgs[i]=(this.data.avatarurlhead+img[i])
     }
     console.log(imgs)
