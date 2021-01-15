@@ -10,6 +10,7 @@ Page({
    * 页面的初始数据
    */
   data: {
+    send_icon_key:1,      //发送帖子按钮的显示key
     tabcur:0,             //当前tab标签索引值
     value:'',
     active:0,             //默认显示的tab标签页
@@ -39,6 +40,149 @@ Page({
     send_type:0,   //判断发送类型（评论/回复）
     input_focus:false,    //文本框焦点
     statusBarHeight:app.globalData.statusBarHeight,
+  },
+  //发送回复
+  sendreply:function(e){
+    console.log('发送回复')
+    var requesturl = 'forum/Comment/sendreply', that = this,
+    data = {
+    nid:this.data.information_Id,
+    comment_id:this.data.comment_Id,
+    uid:this.data.user_Id,
+    // nickname:this.data.nickname,
+    // avatarurl:this.data.avatarurl,
+    to_reply_id:this.data.to_reply_id,
+    content:this.data.input_content,
+    to_uid:this.data.to_uid,
+    // to_nickname:this.data.to_nickname,
+    create_time : Date.parse(new Date())/1000,
+    },
+    message = '',method='post';
+    console.log('sdas   '+JSON.stringify(data))
+    comm.requestAjax(requesturl,data,message,method,function(e){
+      console.log(e)
+      e['create_time'] = util.getDiffTime(e['create_time'],true)//修改时间格式
+      var tempcomments = that.data.comments,tempcommentnum=that.data.commentnum+1,templist=that.data.list;   
+      templist[that.data.information_Idx]['commentnum'] = tempcommentnum;
+      tempcomments[that.data.comment_Idx]['reply'].unshift(e);
+      that.setData({
+        comments:tempcomments,
+        commentnum:tempcommentnum,
+        list:templist,
+      })      
+    },
+    function(e){
+      wx.showToast({ title: '请求失败', icon: 'none' });
+    });
+  },
+  //触发回复内容
+  touch_reply:function (event){
+    var replyid = event.currentTarget.dataset.replyId,
+    replyIdx = event.currentTarget.dataset.replyIdx;
+    var commentidx = event.currentTarget.dataset.commentIdx,that=this,
+    commentid = event.currentTarget.dataset.commentId,
+    to_uid = this.data.comments[commentidx]['uid'],
+    to_nickname = this.data.comments[commentidx]['reply'][replyIdx]['nickname'];
+    console.log(to_nickname)
+    console.log('uid  '+to_uid)
+    this.setData({
+      placeholder:'回复'+to_nickname,
+      input_focus:true,
+      send_type:1,
+      comment_Id:commentid,
+      to_reply_id:replyid,
+      comment_Idx:commentidx,
+      to_uid:to_uid,
+      to_nickname:to_nickname
+    })
+  },
+  //触摸评论内容事件
+  touch_comment:function (event) {
+    var commentidx = event.currentTarget.dataset.commentIdx,that=this,
+    commentid = event.currentTarget.dataset.commentId,
+    to_uid = this.data.comments[commentidx]['uid'],
+    to_nickname = this.data.comments[commentidx]['nickname'];
+    console.log('uid  '+to_uid)
+    this.setData({
+      placeholder:'回复'+to_nickname,
+      input_focus:true,
+      send_type:1,
+      comment_Id:commentid,
+      to_reply_id:0,
+      comment_Idx:commentidx,
+      to_uid:to_uid,
+      // to_nickname:to_nickname
+    })
+  },
+  //send发送按钮事件 判断发送评论还是回复
+  send:function (e){
+    console.log('send')
+    if(this.data.send_type==0){
+      //执行发送评论接口     comm.requestAjax(url,data,message,method,
+      var requesturl = 'forum/Comment/sendcomment',that = this,
+      data = {
+        nid : this.data.information_Id,
+        uid : this.data.user_Id,
+        content : this.data.input_content,
+        // avatarurl : this.data.avatarurl,
+        create_time : Date.parse(new Date())/1000,
+        // nickname : this.data.nickname
+      },
+      message = '', method='post';
+      comm.requestAjax(requesturl,data,message,method,function(e){
+        console.log(e)
+        e['reply'] = [];
+        e['create_time'] = util.getDiffTime(e['create_time'],true)//修改时间格式
+        var temp = that.data.comments,
+        tempcommentnum=that.data.commentnum+1,
+        templist=that.data.list; 
+        templist[that.data.information_Idx]['commentnum'] = tempcommentnum;
+        console.log(templist)
+        temp.unshift(e);
+        that.setData({
+          comments:temp,
+          input_content:'',
+          input_focus:false,
+          button_key:0,
+          commentnum:tempcommentnum,
+          list:templist,
+        })
+        console.log(that.data.comments)
+      },
+      //请求失败
+      function(e){
+        wx.showToast({ title: '请求失败', icon: 'none' });
+      })
+    } 
+    //发送回复
+    if (this.data.send_type==1) {
+      this.sendreply()
+    }
+  },
+  //失去焦点时触发
+  onbindblur:function(e){
+    this.setData({
+      placeholder:'说点什么吧',
+    })
+  },
+  //输入框为空时，非法发送
+  nosend:function(e){
+    console.log('nosend')
+    console.log(Date.parse(new Date()))
+  },
+  //文本框binginput输入事件
+  ipbindinput:function(event){
+    console.log(event.detail.value)
+    var key=0;
+    this.setData({
+      input_content:event.detail.value
+    })
+    if(event.detail.value.length>0)
+      key=1;
+    else key=0;
+    this.setData({
+      button_key:key
+    })
   },
   //评论回复的点赞
   dogood:function (params) {
@@ -107,7 +251,8 @@ Page({
        show: true,
        information_Id:information_id,
        commentnum:num,
-       information_Idx:information_idx
+       information_Idx:information_idx,
+       send_icon_key:0,
     });
     // console.log(this.data.information_Id)
     // console.log(wx.getStorageSync('userinfo'))
@@ -156,6 +301,7 @@ Page({
   onClose() {
     this.setData({ show: false });
     this.setData({
+      send_icon_key:1,
       information_Id:0,   //资讯id
       user_Id:0,    //用户Id
       avatarurl:'',   //用户头像地址
@@ -176,6 +322,8 @@ Page({
       input_focus:false,    //文本框焦点
     })
   },
+
+
   /**
    * 王瑶 2021-01-12 20:12
    * 帖子点赞

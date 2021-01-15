@@ -136,7 +136,7 @@ Page({
     });
   },
   //触摸评论内容事件
-  touch_comment:function (event){
+  touch_comment:function (event) {
     var commentidx = event.currentTarget.dataset.commentIdx,that=this,
     commentid = event.currentTarget.dataset.commentId,
     to_uid = this.data.comments[commentidx]['uid'],
