@@ -1,1 +1,29 @@
 /* pages/user/signup/signup.wxss */
+.input_content{
+  padding-left: 20px;
+  padding-right: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.wel_icon{
+  margin-top: 1em;
+  width: 160rpx;
+  height: 160rpx;
+}
+.texta{
+  color: #666666;
+  font-size: 40rpx;
+  margin-top: 1em;
+  margin-bottom: 1em;
+}
+.textb{
+  color: #888888;
+  /* font: outline; */
+  font-size: 28rpx;
+  margin-bottom: 1em;
+}
+.button_box{
+  padding-left: 20px;
+  padding-right: 20px;
+}

@@ -1,5 +1,12 @@
 <!--pages/user/signup/signup.wxml-->
-<view class="page-oauth">
+
+<view class="input_content">
+    <image mode="scaleToFill" class="wel_icon" src="../../../images/icon/welcome.png"></image>
+    <text class="texta">快速加入小程序</text>
+    <text class="textb">点击授权登录小程序将获取用户信息</text>
+
+</view>
+<view class="button_box">
     <button class="btn-oauth" type="primary"  open-type="getUserInfo" bindgetuserinfo="handleGetUserInfo">
         授权登录
     </button>

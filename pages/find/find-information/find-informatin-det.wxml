@@ -20,7 +20,8 @@
     <view  class="infor_item_like_box">
       <!-- 分享按钮 -->
       <view style="width:88%">
-        <image  bindtap="docomment" class="infor_item_icon" mode="aspectFit" src="/images/icon/share.png"></image>
+        <button open-type="share" class="button_icon">        <image  bindtap="docomment" class="infor_item_icon" mode="aspectFit" src="/images/icon/share.png"></image></button>
+
       </view>
       <!-- 评论按钮 -->
       <view class="like_icon_box1">

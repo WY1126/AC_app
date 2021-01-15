@@ -7,3 +7,22 @@
   display: flex;
   flex-direction: column;
 }
+/* 开始 去除button基本样式 */
+button{
+  background-color:rgb(247, 247, 247); 
+  border-radius: 0rpx;
+  padding:0rpx;
+  margin:0rpx;
+  display: inline-block;
+  line-height: 1;
+  }
+  
+  button::after{ /*button的边框样式是通过::after方式实现的*/
+  border:none;
+  }
+  
+  .button-hover{ /*点击后样式*/
+  color:#000;
+  background-color: rgb(247, 247, 247);
+  }
+  /* 结束  去除button基本样式*/

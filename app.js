@@ -60,11 +60,11 @@ App({
     menuBotton: 0, // 胶囊距底部间距（保持底部间距一致）
     menuHeight: 0, // 胶囊高度（自定义内容可与胶囊高度保证一致）
     statusBarHeight:0,//导航栏高度
-    // avatarurlhead:"http://58.87.125.171/AC_tp/uploads/",   //图片根地址头
-    // requestUrl:"http://58.87.125.171/AC_tp/public/"                     //请求根地址
-    // URL:"58.87.125.171"   //公网地址
-    avatarurlhead:"http://127.0.0.1/AC_tp/uploads/",   //图片根地址头
-    requestUrl:"http://127.0.0.1/AC_tp/public/",        //请求根地址
+    avatarurlhead:"http://150.158.156.31/AC_tp/uploads/",   //图片根地址头
+    requestUrl:"http://150.158.156.31/AC_tp/public/",                     //请求根地址
+    URL:"150.158.156.31",   //公网地址
+    // avatarurlhead:"http://127.0.0.1/AC_tp/uploads/",   //图片根地址头
+    // requestUrl:"http://127.0.0.1/AC_tp/public/",        //请求根地址
     tabbarwords:['二手货','失物','组队','圈子','好物分享','回家平台','公告','其他','广告'],
   }  
 })

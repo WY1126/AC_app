@@ -44,8 +44,9 @@ Page({
       title: `切换到标签 ${event.detail.name}`,
       icon: 'none',
     });
-    console.log(event.detail.name)
     var i = event.detail.name
+    console.log(event.detail.name)
+    
     this.setData({
       list:this.data.newsinfor[i]
     })

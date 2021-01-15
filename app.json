@@ -7,7 +7,8 @@
     "van-collapse-item": "@vant/weapp/collapse-item/index",
     "van-tab": "@vant/weapp/tab/index",
     "van-tabs": "@vant/weapp/tabs/index",
-    "van-popup": "@vant/weapp/popup/index"
+    "van-popup": "@vant/weapp/popup/index",
+    "van-button": "@vant/weapp/button/index"
   },
   "pages":[
     "pages/index/index",

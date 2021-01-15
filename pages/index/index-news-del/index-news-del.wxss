@@ -22,3 +22,55 @@
   word-break:break-all; /*数字字母换行*/
 
 }
+.sendnews{
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+.sendicon{
+  width: 40rpx;
+  height: 40rpx;
+}
+/* 开始 去除button基本样式 */
+button{
+  background-color: #8799A3;
+  color: aliceblue;
+  border-radius: 0rpx;
+  padding:0rpx;
+  margin:0rpx;
+  display: inline-block;
+  line-height: 1;
+  font-size: 24rpx;
+  }
+  
+  button::after{ /*button的边框样式是通过::after方式实现的*/
+  border:none;
+  }
+  
+  .button-hover{ /*点击后样式*/
+  color:aliceblue;
+  background-color: #8799A3;
+  }
+  /* 结束  去除button基本样式*/
+
+  .sendnews{
+    margin: 0 auto;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    width: 120rpx;
+    height: 50rpx;
+    border-radius: 30rpx;
+    margin-bottom: 20rpx;
+    background-color: #8799A3;
+    
+  }
+  .texta{
+    /* color: aliceblue; */
+    
+  }
+  

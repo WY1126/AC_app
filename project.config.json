@@ -95,6 +95,12 @@
         {
           "name": "pages/index/index-news/index-news",
           "pathName": "pages/index/index-news/index-news",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/user/signup/signup",
+          "pathName": "pages/user/signup/signup",
           "scene": null
         }
       ]

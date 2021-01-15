@@ -20,7 +20,7 @@ Page({
     getimgpath:[],
     isfill:true,
     deleteIndex:-1,
-    note_name:['二手货','失物','组队','圈子','好物分享','回家平台','维权','公告','其他'],
+    note_name:['二手货','失物','组队','圈子','好物分享','回家平台','吐槽','公告','其他'],
     note_type:null,               //板块类型
 
     images: [], //拍照图片

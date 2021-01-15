@@ -42,7 +42,7 @@ Page({
     statusBarHeight:app.globalData.statusBarHeight,
   },
   //发送回复
-  sendreply:function(e){
+  sendreply:function(e) {
     console.log('发送回复')
     var requesturl = 'forum/Comment/sendreply', that = this,
     data = {
@@ -69,6 +69,9 @@ Page({
         comments:tempcomments,
         commentnum:tempcommentnum,
         list:templist,
+        button_key:0,
+        value:'',
+        input_content:'',
       })      
     },
     function(e){
@@ -81,7 +84,7 @@ Page({
     replyIdx = event.currentTarget.dataset.replyIdx;
     var commentidx = event.currentTarget.dataset.commentIdx,that=this,
     commentid = event.currentTarget.dataset.commentId,
-    to_uid = this.data.comments[commentidx]['uid'],
+    to_uid = this.data.comments[commentidx]['reply'][replyIdx]['uid'],
     to_nickname = this.data.comments[commentidx]['reply'][replyIdx]['nickname'];
     console.log(to_nickname)
     console.log('uid  '+to_uid)
@@ -115,7 +118,7 @@ Page({
     })
   },
   //send发送按钮事件 判断发送评论还是回复
-  send:function (e){
+  send:function (e) {
     console.log('send')
     if(this.data.send_type==0){
       //执行发送评论接口     comm.requestAjax(url,data,message,method,
@@ -391,7 +394,7 @@ Page({
     comm.requestAjax("forum/Note/getnote",temppage,"请求更多…","post",
     function(res){
       console.log(res);
-      if(res.error_code===0)
+      if(res.error_code===0||that.data.page==13)
       {
         wx.showToast({ title: '没有更多', icon: 'none' });
         that.setData({
@@ -466,7 +469,10 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    wx.showShareMenu({
+      withShareTicket: true,
+      menus:['shareAppMessage', 'shareTimeline']
+    })
   },
 
   /**

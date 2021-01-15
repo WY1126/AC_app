@@ -7,6 +7,7 @@ Page({
    */
   data: {
     newsinfo:[],//文章内容
+    send_key:0,//发送按钮的显示key
   },
 
   /**
@@ -21,7 +22,8 @@ Page({
     comm.requestAjax('news/News/getnewscontent',data,'请求中…','get',function(res){
       console.log(res)
       that.setData({
-        newsinfo:res
+        newsinfo:res,
+        send_key:1,
       })
       console.log(that.data.newsinfo.create_time)
     },function(res){
@@ -31,6 +33,13 @@ Page({
     })
   },
 
+    
+  onShareAppMessage: function () {
+    return {
+      title: '微诊断',
+      path: '/pages/index/index-news-del'
+    }
+  },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
@@ -42,6 +51,10 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
+    wx.showShareMenu({
+      withShareTicket: true,
+      menus:['shareAppMessage', 'shareTimeline']
+    })
 
   },
 

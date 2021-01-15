@@ -9,3 +9,8 @@
     <rich-text nodes="{{newsinfo.content}}"></rich-text>
   </view>
 </view>
+<view wx:if="{{send_key}}" class="sendnews">
+  <button open-type="share" class="button_icon">分享</button>
+  <!-- <van-button bind:click="onShareAppMessage" color="#7A7E83" size="small" round type="info">分 享</van-button> -->
+</view>
+
