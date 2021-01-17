@@ -121,6 +121,10 @@ Page({
       image:JSON.stringify( this.data.image ),
     },message='发布…',method='post';
     comm.requestAjax(url,data,message,method,function(res){
+      if(res.error_code==0) {
+        wx.showToast({ title: res.msg, icon: 'none' });
+        return;
+      }
       console.log(res.data)
       // id=res.data.id
       wx.setStorageSync('send_note', res);

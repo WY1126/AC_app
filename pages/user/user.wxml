@@ -1,2 +1,15 @@
 <!--pages/user/user.wxml-->
-<view class="head"></view>
+<view class="userinfor">
+  <image src="{{avatarUrl}}"></image>
+  <view>{{nickname}}</view>
+  <text class="make">修改</text>
+</view>
+<van-cell title="个人主页" is-link />
+<view class="liubai"></view>
+<view class="intercalation">
+  <van-cell title="消息" is-link />
+  <van-cell title="通知" is-link />
+  <van-cell title="赞过的帖子" is-link />
+</view>
+<view class="liubai"></view>
+<van-cell title="推荐该小程序" is-link />

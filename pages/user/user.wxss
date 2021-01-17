@@ -1,6 +1,37 @@
 /* pages/user/user.wxss */
 .head{
   width: 100%;
-  height: 200rpx;
-  background-color: aqua;
+  height: 100%;
+  background-color:#f0f0f0;
+}
+page{
+  background-color:#f0f0f0;
+}
+.userinfor{
+  width: 100%;
+  height: 120rpx;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  background-color: #FFFFFF;
+}
+.userinfor > view{
+  position: absolute;
+  left: 60px;
+}
+.make{
+  color: #043E6A;
+  position: absolute;
+  right: 20px;
+}
+.userinfor > image{
+  width: 80rpx;
+  height:80rpx;
+  border-radius: 10rpx;
+  margin-left: 10px;
+}
+.liubai{
+  width: 100%;
+  height: 20px;
+  background-color: #f0f0f0;
 }

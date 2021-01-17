@@ -5,14 +5,20 @@ Page({
    * 页面的初始数据
    */
   data: {
-
+    avatarUrl:null,
+    nickname:null,
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    var userinfor = wx.getStorageSync('userinfo'),that = this;
+    console.log(wx.getStorageSync('userinfo'))
+    this.setData({
+      avatarUrl:userinfor.avatar,
+      nickname:userinfor.nickname,
+    })
   },
 
   /**

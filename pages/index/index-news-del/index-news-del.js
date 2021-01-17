@@ -55,7 +55,7 @@ Page({
       withShareTicket: true,
       menus:['shareAppMessage', 'shareTimeline']
     })
-
+    
   },
 
   /**

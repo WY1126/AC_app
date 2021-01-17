@@ -1,0 +1,177 @@
+<!--
+此文件为开发者工具生成，生成时间: 2021/1/17 上午11:32:55 
+使用方法：
+在 F:\WCAPP\AC_app\pages\index\index.wxml 引入模板
+
+```
+<import src="index.skeleton.wxml"/>
+<template is="skeleton" wx-if="{{loading}}" />
+```
+
+在 F:\WCAPP\AC_app\pages\index\index.wxss 中引入样式
+```
+@import "./index.skeleton.wxss";
+```
+
+更多详细信息可以参考文档：https://developers.weixin.qq.com/miniprogram/dev/devtools/skeleton.html
+-->
+<template name="skeleton">
+  <view class="sk-container">
+    <view is="miniprogram_npm/@vant/weapp/tabs/index">
+      <view class=" van-tabs tabs-index--van-tabs van-tabs--line tabs-index--van-tabs--line">
+        <view is="miniprogram_npm/@vant/weapp/sticky/index">
+          <view class=" van-sticky sticky-index--van-sticky" style="height: 44px;z-index: 1;">
+            <view class="van-sticky-wrap sticky-index--van-sticky-wrap van-sticky-wrap--fixed sticky-index--van-sticky-wrap--fixed" style="top: 0px;z-index: 1;">
+              <view class="van-tabs__wrap tabs-index--van-tabs__wrap">
+                <scroll-view scroll-with-animation="true" class="van-tabs__scroll tabs-index--van-tabs__scroll van-tabs__scroll--line tabs-index--van-tabs__scroll--line" scroll-left="0" style="border-color: #48A8F1">
+                  <view class="van-tabs__nav tabs-index--van-tabs__nav van-tabs__nav--line tabs-index--van-tabs__nav--line " style="true">
+                    <view class="van-tabs__line tabs-index--van-tabs__line" style="width:40px;transform:translateX(73.75px);-webkit-transform:translateX(73.75px);background-color:#48A8F1;height:2px;border-radius:2px"></view>
+                    <view class="  van-ellipsis tabs-index--van-ellipsis van-tab tabs-index--van-tab van-tab--active tabs-index--van-tab--active" data-index="0" style="color:#48A8F1">
+                      <view class="van-ellipsis tabs-index--van-ellipsis sk-transparent sk-text-34-0909-452 sk-text" style="background-position-x: 50%;">
+                        江中强档
+                      </view>
+                    </view>
+                    <view class=" van-ellipsis tabs-index--van-ellipsis van-tab tabs-index--van-tab" data-index="1" style="true">
+                      <view class="van-ellipsis tabs-index--van-ellipsis sk-transparent sk-text-34-0909-822 sk-text" style="background-position-x: 50%;">
+                        知识主打
+                      </view>
+                    </view>
+                  </view>
+                </scroll-view>
+              </view>
+            </view>
+          </view>
+        </view>
+        <view class="van-tabs__content tabs-index--van-tabs__content">
+          <view class="van-tabs__track tabs-index--van-tabs__track van-tabs__track--animated tabs-index--van-tabs__track--animated van-tabs__track tabs-index--van-tabs__track" style="left:0%;-webkit-transition-duration:0.3s;transition-duration: :0.3s">
+            <view is="miniprogram_npm/@vant/weapp/tab/index">
+              <view class=" van-tab__pane tab-index--van-tab__pane van-tab__pane--active tab-index--van-tab__pane--active" style="true">
+                <view class="container_a">
+                  <view class="grid_a">
+                    <view class="grid_a_item">
+                      <image mode="aspectFit" class="sk-image"></image>
+                      <text class="sk-transparent sk-text-14-2857-753 sk-text">校园贴士</text>
+                    </view>
+                    <view class="grid_a_item">
+                      <image mode="aspectFit" class="sk-image"></image>
+                      <text class="sk-transparent sk-text-14-2857-373 sk-text">社团协会</text>
+                    </view>
+                    <view class="grid_a_item">
+                      <image mode="aspectFit" class="sk-image"></image>
+                      <text class="sk-transparent sk-text-14-2857-248 sk-text">校区新闻</text>
+                    </view>
+                    <view class="grid_a_item">
+                      <image mode="aspectFit" class="sk-image"></image>
+                      <text class="sk-transparent sk-text-14-2857-513 sk-text">校园通讯录</text>
+                    </view>
+                  </view>
+                  <view class="infor_con">
+                    <view class="infor_top" style="border: none;">
+                      <view class="tip"></view>
+                      <text class="sk-transparent sk-text-14-2857-952 sk-text">社团资讯</text>
+                    </view>
+                    <view class="infor_item">
+                      <view>
+                        <view class="infor_item_top">
+                          <image class="infor_item_avatar sk-image" mode="aspectFit"></image>
+                          <view class="infor_item_top_text">
+                            <text class="infor_item_name sk-transparent sk-text-14-2857-496 sk-text">江中课余</text>
+                            <text class="infor_item_time sk-transparent sk-text-14-2857-171 sk-text">2020-12-27 00:16</text>
+                          </view>
+                          <image class="infor_item_top_icon sk-image" mode="aspectFit"></image>
+                        </view>
+                        <view class="infor_item_detail">
+                          <text decode="true" space="ensp" class="sk-transparent sk-text-14-2857-851 sk-text">测试缩略图2</text>
+                          <view class="image_box">
+                            <view>
+                              <image class="list_image sk-image" data-img-id="0" data-information-idx="0" mode="scaleToFill"></image>
+                            </view>
+                            <view>
+                              <image class="list_image sk-image" data-img-id="1" data-information-idx="0" mode="scaleToFill"></image>
+                            </view>
+                            <view>
+                              <image class="list_image sk-image" data-img-id="2" data-information-idx="0" mode="scaleToFill"></image>
+                            </view>
+                          </view>
+                        </view>
+                        <view class="infor_item_like" style="border: none;">
+                          <view class="infor_item_like_box">
+                            <view style="width:88%">
+                              <image class="infor_item_icon sk-image" mode="aspectFit"></image>
+                            </view>
+                            <view class="like_icon_box1">
+                              <image class="infor_item_icon sk-image" data-information-id="75" data-information-idx="0" mode="aspectFit"></image>
+                              <text class="sk-transparent sk-text-14-7059-223 sk-text">19</text>
+                            </view>
+                            <view class="like_icon_box2">
+                              <image class="infor_item_icon sk-image" data-information-id="75" data-information-idx="0" mode="aspectFit"></image>
+                              <text style="color:#48A8F1" class="sk-transparent sk-opacity">2</text>
+                            </view>
+                          </view>
+                        </view>
+                      </view>
+                      <view>
+                        <view class="infor_item_top">
+                          <image class="infor_item_avatar sk-image" mode="aspectFit"></image>
+                          <view class="infor_item_top_text">
+                            <text class="infor_item_name sk-transparent sk-text-14-2857-429 sk-text">江中课余</text>
+                            <text class="infor_item_time sk-transparent sk-text-14-2857-832 sk-text">2020-12-26 23:19</text>
+                          </view>
+                          <image class="infor_item_top_icon sk-image" mode="aspectFit"></image>
+                        </view>
+                        <view class="infor_item_detail">
+                          <text decode="true" space="ensp" class="sk-transparent sk-text-14-2857-551 sk-text">测试缩略图2</text>
+                          <view class="image_box">
+                            <view>
+                              <image class="list_image sk-image" data-img-id="0" data-information-idx="1" mode="scaleToFill"></image>
+                            </view>
+                            <view>
+                              <image class="list_image sk-image" data-img-id="1" data-information-idx="1" mode="scaleToFill"></image>
+                            </view>
+                            <view>
+                              <image class="list_image sk-image" data-img-id="2" data-information-idx="1" mode="scaleToFill"></image>
+                            </view>
+                          </view>
+                        </view>
+                        <view class="infor_item_like" style="border: none;">
+                          <view class="infor_item_like_box">
+                            <view style="width:88%">
+                              <image class="infor_item_icon sk-image" mode="aspectFit"></image>
+                            </view>
+                            <view class="like_icon_box1">
+                              <image class="infor_item_icon sk-image" data-information-id="74" data-information-idx="1" mode="aspectFit"></image>
+                              <text class="sk-transparent sk-opacity">6</text>
+                            </view>
+                            <view class="like_icon_box2">
+                              <image class="infor_item_icon sk-image" data-information-id="74" data-information-idx="1" mode="aspectFit"></image>
+                              <text style="color:#48A8F1" class="sk-transparent sk-opacity">1</text>
+                            </view>
+                          </view>
+                        </view>
+                      </view>
+                      <view>
+                        <view class="infor_item_top">
+                          <image class="infor_item_avatar sk-image" mode="aspectFit"></image>
+                          <view class="infor_item_top_text">
+                            <text class="infor_item_name sk-transparent sk-text-14-2857-528 sk-text">江中课余</text>
+                            <text class="infor_item_time sk-transparent sk-text-14-2857-298 sk-text">2020-12-26 22:47</text>
+                          </view>
+                          <image class="infor_item_top_icon sk-image" mode="aspectFit"></image>
+                        </view>
+                        <view class="infor_item_detail"></view>
+                        <view class="infor_item_like" style="border: none;"></view>
+                      </view>
+                      <view></view>
+                      <view></view>
+                      <view is="miniprogram_npm/@vant/weapp/popup/index"></view>
+                    </view>
+                  </view>
+                </view>
+              </view>
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+</template>

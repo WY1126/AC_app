@@ -114,6 +114,8 @@ Page({
       page:1,
       list:[],
       activeKey: 0,
+      successkey:true,
+      failkey:false,
     })
     this.gettel();
   },

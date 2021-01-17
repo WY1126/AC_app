@@ -423,6 +423,8 @@ Page({
       wx.redirectTo({
         url: '/pages/user/signup/signup',
       })
+    } else { //执行更新用户头像
+
     }
     this.getinfor()
     console.log(this.data.avatarurlhead)

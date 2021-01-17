@@ -1,0 +1,115 @@
+/*
+此文件为开发者工具生成，生成时间: 2021/1/17 上午11:32:55 
+
+在 F:\WCAPP\AC_app\pages\index\index.wxss 中引入样式
+```
+@import "./index.skeleton.wxss";
+```
+
+更多详细信息可以参考文档：https://developers.weixin.qq.com/miniprogram/dev/devtools/skeleton.html
+*/
+.sk-transparent {
+    color: transparent !important;
+  }
+.sk-text-34-0909-452 {
+    background-image: linear-gradient(transparent 34.0909%, #EEEEEE 0%, #EEEEEE 65.9091%, transparent 0%) !important;
+    background-size: 100% 88.0000rpx;
+    position: relative !important;
+  }
+.sk-text {
+    background-origin: content-box !important;
+    background-clip: content-box !important;
+    background-color: transparent !important;
+    color: transparent !important;
+    background-repeat: repeat-y !important;
+  }
+.sk-text-34-0909-822 {
+    background-image: linear-gradient(transparent 34.0909%, #EEEEEE 0%, #EEEEEE 65.9091%, transparent 0%) !important;
+    background-size: 100% 88.0000rpx;
+    position: relative !important;
+  }
+.sk-text-14-2857-753 {
+    background-image: linear-gradient(transparent 14.2857%, #EEEEEE 0%, #EEEEEE 85.7143%, transparent 0%) !important;
+    background-size: 100% 33.6000rpx;
+    position: relative !important;
+  }
+.sk-text-14-2857-373 {
+    background-image: linear-gradient(transparent 14.2857%, #EEEEEE 0%, #EEEEEE 85.7143%, transparent 0%) !important;
+    background-size: 100% 33.6000rpx;
+    position: relative !important;
+  }
+.sk-text-14-2857-248 {
+    background-image: linear-gradient(transparent 14.2857%, #EEEEEE 0%, #EEEEEE 85.7143%, transparent 0%) !important;
+    background-size: 100% 33.6000rpx;
+    position: relative !important;
+  }
+.sk-text-14-2857-513 {
+    background-image: linear-gradient(transparent 14.2857%, #EEEEEE 0%, #EEEEEE 85.7143%, transparent 0%) !important;
+    background-size: 100% 33.6000rpx;
+    position: relative !important;
+  }
+.sk-text-14-2857-952 {
+    background-image: linear-gradient(transparent 14.2857%, #EEEEEE 0%, #EEEEEE 85.7143%, transparent 0%) !important;
+    background-size: 100% 36.4000rpx;
+    position: relative !important;
+  }
+.sk-text-14-2857-496 {
+    background-image: linear-gradient(transparent 14.2857%, #EEEEEE 0%, #EEEEEE 85.7143%, transparent 0%) !important;
+    background-size: 100% 36.4000rpx;
+    position: relative !important;
+  }
+.sk-text-14-2857-171 {
+    background-image: linear-gradient(transparent 14.2857%, #EEEEEE 0%, #EEEEEE 85.7143%, transparent 0%) !important;
+    background-size: 100% 28.0000rpx;
+    position: relative !important;
+  }
+.sk-text-14-2857-851 {
+    background-image: linear-gradient(transparent 14.2857%, #EEEEEE 0%, #EEEEEE 85.7143%, transparent 0%) !important;
+    background-size: 100% 36.4000rpx;
+    position: relative !important;
+  }
+.sk-text-14-7059-223 {
+    background-image: linear-gradient(transparent 14.7059%, #EEEEEE 0%, #EEEEEE 85.2941%, transparent 0%) !important;
+    background-size: 100% 34.0000rpx;
+    position: relative !important;
+  }
+.sk-opacity {
+    opacity: 0 !important;
+  }
+.sk-text-14-2857-429 {
+    background-image: linear-gradient(transparent 14.2857%, #EEEEEE 0%, #EEEEEE 85.7143%, transparent 0%) !important;
+    background-size: 100% 36.4000rpx;
+    position: relative !important;
+  }
+.sk-text-14-2857-832 {
+    background-image: linear-gradient(transparent 14.2857%, #EEEEEE 0%, #EEEEEE 85.7143%, transparent 0%) !important;
+    background-size: 100% 28.0000rpx;
+    position: relative !important;
+  }
+.sk-text-14-2857-551 {
+    background-image: linear-gradient(transparent 14.2857%, #EEEEEE 0%, #EEEEEE 85.7143%, transparent 0%) !important;
+    background-size: 100% 36.4000rpx;
+    position: relative !important;
+  }
+.sk-text-14-2857-528 {
+    background-image: linear-gradient(transparent 14.2857%, #EEEEEE 0%, #EEEEEE 85.7143%, transparent 0%) !important;
+    background-size: 100% 36.4000rpx;
+    position: relative !important;
+  }
+.sk-text-14-2857-298 {
+    background-image: linear-gradient(transparent 14.2857%, #EEEEEE 0%, #EEEEEE 85.7143%, transparent 0%) !important;
+    background-size: 100% 28.0000rpx;
+    position: relative !important;
+  }
+.sk-image {
+    background: #EFEFEF !important;
+  }
+.sk-container {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    background-color: transparent;
+  }

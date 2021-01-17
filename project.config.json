@@ -101,6 +101,12 @@
         {
           "name": "pages/user/signup/signup",
           "pathName": "pages/user/signup/signup",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/user/user",
+          "pathName": "pages/user/user",
           "scene": null
         }
       ]

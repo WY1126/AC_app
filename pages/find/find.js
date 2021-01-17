@@ -10,6 +10,7 @@ Page({
    * 页面的初始数据
    */
   data: {
+    loading:true, //引入骨架屏
     send_icon_key:1,      //发送帖子按钮的显示key
     tabcur:0,             //当前tab标签索引值
     value:'',
@@ -413,7 +414,8 @@ Page({
         var temp=a.concat(res.data)
         that.setData({
           page:Number(res.current_page)+1,
-          list:temp
+          list:temp,
+          loading:false,
         })
         // console.log(res)
         // console.log(that.data.list)
@@ -436,14 +438,15 @@ Page({
   },
 
   onChange(event) {
-    wx.showToast({
-      title: `切换到 ${event.detail.title}`,
-      icon: 'none',
-    });
+    // wx.showToast({
+    //   title: `切换到 ${event.detail.title}`,
+    //   icon: 'none',
+    // });
     this.setData({
       tabcur:event.detail.name,
       page:1,
       list:[],    //社团资讯内容分
+      loading:true, //骨架屏
     })
     this.getinfor();
   },
