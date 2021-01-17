@@ -457,6 +457,12 @@ Page({
       url: '../index/index-news/index-news',
     })
   },
+  //跳转至社团协会界面
+  toassociation:function(){
+    wx.navigateTo({
+      url: '../index/index-association/index-association',
+    })
+  },
   da:function(){
     var that = this;
     wx.request({

@@ -9,6 +9,7 @@ Page({
    * 页面的初始数据
    */
   data: {
+    sendRequestKey:true, //发送评论按钮状态，防止用户重复点击造成混乱
     uid:null,
     image:[],
     time:'',
@@ -22,7 +23,6 @@ Page({
     deleteIndex:-1,
     note_name:['二手货','失物','组队','圈子','好物分享','回家平台','吐槽','公告','其他'],
     note_type:null,               //板块类型
-
     images: [], //拍照图片
     upImages: [], //上传后图片路径
     window_heigt: '', //屏幕高
@@ -143,54 +143,59 @@ Page({
    * https://blog.csdn.net/qq_40765537/article/details/97785304?utm_medium=distribute.pc_relevant.none-task-blog-baidujs_title-2&spm=1001.2101.3001.4242
    */
   sendnote:function(){
-    var len = this.data.chooseFile.length,image = [],that = this;
-    var promise = Promise.all(that.data.chooseFile.map((imgPath, index) => {
-      return new Promise(function(resolve, reject) {
-        if (imgPath != "") {
-          wx.uploadFile({
-            url:app.globalData.requestUrl+'forum/Note/uploadimg',//开发者服务器url
-            filePath: imgPath,
-            name: 'file',
-            header: {
-              "Content-Type": "multipart/form-data"
-            },
-            formData: {},
-            success: function(res) {
-              resolve(res.data); //这里要加resolve（）函数，参数可为空，不加的话promise无法达到预期效果。
-              console.log("success");
-              image.push(res.data)//将图片路径压入数组
-              that.setData({
-                image:image
-              })
-            },
-            fail: function(err) {
-              reject();//同样要加reject
-              console.log("fail");
-            },
-          });
-        } else {
-          resolve(index);
-        }
-      });
-    }));
-    promise.then(function onFulfilled(value) {
-  //这里编写回调函数的代码，甚至可以再加一个网络请求的函数
-  //执行发送请求
-      if(that.data.image.length!=0||that.data.content!='')
-      {
-        // console.log(that.data.image)
-        that.send()
-      } else{
-        wx.showToast({
-          title: '内容不得为空！',
-          icon:'error'
-        })
-      }
+    this.setData({
+      sendRequestKey:false,//禁用send按钮
     })
-      .catch(function onRejected(error) {
-        wx.hideLoading();
-        console.log('图片上传失败');
-      });
+      var len = this.data.chooseFile.length,image = [],that = this;
+      var promise = Promise.all(that.data.chooseFile.map((imgPath, index) => {
+        return new Promise(function(resolve, reject) {
+          if (imgPath != "") {
+            wx.uploadFile({
+              url:app.globalData.requestUrl+'forum/Note/uploadimg',//开发者服务器url
+              filePath: imgPath,
+              name: 'file',
+              header: {
+                "Content-Type": "multipart/form-data"
+              },
+              formData: {},
+              success: function(res) {
+                resolve(res.data); //这里要加resolve（）函数，参数可为空，不加的话promise无法达到预期效果。
+                console.log("success");
+                image.push(res.data)//将图片路径压入数组
+                that.setData({
+                  image:image
+                })
+              },
+              fail: function(err) {
+                reject();//同样要加reject
+                console.log("fail");
+              },
+            });
+          } else {
+            resolve(index);
+          }
+        });
+      }));
+      promise.then(function onFulfilled(value) {
+    //这里编写回调函数的代码，甚至可以再加一个网络请求的函数
+    //执行发送请求
+        if(that.data.image.length!=0||that.data.content!='')
+        {
+          // console.log(that.data.image)
+          that.send()
+        } else{
+          wx.showToast({
+            title: '内容不得为空！',
+            icon:'error'
+          })
+        }
+      })
+        .catch(function onRejected(error) {
+          wx.hideLoading();
+          console.log('图片上传失败');
+        });
+
+
   },
   //删除已经选择的图片
   deleteImage:function(event){
@@ -227,10 +232,8 @@ onReady: function () {
 getCanvasImg: function (tempFilePaths) {
   if(tempFilePaths.length<=0)
   {
-    // console.log(tempFilePaths[0].size)
     return;
-  }
-    
+  }  
   var that = this;
   wx.showLoading();
   wx.getImageInfo({
@@ -280,7 +283,7 @@ getCanvasImg: function (tempFilePaths) {
               console.log('file')
             },
             complete:()=>{
-              that.getCanvasImg(that.data.tempchooseFile)
+              // that.getCanvasImg(that.data.tempchooseFile)
             }
           });
         });

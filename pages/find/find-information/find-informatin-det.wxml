@@ -12,7 +12,8 @@
     <text space="ensp" decode="{{true}}">{{content}}</text>
     <view class="image_box">
       <view wx:for="{{image}}" wx:for-item="image_item" wx:for-index="imgId">
-          <image mode="scaleToFill" class="list_image" bindtap="previewImg" data-information-idx="{{index}}" data-img-id="{{imgId}}" src="{{avatarurlhead}}{{image_item}}"></image>
+          <image wx:if="{{imglen==1?0:1}}" mode="scaleToFill" class="list_image" bindtap="previewImg" data-information-idx="{{index}}" data-img-id="{{imgId}}" src="{{avatarurlhead}}{{image_item}}"></image>
+          <image wx:if="{{imglen==1?1:0}}" mode="widthFix" class="list_image_one" bindtap="previewImg" data-information-idx="{{index}}" data-img-id="{{imgId}}" src="{{avatarurlhead}}{{image_item}}"></image>
       </view>
     </view>
   </view>

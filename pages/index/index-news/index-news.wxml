@@ -1,4 +1,6 @@
 <!--pages/index/index-news/index-news.wxml-->
+<import src="index-news.skeleton.wxml"/>
+<template is="skeleton" wx-if="{{loading}}" />
 <import src="../index-news-title/index-news-title.wxml"></import>
 <van-tabs active="{{ active }}"  bind:change="onChange" line-height="2px" color="#48A8F1" title-active-color="#48A8F1" sticky animated swipeable>
   <van-tab title="江中新闻">

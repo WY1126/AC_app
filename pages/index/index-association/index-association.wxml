@@ -1,0 +1,32 @@
+<!--pages/index/index-association/index-association.wxml-->
+<import src="index-association.skeleton.wxml"/>
+<template is="skeleton" wx-if="{{loading}}" />
+<view class="head">
+    <view class="shuxian"></view><text>我的社团</text>
+</view>
+<view class="mylist">
+  <scroll-view wx:if="{{tip_key}}" bindscrolltolower="getmoretel" scroll-x="true" enhanced="true" show-scrollbar="false" style="height:160rpx;margin-top:10px;">
+    <view class="ml_ass_box">
+      <block>
+        <view wx:for="{{mylist}}" wx:for-item="item" wx:for-index="index">
+          <view class="ml_box">
+            <image class="ml_avatar" src="{{item.avatar}}"></image>
+            <text class="ml_shortname">{{item.shortname}}</text>
+          </view>
+        </view>
+      </block>
+    </view>
+  </scroll-view>
+  <text class="nuntip" wx:if="{{!tip_key}}">马上关注你感兴趣的社团吧</text>
+</view>
+<view class="countnum">入驻社团：{{countnum}}个</view>
+<view class="alllist">
+    <block>
+      <view wx:for="{{list}}" wx:for-item="item" wx:for-index="index">
+        <view class="al_box">
+          <image src="{{item.avatar}}"></image>
+          <text>{{item.shortname}}</text>
+        </view>
+      </view>
+    </block>
+</view>

@@ -164,13 +164,13 @@
     <van-tab title="圈子">
     <view class="liubai"></view>
 
-    <block> 
-      <view class="circle" >
-      <view wx:for="{{circle}}" wx:for-item="circle_name">
-        <view class="circle_item">{{circle_name}}</view>
+      <!-- <block> 
+        <view class="circle" >
+        <view wx:for="{{circle}}" wx:for-item="circle_name">
+          <view class="circle_item">{{circle_name}}</view>
+        </view>
       </view>
-    </view>
-    </block>
+      </block> -->
     </van-tab>
 
     <van-tab title="好物分享">

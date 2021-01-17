@@ -1,0 +1,107 @@
+<!--
+此文件为开发者工具生成，生成时间: 2021/1/17 下午5:14:25 
+使用方法：
+在 F:\WCAPP\AC_app\pages\index\index-news\index-news.wxml 引入模板
+
+```
+<import src="index-news.skeleton.wxml"/>
+<template is="skeleton" wx-if="{{loading}}" />
+```
+
+在 F:\WCAPP\AC_app\pages\index\index-news\index-news.wxss 中引入样式
+```
+@import "./index-news.skeleton.wxss";
+```
+
+更多详细信息可以参考文档：https://developers.weixin.qq.com/miniprogram/dev/devtools/skeleton.html
+-->
+<template name="skeleton">
+  <view class="sk-container">
+    <view is="miniprogram_npm/@vant/weapp/tabs/index">
+      <view class=" van-tabs tabs-index--van-tabs van-tabs--line tabs-index--van-tabs--line">
+        <view is="miniprogram_npm/@vant/weapp/sticky/index">
+          <view class=" van-sticky sticky-index--van-sticky" style="height: 44px;z-index: 1;">
+            <view class="van-sticky-wrap sticky-index--van-sticky-wrap van-sticky-wrap--fixed sticky-index--van-sticky-wrap--fixed" style="top: 0px;z-index: 1;">
+              <view class="van-tabs__wrap tabs-index--van-tabs__wrap">
+
+              </view>
+            </view>
+          </view>
+        </view>
+        <view class="van-tabs__content tabs-index--van-tabs__content">
+          <view class="van-tabs__track tabs-index--van-tabs__track van-tabs__track--animated tabs-index--van-tabs__track--animated van-tabs__track tabs-index--van-tabs__track" style="left:0%;-webkit-transition-duration:0.3s;transition-duration: :0.3s">
+            <view is="miniprogram_npm/@vant/weapp/tab/index">
+              <view class=" van-tab__pane tab-index--van-tab__pane van-tab__pane--active tab-index--van-tab__pane--active" style="true">
+                <view style="width:100%;height:15px;"></view>
+                <view>
+                  <view class="news_content" data-newsurl="https://www.jxutcm.edu.cn/info/1010/29144.htm" style="border: none;">
+                    <view class="title">
+                      <text class="newstext sk-transparent sk-text-14-2857-584 sk-text">2021年新年献词</text>
+                    </view>
+                    <text class="create_time_text sk-transparent sk-text-14-2857-943 sk-text">2020-12-31</text>
+                  </view>
+                </view>
+                <view>
+                  <view class="news_content" data-newsurl="https://www.jxutcm.edu.cn/info/1010/29259.htm" style="border: none;">
+                    <view class="title">
+                      <text class="newstext sk-transparent sk-text-14-2857-406 sk-text">【暖新闻】光荣出发！学校欢送造血干细胞捐...</text>
+                    </view>
+                    <text class="create_time_text sk-transparent sk-text-14-2857-145 sk-text">2021-01-15</text>
+                  </view>
+                </view>
+                <view>
+                  <view class="news_content" data-newsurl="https://www.jxutcm.edu.cn/info/1010/29258.htm" style="border: none;">
+                    <view class="title">
+                      <text class="newstext sk-transparent sk-text-14-2857-568 sk-text">快评：弘扬善行义举 点亮文明之光</text>
+                    </view>
+                    <text class="create_time_text sk-transparent sk-text-14-2857-320 sk-text">2021-01-15</text>
+                  </view>
+                </view>
+                <view>
+                  <view class="news_content" data-newsurl="https://www.jxutcm.edu.cn/info/1010/29253.htm" style="border: none;">
+                    <view class="title">
+                      <text class="newstext sk-transparent sk-text-14-2857-433 sk-text">图书馆、网络与信息技术中心召开征求意见座...</text>
+                    </view>
+                    <text class="create_time_text sk-transparent sk-text-14-2857-263 sk-text">2021-01-15</text>
+                  </view>
+                </view>
+                <view>
+                  <view class="news_content" data-newsurl="https://www.jxutcm.edu.cn/info/1010/29257.htm" style="border: none;">
+                    <view class="title">
+                      <text class="newstext sk-transparent sk-text-14-2857-410 sk-text">校领导察看“白改黑”道路改造工程推进情况</text>
+                    </view>
+                    <text class="create_time_text sk-transparent sk-text-14-2857-109 sk-text">2021-01-15</text>
+                  </view>
+                </view>
+                <view>
+                  <view class="news_content" data-newsurl="https://www.jxutcm.edu.cn/info/1010/29248.htm" style="border: none;">
+                    <view class="title">
+                      <text class="newstext sk-transparent sk-text-14-2857-812 sk-text">邹健生带队开展疫情防控和制止餐饮浪费现场...</text>
+                    </view>
+                    <text class="create_time_text sk-transparent sk-text-14-2857-503 sk-text">2021-01-15</text>
+                  </view>
+                </view>
+                <view>
+                  <view class="news_content" data-newsurl="https://www.jxutcm.edu.cn/info/1010/29240.htm" style="border: none;">
+                    <view class="title">
+                      <text class="newstext sk-transparent sk-text-14-2857-162 sk-text">学校召开2021年度第一次教学院长工作会</text>
+                    </view>
+                    <text class="create_time_text sk-transparent sk-text-14-2857-542 sk-text">2021-01-14</text>
+                  </view>
+                </view>
+                <view>
+                  <view class="news_content" data-newsurl="https://www.jxutcm.edu.cn/info/1010/29232.htm" style="border: none;">
+                    <view class="title">
+                      <text class="newstext sk-transparent sk-text-14-2857-641 sk-text">现代中药制剂教育部重点实验室召开2020...</text>
+                    </view>
+                    <text class="create_time_text sk-transparent sk-text-14-2857-807 sk-text">2021-01-13</text>
+                  </view>
+                </view>
+              </view>
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+</template>

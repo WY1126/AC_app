@@ -1,1 +1,2 @@
 @import '../index-news-title/index-news-title.wxss';
+@import "./index-news.skeleton.wxss";

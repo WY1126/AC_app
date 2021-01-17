@@ -11,7 +11,8 @@
     "van-button": "@vant/weapp/button/index",
     "van-cell": "@vant/weapp/cell/index",
     "van-cell-group": "@vant/weapp/cell-group/index",
-    "van-icon": "@vant/weapp/icon/index"
+    "van-icon": "@vant/weapp/icon/index",
+    "van-divider": "@vant/weapp/divider/index"
   },
   "pages":[
     "pages/index/index",
@@ -22,7 +23,8 @@
     "pages/find/send-note/send-note",
     "pages/index/telphone/telphone",
     "pages/index/index-news/index-news",
-    "pages/index/index-news-del/index-news-del"
+    "pages/index/index-news-del/index-news-del",
+    "pages/index/index-association/index-association"
   ],
   "window":{
     "backgroundTextStyle":"light",

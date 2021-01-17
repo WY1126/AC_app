@@ -4,7 +4,7 @@
     <!-- 上标题 -->
     <view class="item-apply">
       <text class="apply-warming">输入内容</text>
-      <view class="btn-apply" bindtap="sendnote">发布</view>
+      <view class="btn-apply" bindtap="{{sendRequestKey?'sendnote':''}}">发布</view>
     </view>
     <!-- 输入框 -->
     <view>

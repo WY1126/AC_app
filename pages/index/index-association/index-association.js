@@ -1,61 +1,60 @@
-// pages/index/index-news/index-news.js
-const comm = require('../../../utils/request')
+// pages/index/index-association/index-association.js
+const app = getApp()
+const comm=require("../../../utils/request")
+const util=require("../../../utils/util")
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    newsinfor:null,
-    list:null,
-    active: 0,
+    mylist:[],//我关注的社团
+    list:[],//社团列表
+    countnum:null,//总共社团数
+    tip_key:1,
     loading:true,  //骨架屏
   },
-  tonewsdel:function(e){
-    // console.log(e.currentTarget.dataset.newsurl)
-    wx.navigateTo({
-      url: '../index-news-del/index-news-del?url='+e.currentTarget.dataset.newsurl,
-    })
-  },
+
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    this.getnews();
+    console.log(wx.getStorageSync('userId'))
+    this.getass();
   },
-  getnews:function (){
-    var that = this;
-    comm.requestAjax('news/News/getnews','','请求中…','get',function(res){
-      console.log(res);
-      // that.data.list = res[73];
+  getass:function(){
+
+    var data = {
+      uid:wx.getStorageSync('userId')
+    },url = 'association/Association/getass',
+    message = '',method = 'get',that = this;
+    comm.requestAjax(url,data,message,method,function(res){
+      console.log(res)
+      if(res.mylist.length==0)
+      {
+        that.data.tip_key=0;
+      }
       that.setData({
-        list:res[0],
-        newsinfor:res,
+        mylist:res.mylist,
+        list:res.allassociation,
+        countnum:res.countnum,
+        tip_key:that.data.tip_key,
         loading:false,
       })
-      console.log(that.data.list)
     },
     function (res){
       wx.showToast({
         title: '请求失败',
       })
     })
-  },
-  onChange(event) {
 
-    var i = event.detail.name
-    console.log(event.detail.name)
-    
-    this.setData({
-      list:this.data.newsinfor[i]
-    })
-    console.log(this.data.newsinfor[i])
   },
+
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-    
+
   },
 
   /**

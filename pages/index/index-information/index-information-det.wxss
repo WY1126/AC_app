@@ -58,6 +58,7 @@
   justify-content: flex-start;
   margin-top: 10rpx;
   flex-wrap: wrap;
+  margin-top: 15px;
 }
 .list_image{
   width: 200rpx;

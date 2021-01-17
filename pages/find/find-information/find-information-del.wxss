@@ -26,3 +26,11 @@ button{
   background-color: rgb(247, 247, 247);
   }
   /* 结束  去除button基本样式*/
+
+  /* 一张图片是 保持比例缩放 */
+  .list_image_one{
+    /* margin-top: 10px; */
+    width: 250rpx;
+    height: 250rpx;
+    /* margin-right: 10rpx; */
+  }

@@ -10,6 +10,7 @@ Page({
    * 页面的初始数据
    */
   data: {
+    oneimg_key:false,//单图模式
     loading:true, //引入骨架屏
     send_icon_key:1,      //发送帖子按钮的显示key
     tabcur:0,             //当前tab标签索引值
@@ -402,7 +403,7 @@ Page({
           page:-1
         })
       }else{
-        var len=res.data.length,comment;
+        var len=res.data.length,comment,imgs;
         // console.log("len="+len)
         for(var i=0;i<len;i++)
         {

@@ -7,13 +7,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-    list:[{
-      id: 29,
-      name: "段金玲",
-      sector: "计算机学院",
-      sid: 6,
-      tel_num: "13697090728"
-    }], //电话簿列表
+    list:[], //电话簿列表
     page:1,
     window_heigt:null,
     window_width:null,

@@ -10,7 +10,7 @@
            <image mode="aspectFit" src="/images/icon/tips.png"></image>
            <text>校园贴士</text>
         </view>
-        <view class="grid_a_item">
+        <view bindtap="toassociation" class="grid_a_item">
           <image mode="aspectFit" src="/images/icon/association.png"></image>
           <text>社团协会</text>
         </view>

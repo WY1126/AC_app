@@ -1,0 +1,70 @@
+<!--
+此文件为开发者工具生成，生成时间: 2021/1/17 下午5:12:29 
+使用方法：
+在 F:\WCAPP\AC_app\pages\index\index-association\index-association.wxml 引入模板
+
+```
+<import src="index-association.skeleton.wxml"/>
+<template is="skeleton" wx-if="{{loading}}" />
+```
+
+在 F:\WCAPP\AC_app\pages\index\index-association\index-association.wxss 中引入样式
+```
+@import "./index-association.skeleton.wxss";
+```
+
+更多详细信息可以参考文档：https://developers.weixin.qq.com/miniprogram/dev/devtools/skeleton.html
+-->
+<template name="skeleton">
+  <view class="sk-container">
+    <view class="head">
+      <view class="shuxian"></view>
+      <text class="sk-transparent sk-text-14-2857-530 sk-text">我的社团</text>
+    </view>
+    <view class="mylist">
+      <scroll-view enhanced="true" scroll-x="true" show-scrollbar="true" style="height:80px;margin-top:10px;">
+        <view class="ml_ass_box">
+          <view>
+            <view class="ml_box">
+              <image class="ml_avatar sk-image"></image>
+              <text class="ml_shortname sk-transparent sk-text-14-2857-155 sk-text">江中课余</text>
+            </view>
+          </view>
+          <view>
+            <view class="ml_box">
+              <image class="ml_avatar sk-image"></image>
+              <text class="ml_shortname sk-transparent sk-text-14-2857-75 sk-text">督导办</text>
+            </view>
+          </view>
+          <view>
+            <view class="ml_box">
+              <image class="ml_avatar sk-image"></image>
+              <text class="ml_shortname sk-transparent sk-text-14-2857-695 sk-text">江中就协</text>
+            </view>
+          </view>
+        </view>
+      </scroll-view>
+    </view>
+    <view class="countnum sk-transparent sk-text-14-2857-551 sk-text">入驻社团：3个</view>
+    <view class="alllist">
+      <view>
+        <view class="al_box">
+          <image class="sk-image"></image>
+          <text class="sk-transparent sk-text-14-2857-612 sk-text">江中课余</text>
+        </view>
+      </view>
+      <view>
+        <view class="al_box">
+          <image class="sk-image"></image>
+          <text class="sk-transparent sk-text-14-2857-417 sk-text">督导办</text>
+        </view>
+      </view>
+      <view>
+        <view class="al_box">
+          <image class="sk-image"></image>
+          <text class="sk-transparent sk-text-14-2857-505 sk-text">江中就协</text>
+        </view>
+      </view>
+    </view>
+  </view>
+</template>
