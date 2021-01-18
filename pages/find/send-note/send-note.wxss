@@ -25,6 +25,7 @@
   align-items:center; 
   justify-content: space-between;
   /* 两端对齐 */
+  margin-bottom: 10px;
 }
 .btn-apply{
   width: 120rpx;

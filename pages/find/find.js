@@ -418,6 +418,9 @@ Page({
           list:temp,
           loading:false,
         })
+        wx.stopPullDownRefresh({
+          success: (res) => {},
+        })
         // console.log(res)
         // console.log(that.data.list)
       }
@@ -497,7 +500,14 @@ Page({
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh: function () {
-
+    console.log("下拉刷新！")
+    this.setData({
+      // tabcur:event.detail.name,
+      page:1,
+      list:[],    //社团资讯内容分
+      loading:true, //骨架屏
+    })
+    this.getinfor();
   },
 
   /**

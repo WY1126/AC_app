@@ -7,6 +7,7 @@
   "navigationBarBackgroundColor": "#0F87E3",
   "navigationBarTextStyle":"white",
   "navigationBarTitleText":"发现",
-  "navigationStyle":"custom"
-
+  "navigationStyle":"custom",
+  "enablePullDownRefresh":true,
+  "backgroundTextStyle":"dark"
 }
