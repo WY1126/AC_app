@@ -8,6 +8,7 @@ Page({
   data: {
     newsinfo:[],//文章内容
     send_key:0,//发送按钮的显示key
+    htmlcon:'',
   },
 
   /**
@@ -20,7 +21,14 @@ Page({
       rurl:options.url 
     };
     comm.requestAjax('news/News/getnewscontent',data,'请求中…','get',function(res){
+
       console.log(res)
+      //匹配以src='/开头替换为src="https://www.jxutcm.edu.cn/   
+      that.data.htmlcon = res.content.replace(/src="\//g,'src="https://www.jxutcm.edu.cn/');
+      that.setData({
+        htmlcon:that.data.htmlcon
+      })
+      console.log(that.data.htmlcon)
       that.setData({
         newsinfo:res,
         send_key:1,

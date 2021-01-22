@@ -1,7 +1,19 @@
 // pages/text/text.js
 // import Toast from 'path/to/@vant/weapp/dist/toast/toast';
+//https://acimages-1302835316.cos.ap-shanghai.myqcloud.com/
 const app=getApp();
 const comm = require('../../../utils/request');
+const uitl = require('../../../utils/util');
+const config = require('../../../libs/config');
+const COS = require('../../../libs/cos-wx-sdk-v5');
+
+const cos = new COS({
+  SecretId: config.SecretId,
+  SecretKey: config.SecretKey,
+});
+
+
+var toastMsg = '';
 const imglen=3;//选择图片的长度
 Page({
 
@@ -9,6 +21,10 @@ Page({
    * 页面的初始数据
    */
   data: {
+    fileList: [], //图片预览数据
+    date: '', //获取时间作为文件夹命名 如20210122
+    img:[],
+    imgUrl:[],  //存储对象存储 路径
     sendRequestKey:true, //发送评论按钮状态，防止用户重复点击造成混乱
     uid:null,
     image:[],
@@ -32,6 +48,136 @@ Page({
       height: '', //canvas高
     },
   },
+
+// 图片上传至对象存储开始
+
+//选择图片后
+afterRead:function(event){
+  toastMsg = "上传";
+  var that = this;
+  /* 批量上传 */
+  var files = event.detail.file; //数组
+  for (var i = 0; i < files.length; i++) {
+    var filePath = files[i].url;
+    var filename = new Date().getTime()  + filePath.substr(filePath.lastIndexOf('/') + 1);
+    //文件相对路径名
+    var relativePath = 'upload/' + that.data.date + '/' + filename;
+    cos.postObject({
+      Bucket: config.Bucket,
+      Region: config.Region,
+      Key: relativePath,
+      FilePath: filePath,
+      onProgress: function (info) {
+          console.log(JSON.stringify(info));
+      }
+  }, function (err, data) {
+    var location = data.headers.location;
+    location = location.toString().replace(app.globalData.cosUrl,'');
+    // var location = relativePath;
+    that.data.imgUrl.push(location);
+    console.log("location   "+location)
+    // that.data.img.push(location);
+    that.setData({
+      // img:that.data.img,
+      imgUrl:that.data.imgUrl
+    })
+    // console.log(that.data.img)
+      // console.log(err || data);
+      console.log(that.data.imgUrl)
+  });
+    //添加到预览中
+    var img = {
+      id: i,
+      url: app.globalData.cosUrl + relativePath,
+      name: filename
+    }
+    //读取缓存
+    let list = wx.getStorageSync('fileList');
+    if (list) {
+      list.push(img);
+    } else {
+      list = [img];
+    }
+    //存入缓存
+    wx.setStorageSync('fileList', list);
+  }
+  // that.updateData();
+  // 延迟更新数据
+  setTimeout(function () {     
+    that.updateData();
+  }, 2000);
+
+
+
+},
+
+  //更新数据
+updateData() {
+  this.setData({
+    fileList: wx.getStorageSync('fileList')
+   });
+},
+
+//删除图片
+delFile(event) {
+  toastMsg = "删除";
+  var that = this;
+  var index = event.detail.index;
+  //读取缓存
+  let list = wx.getStorageSync('fileList');
+  var filename = list[index].name;
+  var url = list[index].url;
+  url = url.replace(app.globalData.cosUrl,'');
+  console.log("filename  "+url)
+  //更新fileList中的数据
+  for (let i = 0; i < list.length; i++) {
+    //如果item是选中的话，就删除它。
+    if (filename == list[i].name) {
+      // 删除对应的索引
+      list.splice(i, 1);
+      break;
+    }
+  }
+  that.data.imgUrl.splice(index,1);
+  that.setData({
+    imgUrl:that.data.imgUrl
+  })
+  console.log(that.data.imgUrl)
+  //更新缓存
+  wx.setStorageSync('fileList', list);
+  //更新数据
+  that.updateData();
+  //删除cos对象存储中的图片
+  // cos.deleteObject({
+  //   Bucket: config.Bucket,
+  //   Region: config.Region,
+  //   Key: 'upload/' + that.data.date + '/' + filename,
+  // }, requestCallback);
+
+  cos.deleteObject({
+    Bucket: config.Bucket,
+    Region: config.Region,
+    Key: url,
+  }, function (err, data) {
+    console.log(err || data);
+  });
+},
+
+
+  /**
+   * 生命周期函数--监听页面卸载  清除图片缓存
+   */
+  onUnload: function () {
+    // wx.clearStorageSync('fileList')
+    wx.setStorage({
+      data: '',
+      key: 'fileList',
+    })
+  },
+
+
+// 图片上传至对象存储结束
+
   /**
    * 图片预览
    * @param {*} event 
@@ -54,10 +200,15 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    //获取用户id
+    //获取用户id//获取时间，作为图片文件夹名，如20191207
     this.setData({
-      uid:wx.getStorageSync('userId')
+      uid:wx.getStorageSync('userId'),
+      date:uitl.dateFormat(new Date(),'YMD')
     })
+    //清除缓存
+    //wx.removeStorageSync('fileList');
+    //获取缓存中的地址
+    this.updateData();
   },
   //获取文本框输入的内容
   gettextvalue:function(event){
@@ -106,22 +257,28 @@ Page({
    */
   send: function(){
     if(this.data.note_type==null){
+      this.setData({
+        sendRequestKey:true,//禁用send按钮
+      })
       wx.showToast({
         title: '请选择板块',
       })
       // wx.hideToast()
       return;
     }
-    var url = 'forum/Note/sendnote',
+    var url = 'forum/Note/sendnote',that = this,
     data = {
       uid:this.data.uid,
       content:this.data.content,
       tab:this.data.note_type+1,
       create_time: Date.parse(new Date())/1000,
-      image:JSON.stringify( this.data.image ),
+      image:JSON.stringify( this.data.imgUrl ),
     },message='发布…',method='post';
     comm.requestAjax(url,data,message,method,function(res){
       if(res.error_code==0) {
+        that.setData({
+          sendRequestKey:true,//禁用send按钮
+        })
         wx.showToast({ title: res.msg, icon: 'none' });
         return;
       }
@@ -184,10 +341,14 @@ Page({
           // console.log(that.data.image)
           that.send()
         } else{
+          that.setData({
+            sendRequestKey:true,//禁用send按钮
+          })
           wx.showToast({
             title: '内容不得为空！',
             icon:'error'
           })
+          console.log(that.data.sendRequestKey)
         }
       })
         .catch(function onRejected(error) {
@@ -244,8 +405,8 @@ getCanvasImg: function (tempFilePaths) {
       //   return;
       // }
       console.log(res);
-      that.data.canv.width = that.data.window_width;
-      that.data.canv.height = that.data.window_width / res.width * res.height;
+      that.data.canv.width = that.data.window_width*5/10;
+      that.data.canv.height = that.data.window_width / res.width * res.height*5/10;
       that.setData({
         canv: that.data.canv
       })

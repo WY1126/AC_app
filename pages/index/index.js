@@ -418,7 +418,8 @@ Page({
   onLoad: function () {
     // 如果缓存中没有openID
     var openID = wx.getStorageSync('openid')
-    // console.log(openID)
+
+    console.log("openiiiiii "+openID)
     if(openID==""||openID==null) {
       wx.redirectTo({
         url: '/pages/user/signup/signup',
@@ -474,6 +475,11 @@ Page({
         })
       }
     },
- )
+  )
+  },
+  totest:function(){
+    wx.navigateTo({
+      url: '/pages/test/test',
+    })
   }
 })

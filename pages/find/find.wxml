@@ -184,7 +184,7 @@
         </view>
       </block>
       <!-- 评论弹出框 -->
-      <van-popup show="{{ show }}" close-icon-position="top-left" position="bottom" custom-style="height: 840rpx"bind:close="onClose" overlay round>
+      <van-popup show="{{ show }}" close-icon-position="top-left" position="bottom" custom-style="height: 840rpx" bind:close="onClose" overlay round>
         <view class="popup-box" style="position:relative">
           <view class="popup-top">
             <image bindtap="onClose" mode="scaleToFill" src="/images/icon/out.png"></image>
@@ -204,7 +204,7 @@
           </scroll-view>
           <!-- //发送框 -->
           <view class="popup-bottom">
-             <input bindblur='onbindblur' focus="{{input_focus}}" value="{{input_content}}" bindinput="ipbindinput" class="popup-bottom-input" type="text" placeholder="{{placeholder}}" confirm-type="send" />
+             <input bindblur='onbindblur' focus="{{input_focus}}" value="{{input_content}}" bindinput="ipbindinput" class="popup-bottom-input" type="text" placeholder="{{placeholder}}" confirm-type="done" />
             <image mode="scaleToFill" src="/images/icon/smile.png"></image>
             <view bindtap="{{button_key?'send':'nosend'}}" class="{{button_key==1?'popup-bottom-seng':'popup-bottom-nosend'}}"> <text>发送</text> </view>
           </view>

@@ -114,6 +114,12 @@
         {
           "name": "pages/index/index-association/index-association",
           "pathName": "pages/index/index-association/index-association",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/test/test",
+          "pathName": "pages/test/test",
           "scene": null
         }
       ]

@@ -6,7 +6,10 @@
     <text>{{newsinfo.create_time}}</text>
   </view>
   <view class="content">
-    <rich-text nodes="{{newsinfo.content}}"></rich-text>
+    <!-- <rich-text nodes="{{newsinfo.content}}"></rich-text> -->
+    <rich-text nodes="{{htmlcon}}">
+      
+    </rich-text>
   </view>
 </view>
 <view wx:if="{{send_key}}" class="sendnews">

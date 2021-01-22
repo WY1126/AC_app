@@ -6,7 +6,7 @@
     <view class="container_a">
       <!-- 顶部按钮格子 -->
       <view class="grid_a">
-        <view class="grid_a_item">
+        <view class="grid_a_item" bindtap="totest">
            <image mode="aspectFit" src="/images/icon/tips.png"></image>
            <text>校园贴士</text>
         </view>

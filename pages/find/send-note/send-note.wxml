@@ -4,15 +4,20 @@
     <!-- 上标题 -->
     <view class="item-apply">
       <text class="apply-warming">输入内容</text>
-      <view class="btn-apply" bindtap="{{sendRequestKey?'sendnote':''}}">发布</view>
+      <view class="btn-apply" bindtap="{{sendRequestKey?'send':''}}">发布</view>
     </view>
     <!-- 输入框 -->
     <view>
     <textarea maxlength="250" bindinput="gettextvalue" class="inputArea" value="{{content}}" placeholder="这一刻的想法" auto-focus placeholder-class="pla_cla"></textarea>
   </view>
   </view>
+<!--图片上传-->
+<view class="container">
+<van-uploader preview-size="230rpx" max-count="6" deletable="{{ true }}" file-list="{{ fileList }}" upload-text="添加图片" bind:after-read="afterRead" bind:delete="delFile" multiple="{{true}}"/>
+</view>
+
   <!-- 图片选择 -->
-  <view class="imgs-more" hidden="{{chooseFiles.length==0}}">
+  <!-- <view class="imgs-more" hidden="{{chooseFiles.length==0}}">
     <block wx:for="{{chooseFile}}" wx:for-index="idx">
       <view class="file-box {{deleteIndex==idx?'deleting':''}}">
         <view class="img-box">
@@ -23,11 +28,11 @@
     </block>
     <view wx:if="{{isfill}}" class="item-addimg" wx:for-index="index" catchtap="addimg">
       <image class="addimg" src="/images/icon/wx_app_addimg.png"></image> 
-    </view>
+    </view> -->
     <!-- 压缩照片canvas -->
-    <canvas canvas-id='attendCanvasId' class='myCanvas' style="width:{{canv.width}}px; height:{{canv.height}}px;"></canvas>
+    <!-- <canvas canvas-id='attendCanvasId' class='myCanvas' style="width:{{canv.width}}px; height:{{canv.height}}px;"></canvas> -->
 <!-- 压缩照片canvas结束 -->
-  </view>
+  <!-- </view> -->
 </view>
 <view style="width:100%;height:20rpx;"></view>
 <text class="szbk" >所在版块</text>

@@ -37,6 +37,16 @@
   margin-right: 20rpx;
   padding-top: 10rpx;
 }
+.btn-apply:active{
+  width: 120rpx;
+  height: 50rpx;
+  text-align: center;
+  background-color: #026d10;
+  color: white;
+  border-radius: 7rpx;
+  margin-right: 20rpx;
+  padding-top: 10rpx;
+}
 /*文本框*/
 .inputArea{
   width: 100%;
