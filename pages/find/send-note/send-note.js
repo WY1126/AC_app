@@ -147,13 +147,6 @@ delFile(event) {
   wx.setStorageSync('fileList', list);
   //更新数据
   that.updateData();
-  //删除cos对象存储中的图片
-  // cos.deleteObject({
-  //   Bucket: config.Bucket,
-  //   Region: config.Region,
-  //   Key: 'upload/' + that.data.date + '/' + filename,
-  // }, requestCallback);
-
   cos.deleteObject({
     Bucket: config.Bucket,
     Region: config.Region,
@@ -162,18 +155,30 @@ delFile(event) {
     console.log(err || data);
   });
 },
-
-
   /**
-   * 生命周期函数--监听页面卸载  清除图片缓存
+   * 生命周期函数--监听页面卸载  清除图片缓存,删除存储库图片
    */
   onUnload: function () {
+    wx.setStorageSync('fileList', '')
+      //读取缓存
+    var list = wx.getStorageSync('fileList');
+    for(var i=0;i<list.length;i++)
+    {
+      var url = list[i].url;
+      url = url.replace(app.globalData.cosUrl,'');
+      cos.deleteObject({
+        Bucket: config.Bucket,
+        Region: config.Region,
+        Key: url,
+      }, function (err, data) {
+        console.log(err || data);
+      });
+    }
     // wx.clearStorageSync('fileList')
-    wx.setStorage({
-      data: '',
-      key: 'fileList',
-    })
+
   },
+
+
 
 
 // 图片上传至对象存储结束
@@ -256,6 +261,12 @@ delFile(event) {
    * 王瑶 2021-01-07  10:37
    */
   send: function(){
+    if(this.data.imgUrl.length<=0 && this.data.content == ''){
+      wx.showToast({
+        title: '内容不得为空',
+      })
+      return;
+    }
     if(this.data.note_type==null){
       this.setData({
         sendRequestKey:true,//禁用send按钮
@@ -266,6 +277,7 @@ delFile(event) {
       // wx.hideToast()
       return;
     }
+
     var url = 'forum/Note/sendnote',that = this,
     data = {
       uid:this.data.uid,

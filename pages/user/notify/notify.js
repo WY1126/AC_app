@@ -1,51 +1,38 @@
-// pages/user/user.js
-const app = getApp();
-const comm = require('../../utils/request')
+const util = require('../../../utils/util');
+// pages/user/notify/notify.js
+// const util = require('../../../utils/util') 
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    avatarUrl:null,
-    nickname:null,
-    wornkey:false,
-    notifylist:[],  //消息列表
+    notifyList:null,
+
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    var notifyList = wx.getStorageSync('notifyList'),
+    notify;
+    
+    for(var i=0;i<notifyList.length;i++){
+      notify = notifyList[i]
+      notify.create_time = util.getDiffTime(notify.create_time,true);
+    }
+    this.setData({
+      notifyList:notifyList
+    })
+    console.log(this.data.notifyList)
+  },
 
-    console.log(app.globalData.isHomeWarnRed)
-    console.log('ds')
-    var userinfor = wx.getStorageSync('userinfo'),that = this;
-    // console.log(wx.getStorageSync('userinfo'))
-    this.setData({
-      avatarUrl:userinfor.avatar,
-      nickname:userinfor.nickname,
-      wornkey:app.globalData.isHomeWarnRed,
-      
-    })
-    wx.hideTabBarRedDot({
-      index: 2,
-    })
-  },
-  tonotify:function (){
-    this.setData({
-      wornkey:false
-    })
-    // app.globalData.isHomeWarnRed = false
-    wx.navigateTo({
-      url: './notify/notify',
-    })
-  },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-    
+
   },
 
   /**

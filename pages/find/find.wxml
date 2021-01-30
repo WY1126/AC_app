@@ -1,7 +1,10 @@
 <!--pages/find/find.wxml-->
+<!-- 在页面内添加对应的节点 -->
+
 <import src="../find/find-information/find-informatin-det.wxml"></import>
 <import src="../find/find-comment/find-comment.wxml"></import><!--引入评论弹出框-->
 <navigation-bar default-data="{{defaultData}}"></navigation-bar>
+
 <!-- pages/index/index.wxml 引入模板 -->
 <import src="find.skeleton.wxml"/>
 <template is="skeleton" wx-if="{{loading}}" />

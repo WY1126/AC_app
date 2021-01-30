@@ -1,4 +1,6 @@
 <!--pages/user/user.wxml-->
+<!-- 在页面内添加对应的节点 -->
+<van-notify id="van-notify" />
 <view class="userinfor">
   <image src="{{avatarUrl}}"></image>
   <view>{{nickname}}</view>
@@ -7,9 +9,23 @@
 <van-cell title="个人主页" is-link />
 <view class="liubai"></view>
 <view class="intercalation">
-  <van-cell title="消息" is-link />
-  <van-cell title="通知" is-link />
+  <van-cell  is-link bind:click="tonotify">
+    <view slot="title" class="diytitle" >
+      <view class="van-cell-text">消息</view>
+      <van-tag class="diytag" wx:if="{{wornkey}}" plain  type="danger">新消息</van-tag>
+    </view>
+  </van-cell>
+  <van-cell title="通知" is-link  bind:click="shownotify"/>
   <van-cell title="赞过的帖子" is-link />
 </view>
 <view class="liubai"></view>
+<van-cell  is-link >
+  <view slot="title" class="diytitle" >
+    <view class="van-cell-text">消息</view>
+    <van-tag class="diytag" wx:if="{{wornkey}}" plain  type="danger">新消息</van-tag>
+  </view>
+</van-cell>
+<van-cell title="单元格" use-label-slot="true" is-link>
+  <van-icon slot="value" name="chat-o" class="custom-icon" dot />
+</van-cell>
 <van-cell title="推荐该小程序" is-link />

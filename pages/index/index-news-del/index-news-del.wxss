@@ -73,4 +73,7 @@ button{
     /* color: aliceblue; */
     
   }
+  img{
+    width: 100%;
+  }
   

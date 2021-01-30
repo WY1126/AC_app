@@ -1,0 +1,35 @@
+<!--pages/user/notify/notify.wxml-->
+<block>
+  <view wx:for="{{notifyList}}" wx:for-item="item">
+    <van-swipe-cell right-width="{{ 65 }}" >
+
+
+      <!-- <view class="liubai"></view> -->
+      <view class="notify_box" >
+        <view class="head">
+          <image  mode="aspectFit" src="{{item.avatar}}"></image>
+          <view class="head_infor">
+            <view class="head_infor_nt">
+              <text class="nickname">{{item.nickname}}</text>
+              <view class="tag">
+                <text>{{item.action == '1'? '点赞':(item.action == '2'?'评论':'回复')}}</text>
+              </view>
+            </view>
+            <view class="content">
+              {{item.content}}
+            </view>
+          </view>
+        </view>
+        <view class="middle">{{item.msg}}</view>
+        <view class="a">
+          <text class="create_time">{{item.create_time}}</text>
+        </view>
+          
+      </view>
+      <view class="del_notify" slot="right">
+        <text>删除</text>      
+      </view>
+
+    </van-swipe-cell>
+  </view>
+</block>

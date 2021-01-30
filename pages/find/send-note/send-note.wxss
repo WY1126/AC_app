@@ -35,7 +35,8 @@
   color: white;
   border-radius: 7rpx;
   margin-right: 20rpx;
-  padding-top: 10rpx;
+  /* padding-top: 10rpx; */
+  line-height: 50rpx;
 }
 .btn-apply:active{
   width: 120rpx;
@@ -45,7 +46,8 @@
   color: white;
   border-radius: 7rpx;
   margin-right: 20rpx;
-  padding-top: 10rpx;
+  /* padding-top: 10rpx; */
+  line-height: 50rpx;
 }
 /*文本框*/
 .inputArea{
@@ -118,15 +120,16 @@
 }
 .note_type_bottom{
   /* width: auto; */
-  /* height: 40rpx; */
+  height: 50rpx;
   background-color: #f0f0f0;
   border-radius: 30rpx;
   margin-right: 30rpx;
   text-align: center;
+  line-height: 50rpx;
   font-size: 22rpx;
   color:#666666;
-  padding-top: 10rpx;
-  padding-bottom: 10rpx;
+  /* padding-top: 10rpx;
+  padding-bottom: 10rpx; */
   margin-top: 20rpx;
   padding-left: 20rpx;
   padding-right: 20rpx;

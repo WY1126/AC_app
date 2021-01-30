@@ -4,6 +4,7 @@
 @import '../index/index-information//index-information-det.wxss' ;  /*引入资讯模块*/
 @import '../find/find-information/find-information-del.wxss';
 @import '../index/index-comment/index-comment-det.wxss'; /*引入评论*/
+
 .tabs{
   background-color: #f0f0f0;
 }
@@ -16,7 +17,6 @@
   color: #fff;
   margin-bottom: 50px;
 }
-
 .box1 {
   top: 0;
   z-index: 1;
@@ -53,9 +53,12 @@
   width: 60rpx;
   height: 60rpx;
   position: fixed;
-  top: 1300rpx;
-  right: 100rpx;
-  z-index: 1000;
+  /* top: 1300rpx; */
+  bottom: 100rpx;
+  right: 120rpx;
+  /* top: 100px;
+  right: 210px; */
+  z-index: 10000;
   /* box-shadow: 10px 10px 10px rgba(0,0,0,.5); */
 }
 

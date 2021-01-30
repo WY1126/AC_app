@@ -120,6 +120,12 @@
         {
           "name": "pages/test/test",
           "pathName": "pages/test/test",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/user/notify/notify",
+          "pathName": "pages/user/notify/notify",
           "scene": null
         }
       ]

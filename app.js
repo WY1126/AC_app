@@ -1,5 +1,11 @@
 //app.js
+// const comm = require('./utils/request')
 App({
+  data:{
+    ishomered:false, //home底部栏是否显示小红点
+    iswarnred:false,  //home页消息栏是否显示小红点,
+    to_uid:12,
+  },
   onLaunch: function () {
     const that = this;
     // 获取系统信息
@@ -17,9 +23,36 @@ App({
       success: function (res) {
           that.globalData.statusBarHeight = res.statusBarHeight
        }
-  })
+    })
+    wx.request({
+      url: that.globalData.requestUrl+'home/Notify/scannotify',
+      data:{
+        to_uid:that.data.to_uid
+      },
+      method:'GET',
+      header: {
+        'content-type': 'application/x-www-form-urlencoded',
+      },
+      success(res){
+        console.log(res)
+
+          wx.setStorageSync('notifyList', res.data)
+          wx.showTabBarRedDot({
+            index: 2,
+          })
+          that.globalData.isHomeWarnRed = true;
+      },
+      fail(){
+        console.log('扫描信息失败！')
+      }
+    })
+    //循环扫描
+    // var scannotify = setInterval(function(){
+    //   that.scannotify()
+    // },2000)
 
 
+  
     // // 展示本地存储能力
     // var logs = wx.getStorageSync('logs') || []
     // logs.unshift(Date.now())
@@ -52,7 +85,48 @@ App({
     //   }
     // })
   },
+  scannotify:function(){
+    console.log('scaning……')
+    var uid = wx.getStorageSync('userId'), that =this,
+    url = this.globalData.requestUrl;
+    // comm.requestAjax(url,{uid:12},'','get',function(res) {
+    //   console.log(res)
+    // },function (res) {
+    //   console.log('shibai')
+    // })
+    wx.request({
+      url: url+'home/Notify/scannotify',
+      data:{
+        to_uid:that.data.to_uid
+      },
+      method:'GET',
+      header: {
+        'content-type': 'application/x-www-form-urlencoded',
+      },
+      success(res){
+        
+        if(res.data.length>wx.getStorageSync('notifyList').length)//大于本地消息列表说明有新消息
+        {
+          wx.setStorageSync('notifyList', res.data)
+          that.globalData.isHomeWarnRed = true
+          console.log(res)
+        }
+      },
+
+      fail(){
+        console.log('扫描信息失败！')
+      },
+      complete(){
+        // wx.hideToast({
+        //   success: (res) => {},
+        // })
+      }
+    })
+    // console.log(wx.getStorageSync('userId'))
+  },
   globalData: {
+    isHomeTabbarRed:false,  //我的底部导航栏显示红点
+    isHomeWarnRed:false,    //我的页是否又新消息
     userId:0,
     userInfo: null,
     navBarHeight: 0, // 导航栏高度

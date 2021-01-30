@@ -9,6 +9,7 @@ Page({
     newsinfo:[],//文章内容
     send_key:0,//发送按钮的显示key
     htmlcon:'',
+    window_width:300,
   },
 
   /**
@@ -25,6 +26,7 @@ Page({
       console.log(res)
       //匹配以src='/开头替换为src="https://www.jxutcm.edu.cn/   
       that.data.htmlcon = res.content.replace(/src="\//g,'src="https://www.jxutcm.edu.cn/');
+      that.data.htmlcon = that.data.htmlcon.replace(/width="[0-9][0-9][0-9]"/g,'width="'+(that.data.window_width-20)+'"')
       that.setData({
         htmlcon:that.data.htmlcon
       })
@@ -49,11 +51,18 @@ Page({
     }
   },
   /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-
-  },
+* 生命周期函数--监听页面初次渲染完成
+*/
+onReady: function () {
+  var that = this;
+  wx.getSystemInfo({
+    success: function (res) {
+      //获取屏幕窗口高度和宽度
+      that.data.window_heigt = res.windowHeight
+      that.data.window_width = res.windowWidth
+    },
+  })
+ },
 
   /**
    * 生命周期函数--监听页面显示

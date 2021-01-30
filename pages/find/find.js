@@ -43,6 +43,20 @@ Page({
     input_focus:false,    //文本框焦点
     statusBarHeight:app.globalData.statusBarHeight,
   },
+    /**
+   * 创建消息
+   * @param {*} data 
+   */
+  createNotify:function (data) {
+    var url = 'home/Notify/createnotify',
+    data = data,
+    message = '',method = 'post';
+    comm.requestAjax(url,data,message,method,function(res){
+      console.log(res)
+    },function (res){
+      console.log('发送消息失败！')
+    })
+  },
   //发送回复
   sendreply:function(e) {
     console.log('发送回复')
@@ -51,12 +65,9 @@ Page({
     nid:this.data.information_Id,
     comment_id:this.data.comment_Id,
     uid:this.data.user_Id,
-    // nickname:this.data.nickname,
-    // avatarurl:this.data.avatarurl,
     to_reply_id:this.data.to_reply_id,
     content:this.data.input_content,
     to_uid:this.data.to_uid,
-    // to_nickname:this.data.to_nickname,
     create_time : Date.parse(new Date())/1000,
     },
     message = '',method='post';
@@ -67,6 +78,20 @@ Page({
       var tempcomments = that.data.comments,tempcommentnum=that.data.commentnum+1,templist=that.data.list;   
       templist[that.data.information_Idx]['commentnum'] = tempcommentnum;
       tempcomments[that.data.comment_Idx]['reply'].unshift(e);
+      var data = {
+        note_id: that.data.information_Id,
+        uid: that.data.user_Id,
+        sender_type:'2',
+        type: '2',
+        target_id: that.data.to_reply_id == 0 ? that.data.comment_Id:that.data.to_reply_id,
+        target_type: that.data.to_reply_id == 0 ? '2' : '3',
+        action: '3',
+        content: that.data.input_content,
+        to_uid: that.data.to_uid,
+        create_time: Date.parse(new Date())/1000
+      }
+      that.createNotify(data)   
+
       that.setData({
         comments:tempcomments,
         commentnum:tempcommentnum,
@@ -74,7 +99,7 @@ Page({
         button_key:0,
         value:'',
         input_content:'',
-      })      
+      })   
     },
     function(e){
       wx.showToast({ title: '请求失败', icon: 'none' });
@@ -144,6 +169,21 @@ Page({
         templist[that.data.information_Idx]['commentnum'] = tempcommentnum;
         console.log(templist)
         temp.unshift(e);
+
+        console.log(that.data.comments)
+        var data = {
+          note_id: that.data.information_Id,
+          uid: that.data.user_Id,
+          sender_type:'2',
+          type: '2',
+          target_id: that.data.information_Id,
+          target_type: '1',
+          action: '2',
+          content: that.data.input_content,
+          to_uid: that.data.list[that.data.information_Idx]['uid'],
+          create_time: Date.parse(new Date())/1000
+        }
+        that.createNotify(data)   
         that.setData({
           comments:temp,
           input_content:'',
@@ -151,8 +191,7 @@ Page({
           button_key:0,
           commentnum:tempcommentnum,
           list:templist,
-        })
-        console.log(that.data.comments)
+        })   
       },
       //请求失败
       function(e){
@@ -210,14 +249,17 @@ Page({
     comm.requestAjax(url,data,message,method,function(e){
       console.log(e)
       var tempcomments = that.data.comments
-      if(type==0){
+      if(type==0)//回复的点赞
+      {
         if(e.status==0) {
           tempcomments[commentidx]['reply'][replyidx]['likenum']-=1;
         } else {
           tempcomments[commentidx]['reply'][replyidx]['likenum']+=1;
         }
         tempcomments[commentidx]['reply'][replyidx]['status']=e.status;
-      } else {
+      } 
+      else //评论的点赞
+      {
         if(e.status==0) {
           tempcomments[commentidx]['likenum']-=1;
         } else {
@@ -231,6 +273,22 @@ Page({
       wx.showToast({
         title:e.error_msg,
       })
+      //创建消息
+      if(e.status==1){
+        var data = {
+          note_id: tempcomments[commentidx]['nid'],
+          uid: uid,
+          sender_type:'2',
+          type:'2',
+          target_id: type==1?tempcomments[commentidx]['id']:tempcomments[commentidx]['reply'][replyidx]['id'],
+          target_type:type==1?'2':'3',
+          action:'1',
+          content:'',
+          to_uid:type==1?tempcomments[commentidx]['uid']:tempcomments[commentidx]['reply'][replyidx]['uid'],
+          create_time:Date.parse(new Date())/1000,
+        }
+        that.createNotify(data)
+      }
     },
     function(res){
       wx.showToast({ title: '请求失败', icon: 'none' });
@@ -329,9 +387,10 @@ Page({
   },
 
 
+
   /**
    * 王瑶 2021-01-12 20:12
-   * 帖子点赞
+   * 帖子点赞  + 
    * @param {*} e 
    */
   dolike:function(e){
@@ -353,9 +412,25 @@ Page({
       that.setData({
         list:templist
       })
+
       wx.showToast({
         title: msg,
       })
+      if(e.status == 1) {
+        var data = {
+          note_id: informationId,
+          uid: userId,
+          sender_type:'2',
+          type:'2',
+          target_id:informationId,
+          target_type:'1',
+          action:'1',
+          content:'',
+          to_uid:templist[idx].uid,
+          create_time:Date.parse(new Date())/1000,
+        }
+        that.createNotify(data)
+      }
     }
     ,function(e){
       console.log('请求错误！')

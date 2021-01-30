@@ -19,15 +19,14 @@ Page({
     self.setData({ loading: true });
     wx.login({
         success: function (_a) {
-
-            var code = _a.code;
-            let dataList={
+            var code = _a.code,
+            dataList={
               code:code,
               nickname:userInfo.nickName,
               avatar:userInfo.avatarUrl,
               gender:userInfo.gender,
             };
-            const setDelay = ()=>{
+            const setDelay = () =>{
               return new Promise((resolve,reject)=>{
                 comm.requestAjax('home/user/signup',dataList,'正在请求','post',function(res){
                   console.log(res)//请求成功回调
@@ -41,7 +40,7 @@ Page({
             setDelay()
             .then((res)=>{
               wx.setStorageSync('openid', res.openid);
-              console.log("oprnid  "+wx.getStorageSync('openid'))
+              // console.log("openid  "+wx.getStorageSync('openid'))
               app.globalData.userId = res.id;
               wx.setStorageSync('userId', res.id)
               wx.setStorageSync('userinfo', res)
